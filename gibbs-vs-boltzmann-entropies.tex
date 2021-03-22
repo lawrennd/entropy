@@ -8,58 +8,18 @@
 \titleformat{\section}
   {\large\centering}
   {\thesection}{1em}{}
-\usepackage{lmodern}
+\usepackage{authblk}
 \usepackage{amssymb,amsmath}
 \usepackage{times}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Gibbs vs Boltzmann Entropies},
-  pdfauthor={E. T. Jaynes},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\ifluatex
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
+\usepackage[super]{natbib}
+\bibliographystyle{unsrtnat}
 
 \title{Gibbs vs Boltzmann Entropies\footnote{Supported by the National
-  Science Foundation Grant XSF G23778.}}
-\author{E. T. J\textsc{aynes}}
-\date{}
-\address{Department, of Physics\emph{,} Washington University, St. Louis\emph{,}
-Missouri}
-\note{(Received 27 March 1964; in final form, 5 November 1964)}
+  Science Foundation Grant XSF G23778. Received 27 March 1964; in final form, 5 November 1964.}}
+\author{E. T. Jaynes}
+\date{5th November 1964}
+\affil{Department of Physics, Washington University, St. Louis, Missouri}
+
 
 \begin{document}
 \maketitle
@@ -68,7 +28,7 @@ Missouri}
 \begin{abstract}
 The status of the Gibbs and Boltzmann expressions for entropy has been
 a matter of some confusion hi the literature. We show that; (1) the
-Gibbs 77 function yields the correct entropy as defined in
+Gibbs $H$ function yields the correct entropy as defined in
 phenomenological thermodynamics ; (2) the Boltzmann $H$ yields an
 "entropy'' that is in error by a nonnegligible amount whenever
 interparticle forces affect thermodynamic properties; (3) Boltzmann's
@@ -484,17 +444,12 @@ ensemble,'' without qualifications; but the ``minimum phase volume of
 50\% probability'' or the ``minimum phase volume of 99\% probability''
 do have precise meanings.
 
-A remarkable limit theorem first noted by Shannon\footnote{E. T. Jaynes,
-  Phys. Rev. 108, 171 (1957).} \footnote{C. E. Shannon, Bell Syst. Tech.
-  J. 27, 379, 623 (1948); reprinted in C. E. Shannon and W. Weaver,
-  \emph{The Mathematical Theory of Communication} (University of
-  Illinois Press, Urbana, Illinois, 1949). See, particularly, Sec. 21.}
+\nocite{Jaynes-information57}
+A remarkable limit theorem first noted by Shannon \cite[][(see, particularly, Sec. 21)]{Shannon-mathematical48} 
 shows that for most purposes the particular probability level e is
 unimportant. We quote the result without proof; it is an adaptation of
 the fundamental ``asymptotic equipartition property'' (AEP) of
-Information Theory.\footnote{A. Feinstein, \emph{Foundations of
-  Information Theory} Chap. 6. (McGraw-Hill Book Company, Inc., New
-  York, 1958),} We suppose that the distribution function \(W_{N}\) from
+Information Theory.\cite[][(See Chapter 6)]{Feinstein-foundations58} We suppose that the distribution function \(W_{N}\) from
 which \(H_{G}\) and \(W\left( \epsilon \right)\) are computed is either
 a canonical distribution or a time- developed version of one resulting
 from some dynamical perturbation; and that the system is such that the
@@ -752,5 +707,7 @@ with Professor E. P. Wigner, from whom I first heard the remark,
 ``Entropy is an anthropomorphic concept.'' It is a pleasure to thank
 Professor Wm. C. Band for reading a preliminary draft of this article,
 and suggesting an important clarification of the argument.
+
+\bibliography{gibbs-vs-boltzmann}
 
 \end{document}
