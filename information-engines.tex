@@ -90,163 +90,749 @@
 
 \begin{document}
 
-\hypertarget{maxwells-demon}{%
-\section{Maxwell's Demon}\label{maxwells-demon}}
+\hypertarget{information-engines-intelligence-and-thermodynamics}{%
+\section{Information Engines: Intelligence and
+Thermodynamics}\label{information-engines-intelligence-and-thermodynamics}}
 
 \hypertarget{neil-d-lawrence}{%
-\subsubsection{Neil D. Lawrence}\label{neil-d-lawrence}}
 
-\hypertarget{2020-01-01}{%
-\subsubsection{2020-01-01}\label{2020-01-01}}
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
 
-Our Maxwell's demon is formed by a chamber with a dividing membrane. The
-chamber contains particles, all of equal mass \(m=1\). The chamber is
-split in two parts by a membrane. The membrane's effect on the particles
-is controlled by the demon.
+The Helmholtz free energy was derived by Hermann von Helmholtz in the
+study of electrochemistry.
 
-The velocities of the particles are given by, \(\mathbf{v} = \{ v_i\}\).
-Each particle sits on either the right or left hand side of the
-membrane. The position of each particle is denoted by
-\(\mathbf{s} = \{ s_i \}\), with \(s_i=0\) if the \(i\)th particle is on
-the left hand side of the membrane, and \(s_i = 1\) if the \(i\)th
-particle is on the right hand side of the membrane.
+In a thermodynamic system, the state space is referred to as the phase
+space\href{Here\%20we\%20are\%20referring\%20to\%20the\%20microstates,\%20the\%20macrostates\%20would\%20be\%20the\%20sufficient\%20statistics\%20of\%20the\%20microstates.}{\^{}1}
 
-The demon has the power to allow particles to pass through the membrane.
-Any particle which is allowed to pass through the membrane is labelled
-with \(d_i = 1\). Particles that don't pass the membrane rebound with an
-elastic collision. The full set of state variables associated with the
-demon's decisions are given by \(\mathbf{d} = \{ d_i \}\).
+Boltzmann's distribution gives us the probability distribution
+associated with that state space. In a continuous system, we write down
+the the \emph{Hamiltonian}, the energy associated with the phase space.
+\[
+\mathbb{P}(\phaseVariables) = \frac{1}{Z_\phaseVariables} \exp(-\beta E(\phaseVariables))
+\] where \(E(\phaseVariables)\) is the energy of the system in
+microstate \(\phaseVariables\).
 
-We are interested in the joint distribution of these states, \[
-p(\mathbf{v}, \mathbf{s}, \mathbf{d}).
+The partition function is given by \[
+Z_\phaseVariables = \sum_\phaseVariables \exp(-\beta E(\phaseVariables)),
+\] where the \(Z\) comes from the German for "sum over states" or
+\emph{Zustandssumme}, reflecting Boltzmann's Austrian heritage. In the
+case of continuous systems we have, \[
+Z_\phaseVariables = \frac{1}{h^3}\int \exp(-\beta E(\phaseVariables)) \text{d} \phaseVariables
+\] and \(E(\phaseVariables)\) is the Hamiltonian of the system.
+
+\hypertarget{total-energy}{%
+\subsection{Total Energy}\label{total-energy}}
+
+The total energy, \(U_\phaseVariables\) is defined as the expected
+energy, \[
+U_\phaseVariables = \expDist{E(\phaseVariables)}{\trueProb(\phaseVariables)}
+\] which can be decomposed using the definition of
+\(\trueProb(\phaseVariables)\) as \[
+U_\phaseVariables = A_\phaseVariables + TS_\phaseVariables
+\] where \[
+A_\phaseVariables = - \frac{1}{\beta}\log Z_\phaseVariables
+\] is the \emph{Helmholtz free energy} and \[
+S_\phaseVariables = -k_B \expDist{\log \trueProb(\phaseVariables)}{\trueProb(\phaseVariables)}
+\] is the entropy of the system and \(T\) is the temperature.
+
+This equation expresses a fundamental decomposition of the total energy
+into the available energy, \(A_\phaseVariables\) and energy that is not
+available, \(TS_\phaseVariables\).
+
+\hypertarget{intelligence-and-energy}{%
+\subsection{Intelligence and Energy}\label{intelligence-and-energy}}
+
+We define an intelligent decision to be one that achieves a desired
+change of state in our system with the minimum use of resource. In
+general, resource would be \emph{time} or \emph{free energy}. For the
+moment, time will not enter our caclulations because we will focus on
+\emph{thermodynamic equillibriums}. Which in probability can be thought
+of as the \emph{steady state} condition.
+
+Our first step will be to split our phase space into variables we can
+observe and those that are unobserved,
+\(\phaseVariables = \{\stateVariables, \dataVariables\}\), this allows
+us to write \[
+U_{\stateVariables,\dataVariables} = A_{\stateVariables,\dataVariables} + TS_{\stateVariables,\dataVariables}
+\] where \[
+A_{\stateVariables,\dataVariables} = - \frac{1}{\beta}\log Z_{\stateVariables,\dataVariables}
+\] and \[
+S_{\stateVariables,\dataVariables} = -k_B \expDist{\log \trueProb({\stateVariables,\dataVariables})}{\trueProb({\stateVariables,\dataVariables})}.
 \]
 
-We assume that the particles are colliding with elastic collisions, so
-that the kinetic energy of the system is conserved and we have, \[
-E = \frac{1}{2}\sum_{i}v_i^2.
-\] We are interested in the stationary distribution of this system.
-That stationary distribution will occur when equal number of particles
-pass from the left hand side of the membrane to the right hand side and
-when particles passing the membrane loose the demon mark. These
-condition are expressed by \[\begin{align*}
--\eta\sum_{i} (1-s_i)(1-d_i) v_i & = -\eta\sum_{i} s_i d_i v_i,\\
-\eta\sum_{i} (1-s_i) d_i v_i & = \eta\sum s_i(1- d_i) v_i,\\
-\eta\sum_{i} (1-s_i) d_i v_i & = -\eta\sum_{i} s_i d_i v_i.
-\end{align*}\]
+If we instantiate the observable states. We change our system. From a
+probabilistic perspective, this change is equivalent to
+\emph{conditioning} on \(\dataVariables\).
 
-Finally, we have the demon, who selects which particles will be able to
-pass through the membrane. The demon operates on the particles according
-to the side of the membrane they are on and the speed they are
-travelling. We introduce an indicator function, \(I(\cdot)\), that
-depends on the side, \(s_i\), and the velocity, \(v_i\), which returns a
-value of zero or one to set \(d_i\), \[
-d_i = I(v_i, s_i).
-\] We also set \(I(v_i, s_i=0) = 1- I(v_i, s_i=1)\), so that the value
-of \(d_i\) is reversed on the two different sides of the membrane.
+Making an observation in this system is equivalent to conditioning on
+\(\dataVariables\) for the total energy which we write as \[
+U_{\stateVariables|\dataVariables} = \expDist{E({\stateVariables|\dataVariables})}{\trueProb({\stateVariables|\dataVariables})}
+\] Inspired by probability notation, we decompose that updated energy
+state \(E(\stateVariables| \dataVariables)\) into two parts, one which
+represents the interaction between our measurements and the state,
+\(E(\dataVariables|\stateVariables)\) and \(E(\stateVariables)\)
+represents energy terms where there is no interaction and write \[
+\mathbb{P}({\stateVariables|\dataVariables}) = \frac{1}{Z_{\stateVariables|\dataVariables}} \exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)
+\] where the partition function is given by \[
+Z_{\stateVariables|\dataVariables} = \int \exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right) \text{d}\stateVariables
+\] The new total energy, conditioning on the measurements is \[
+U_{\stateVariables|\dataVariables} = A_{\stateVariables|\dataVariables} + TS_{\stateVariables|\dataVariables}
+\] where \[
+A_{\stateVariables|\dataVariables} = - \frac{1}{\beta}\log Z_{\stateVariables|\dataVariables}
+\] and \[
+S_{\stateVariables|\dataVariables} = -k_B \expDist{\log \trueProb({\stateVariables|\dataVariables})}{\trueProb({\stateVariables|\dataVariables})}.
+\]
 
-These constraints allow us to build the stationary distribution through
-the principle of maximum entropy. The idea of maximum entropy is that
-the distribution will tend to its maximum entropy variant over time, so
-we have, \[\begin{align*}
-p(\mathbf{v}, \mathbf{s}, \mathbf{d}) \propto & \exp\left(\frac{\lambda_1}{2}\sum_i v_i^2 \right. \\ & 
-+ \lambda_2\left(\sum_{i} (1-s_i)(1-d_i) v_i - \sum_{i} s_i d_i v_i\right) \\ &
-+ \lambda_3\left(\sum_{i} s_i(1-d_i)v_i - \sum_{i} (1-s_i) d_i v_i\right) \\ &
-+ \lambda_4\left(\sum_{i} s_i d_i v_i + \sum_{i} (1-s_i)d_i v_i\right) \\ &
-+ \left. \sum_i \mu_i \left(d_i - I(v_i, s_i)\right)\right),
-\end{align*}\] where \(\lambda_1\), \(\lambda_2\) and
-\(\left\{\mu_i\right\}\) are the Lagrange multipliers associated with
-the conditions on the moments.
-
-The distribution factorises over particles so we can consider the
-distribution for an individual particle which has the form,
-\[\begin{align*}
-p(v_i, s_i, d_i) \propto & \exp\left(\frac{\lambda_1}{2} v_i^2 \right. \\ 
-& + \lambda_2 \left((1-s_i)(1-d_i) -s_i d_i\right)v_i \\
-& + \lambda_3 \left(s_i(1-d_i) - (1-s_i) d_i\right)v_i \\
-& + \lambda_4\left( s_i d_i + (1-s_i)d_i \right)v_i \\
-& + \left. \mu_i \left(d_i - I(v_i, s_i)\right)\right)
-\end{align*}\]
-
-We consider the distribution for the different values of \(s_i\) and
-\(d_i\). \[
+We can examine how this changes the free energy, the energy gain through
+observation is, \[
 \begin{align*}
-p(v_i | s_i=0, d_i=0) & \propto \exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 v_i\right) \exp\left(-\mu_i I(v_i, s_i=0)\right) \\
-p(v_i | s_i=1, d_i=0) & \propto \exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_3 v_i\right) \exp\left(-\mu_i I(v_i, s_i=1)\right) \\
-p(v_i | s_i=0, d_i=1) & \propto \exp\left(\frac{\lambda_1}{2} v_i^2 + (\lambda_4 - \lambda_3) d_i v_i\right)\exp\left(\mu_i\left(1-I(v_i, s_i=0)\right)\right) \\
-p(v_i | s_i=1, d_i=1) & \propto \exp\left(\frac{\lambda_1}{2} v_i^2 + (\lambda_4 - \lambda_2) d_i v_i\right)\exp\left(\mu_i\left(1-I(v_i, s_i=1)\right)\right)
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} = & -\frac{1}{\beta} \log \frac{Z_{\stateVariables|\dataVariables}}{Z_{\stateVariables,\dataVariables}}\\
+& -T k_B \log \trueProb(\dataVariables)
+\end{align*}
+\] which is the information gained through the observation,
+\(\dataVariables\).
+
+This shows the relationship between measurement and energy. By measuring
+the system we can gain free energy. The less likely the measurements,
+the more energy we gain.
+
+\hypertarget{approximate-available-energy}{%
+\subsection{Approximate Available
+Energy}\label{approximate-available-energy}}
+
+In practice, we don't know (precisely) these energy relationships,
+\(E(\cdot)\), and consequently we don't know the true distribution,
+\(\trueProb(\cdot)\). So we can't calculate how much energy we're likely
+to gain by observing \$\textbackslash dataVariables).
+
+The full model, \(\trueProb(\stateVariables, \dataVariables)\), is not
+available to us. Indeed, the number of states across the universe is so
+many, that even if we knew all the physics, we couldn't write down the
+model of everything.
+
+The available energy is \[\begin{align*}
+A_{\stateVariables|\dataVariables} = & -\frac{1}{\beta} \log Z_{\stateVariables|\dataVariables} \\
+= & -\frac{1}{\beta} \log \int \exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right) \text{d}\stateVariables.
+\end{align*}
+\] Introducing a new probability distribution \(\physicsProb(\cdot)\) we
+can rewrite the available energy as \[
+A_{\stateVariables|\dataVariables} =  -\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }
+\] where \(\physicsProb(\stateVariables|\dataVariables)\) is our
+estimate of the effect of our observations of \(\dataVariables\) on the
+microstates of the system.
+
+This expression can be rewritten in terms of 'apparent energies' and
+related to the original available energy as follows, \[
+A_{\stateVariables|\dataVariables} = U^\prime_{\stateVariables|\dataVariables} - TS^\prime_{\stateVariables|\dataVariables} - TM_{\stateVariables|\dataVariables}
+\] where the apparent total energy is given by \[
+U^\prime_{\stateVariables|\dataVariables} = \expDist{E(\dataVariables|\stateVariables)}{\physicsProb(\stateVariables|\dataVariables) } 
+\] and the apparent entropy can be computed as \[
+S^\prime_{\stateVariables|\dataVariables}=k_B\expDist{\log\physicsProb(\stateVariables|\dataVariables) }{\physicsProb(\stateVariables|\dataVariables) }
+\] and we have introduced a new term,
+\(M_{\stateVariables|\dataVariables}\), which we refer to as the model
+misspecification, \[
+M_{\stateVariables|\dataVariables} = k_B \expDist{\log \frac{\physicsProb(\stateVariables| \dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }.
+\]
+
+The model misspecification is recognised as the Kullback-Leibler
+diverence (information theoretic term) or the \emph{relative entropy}
+between the true model, \(\trueProb(\cdot)\) and our approximation,
+\(\physicsProb(\cdot)\). It is large if our approximation gives high
+probablity to regions which in reality are low probability.
+
+We can also define the apparent available energy, \[
+A^\prime_{\stateVariables|\dataVariables} = U^\prime_{\stateVariables|\dataVariables} - TS^\prime_{\stateVariables|\dataVariables}
+\] and we can see it's related to the true available energy through the
+model misspecificaiton, \[
+A^\prime_{\stateVariables|\dataVariables} = A_{\stateVariables|\dataVariables} + TM_{\stateVariables|\dataVariables}.
+\] showing that our apparent available energy,
+\(A^\prime_{\stateVariables|\dataVariables}\) is an \emph{upper} bound
+on the true available energy, \[
+A^\prime_{\stateVariables|\dataVariables} \geq A_{\stateVariables|\dataVariables}.
+\]
+
+\hypertarget{remark-1}{%
+\subsubsection{Remark 1}\label{remark-1}}
+
+This has important consequences for how we model. If we maximize the
+apparent available energy, we aren't necessarily maximizing the true
+available energy. We might be maximizing model misspecification.
+
+\hypertarget{free-energy-gain}{%
+\subsection{Free Energy Gain}\label{free-energy-gain}}
+
+Our interest is not the true free energy, but the energy we gain through
+making the observation. This is denoted \[\begin{align*}
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} = & -\frac{1}{\beta} \log \int \exp\left(-\beta \hat{E}(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right) \text{d}\stateVariables \\
+& +\frac{1}{\beta} \log \int \exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right) \text{d}\stateVariables\text{d}\dataVariables
+\end{align*}
+\] where
+\(\hat{E}(\dataVariables|\stateVariables)\geq E(\dataVariables|\stateVariables)\)
+also includes the additional energy cost of conditioning on
+\(\dataVariables\).
+
+\[\begin{align*}
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & -\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta \hat{E}(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }\\
+& +\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables,\dataVariables)}{\trueProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) }
+\end{align*}\] Extracting the marginal probabilities of the observations
+from the final term we can rewrite as \[\begin{align*}
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & -\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta \hat{E}(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }\\
+& +\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) }
+\end{align*}\] We now rewrite in terms of the apparent total energies
+giving \[\begin{align*}
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & U^\prime_{\stateVariables|\dataVariables} - U^\prime_{\stateVariables,\dataVariables} + TS^\prime_\dataVariables \\
+& - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } \\
+ & + \expDist{\frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\dataVariables)}\\
+&  + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) }
+\end{align*}\]
+
+\[\begin{align*}
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & U^\prime_{\stateVariables|\dataVariables} - U^\prime_{\stateVariables,\dataVariables} + TS^\prime_\dataVariables - T\left(M_{\stateVariables|\dataVariables} - \expDist{M_{\stateVariables|\dataVariables}}{\physicsProb(\dataVariables)} - M_{\dataVariables}\right)
+\end{align*}\] where \[
+S^\prime_{\dataVariables}=-k_B\expDist{\log\physicsProb(\dataVariables) }{\physicsProb(\dataVariables) }
+\] and \(M_{\dataVariables}\) is the model misspecification, \[
+M_{\dataVariables} = k_B \expDist{\log \frac{\physicsProb( \dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) },
+\]
+
+If we look at the expected change under all data sets we get \[
+\expDist{A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables}}{\trueProb(\dataVariables)} = -\expDist{E(\dataVariables)}{\trueProb(\dataVariables)} + TS^\prime_\dataVariables + TM_{\dataVariables}  - T\left(\expDist{M_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} - \expDist{M_{\stateVariables|\dataVariables}}{\physicsProb(\dataVariables)}\right)
+\] where \(E(\dataVariables)\) is the energy cost of measuring
+\(\dataVariables\) and \[
+\expDist{\left(M_{\stateVariables|\dataVariables} - \expDist{M_{\stateVariables|\dataVariables}}{\physicsProb(\dataVariables)}\right)}{\trueProb(\dataVariables)}
+\]
+
+So we have \[
+\expDist{\Delta A^\prime_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} = -\expDist{E(\dataVariables)}{\trueProb(\dataVariables)} + TS^\prime_\dataVariables 
+\] where \[
+E(\dataVariables) = \expDist{\hat{E}(\dataVariables|\stateVariables)}{\physicsProb(\stateVariables|\dataVariables)} - \expDist{E(\dataVariables|\stateVariables)}{\physicsProb(\stateVariables,\dataVariables)}
+\]
+
+\hypertarget{null-space-and-domain-space}{%
+\subsection{Null Space and Domain
+Space}\label{null-space-and-domain-space}}
+
+One challenge is dealing with the number of variables in the world.
+Whenever we are modeling there are variables we would like to ignore,
+and variables we explicitly include in the model We will call the
+variables we ignore the \emph{null space} and the variables of interest
+the \emph{domain space}.
+
+In thermodynamics, assumptions are often made about the relationship
+between the null space and the domain space. For example in an
+\href{https://en.wikipedia.org/wiki/Isolated_system}{\emph{isolated
+system}} where no exchange of energy or matter occurs between the null
+space and the domain space. Another example is to assume that the null
+space is a
+\href{https://en.wikipedia.org/wiki/Thermal_reservoir}{\emph{thermal
+resevoir}} where heat energy may flow from the null space to the domain
+space \emph{without} a change in the temperature of the null space.
+
+We represent the microstates of the \emph{null space} as
+\(\nullVariables\) and those of the domain space \(\domainVariables\),
+\(\stateVariables = \{\nullVariables, \domainVariables\}\). The domain
+space contains microstates of interest to our problem, and the null
+space contains microstates that are not directly of interest. In
+particular the null space contains variables that we believe are only
+weakly influenced by our measurements.
+
+How should we deal with the separation of our domain space from the null
+space in our modelling? One of the simplest things we can do is assume
+that the distribution of microstates across the two spaces
+\emph{factorises}. The factorisation assumption appears to be a strong
+one, but in reality it will allow us to consider both the isolated
+system and the thermal resevoir. Importantly, we will also explicitly
+characterise how our assumption relates to the true system. \[
+\physicsProb(\nullVariables, \domainVariables | \dataVariables) = \physicsProb(\nullVariables|\dataVariables) \physicsProb(\domainVariables | \dataVariables).
+\]
+
+Given this assumption, we now minimize the misspecification of the
+system, \(M_{\stateVariables|\dataVariables}\). This minima is found by
+setting \[
+\physicsProb(\domainVariables|\dataVariables) = \frac{\exp\left(-\beta E^\prime(\dataVariables |\domainVariables) - \beta E^\prime(\domainVariables)\right)}{Z^\prime_{\domainVariables | \dataVariables}} 
+\] where \[\begin{align*}
+E^\prime(\dataVariables |\domainVariables) = & \expDist{E(\dataVariables |\stateVariables)}{\physicsProb(\nullVariables|\dataVariables)} \\
+E^\prime(\domainVariables) = & \expDist{E(\stateVariables)}{\physicsProb(\nullVariables|\dataVariables)} \\
+Z^\prime_{\domainVariables | \dataVariables} = & \int \exp\left(-\beta E^\prime(\dataVariables |\domainVariables) - \beta E^\prime(\domainVariables)\right) \text{d}\domainVariables. 
+\end{align*}
+\] Similary, \[
+\physicsProb(\nullVariables|\dataVariables) = \frac{\exp\left(-\beta E^\prime(\dataVariables |\nullVariables) - \beta E^\prime(\nullVariables)\right)}{Z^\prime_{\nullVariables}} 
+\] where \[\begin{align*}
+E^\prime(\dataVariables |\nullVariables) = & \expDist{E(\dataVariables |\stateVariables)}{\physicsProb(\domainVariables|\dataVariables)} \\
+E^\prime(\nullVariables) = & \expDist{E(\stateVariables)}{\physicsProb(\domainVariables|\dataVariables)} \\
+Z^\prime_{\nullVariables | \dataVariables} = & \int \exp\left(-\beta E^\prime(\dataVariables |\nullVariables) - \beta E^\prime(\nullVariables)\right) \text{d}\nullVariables. 
+\end{align*}
+\] Note that these two distributions are interdependent. The optimal
+form of \(\physicsProb(\nullVariables|\dataVariables)\) is dependent on
+the form of \(\physicsProb(\domainVariables|\dataVariables)\) and vice
+versa.
+
+The two distributions are symmetric. Our assumption is that the domain
+variables are more influenced by the mearsurements, \(\dataVariables\),
+than the null space. So we will focus on the domain variables. But due
+to the symmetry the derivation that follows would apply equally to the
+null space variables.
+
+\hypertarget{apparent-free-energy}{%
+\subsection{Apparent Free Energy}\label{apparent-free-energy}}
+
+Dropping the model misspecification we now have an upper bound on the
+free energy, \[
+A_{\stateVariables|\dataVariables} \leq U^\prime_{\stateVariables|\dataVariables} - TS^\prime_{\stateVariables|\dataVariables} 
+\] or alternatively, we can define \[
+A^\prime_{\stateVariables|\dataVariables} = U^\prime_{\stateVariables|\dataVariables} - TS^\prime_{\stateVariables|\dataVariables}. 
+\] which we call the \emph{apparent free energy}. The apparent free
+energy is an upper bound on the true free energy. Our factorisation into
+domain and null space reflects the fact that we think we view
+\(\physicsProb(\domainVariables | \dataVariables)\) as a model emerging
+from a domain expert.
+
+By our definitions above, the apparent total energy can be written as \[
+U^\prime_{\stateVariables|\dataVariables} = \expDist{E^\prime(\dataVariables |\domainVariables)}{\physicsProb(\domainVariables| \dataVariables)} + \expDist{E^\prime(\domainVariables)}{\physicsProb(\domainVariables| \dataVariables)} = U^\prime_{\domainVariables|\dataVariables} = U^\prime_{\nullVariables|\dataVariables}
+\] and our independence assumption means that \[
+S^\prime_{\stateVariables|\dataVariables} = S^\prime_{\domainVariables|\dataVariables} + S^\prime_{\nullVariables|\dataVariables}.
+\] We now can define \[
+A^\prime_{\domainVariables|\dataVariables} = U^\prime_{\domainVariables|\dataVariables} - TS^\prime_{\domainVariables|\dataVariables} = -\frac{1}{\beta} \log Z^\prime_{\domainVariables|\dataVariables}
+\] and can see that the apparent free energy is \[
+A^\prime_{\stateVariables|\dataVariables} = A^\prime_{\domainVariables|\dataVariables} - TS^\prime_{\nullVariables|\dataVariables}.
+\]
+
+\hypertarget{parameterised-model}{%
+\subsection{Parameterised Model}\label{parameterised-model}}
+
+The next step is to include \emph{parameters} with the model. To do this
+we first separate a new set of auxiliary variables from the domain
+variables,
+\(\domainVariables \rightarrow \{\domainVariables, \parameterVector\}\)introduce
+a new distribution, \[
+\approxProb(\domainVariables, \parameterVector) = \physicsProb(\domainVariables | \parameterVector)\approxProb(\parameterVector)
+\] \[\begin{align*}
+A^\prime_{\domainVariables|\parameterVector} = & -\frac{1}{\beta} \log \int \exp\left(-\beta E^\prime(\dataVariables |\domainVariables, \parameterVector) - \beta E^\prime(\domainVariables, \parameterVector)\right) \text{d}\domainVariables \text{d}\parameterVector\\
+= & -\frac{1}{\beta} \expDist{\log\frac{\exp\left(-\beta E^\prime(\dataVariables |\domainVariables, \parameterVector) - \beta E^\prime(\domainVariables, \parameterVector)\right)}{\approxProb(\domainVariables, \parameterVector)}}{\approxProb(\domainVariables, \parameterVector)} - \frac{1}{\beta} \expDist{\log\frac{\approxProb(\domainVariables , \parameterVector)}{\physicsProb(\domainVariables, \parameterVector | \dataVariables)}}{\approxProb(\domainVariables, \parameterVector)} \\
+= & -\frac{1}{\beta} \expDist{\log\frac{\exp\left(-\beta \expDist{E^\prime(\dataVariables |\domainVariables, \parameterVector) - \beta E^\prime(\domainVariables, \parameterVector)\right)}{\physicsProb(\domainVariables | \parameterVector)}}{\approxProb(\parameterVector)}}{\approxProb(\parameterVector)} + \frac{1}{\beta} \expDist{\log \physicsProb(\domainVariables | \parameterVector)}{\approxProb(\domainVariables, \parameterVector)} - \frac{1}{\beta} \expDist{\log\frac{\approxProb(\domainVariables , \parameterVector)}{\physicsProb(\domainVariables, \parameterVector | \dataVariables)}}{\approxProb(\domainVariables, \parameterVector)} \\
+= & -\frac{1}{\beta} \expDist{\log\frac{\exp\left(-\beta E^{\prime\prime}(\dataVariables |\parameterVector) - \beta E^{\prime\prime}(\parameterVector)\right)}{\approxProb(\parameterVector)}}{\approxProb(\parameterVector)} + \frac{1}{\beta} \expDist{\expDist{\log \physicsProb(\domainVariables | \parameterVector)}{\physicsProb(\domainVariables | \parameterVector)}}{\approxProb(\parameterVector)} - \frac{1}{\beta} \expDist{\expDist{\log\frac{\physicsProb(\domainVariables | \parameterVector)}{\physicsProb(\domainVariables| \parameterVector , \dataVariables)}}{\physicsProb(\domainVariables | \parameterVector)}}{\approxProb(\parameterVector)} - \frac{1}{\beta}\expDist{\log\frac{\approxProb(\parameterVector)}{\physicsProb(\parameterVector|\dataVariables)}}{\approxProb(\parameterVector)}
 \end{align*}
 \]
 
-\[\begin{align*}
-f(v_i)\exp\left( k I(v_i, s_i=0) \right) & = I(v_i, s_i=0)\exp(k)f(v_i) +  (1-I(v_i, s_i=0)) f(v_i) \\
-& = \exp(k)I(v_i, s_i=0)f(v_i) + I(v_i, s_i=1) f(v_i).
-\end{align*}\]
+If we define \[
+\statsProb(\dataVariables | \parameterVector) = \frac{\exp\left(-\beta E^{\prime\prime}(\dataVariables |\parameterVector)\right)}{Z^{\prime\prime}_{\dataVariables | \parameterVector}}
+\] and \[
+\statsProb(\parameterVector) = \frac{\exp\left(-\beta E^{\prime\prime}(\parameterVector)\right)}{Z^{\prime\prime}_{\parameterVector}}
+\] where \[
+Z^{\prime\prime}_{\dataVariables | \parameterVector} = \int \exp\left(-\beta E^{\prime\prime}(\dataVariables |\parameterVector)\right) \text{d}\dataVariables
+\] and \[
+Z^{\prime\prime}_{\parameterVector} = \int \exp\left(-\beta E^{\prime\prime}(\parameterVector)\right) \text{d}\parameterVector
+\] and \[
+Z^{\prime\prime}_{\parameterVector|\dataVariables} = \int \exp\left(-\beta E^{\prime\prime}(\dataVariables |\parameterVector)\right)  + \exp\left(-\beta E^{\prime\prime}(\parameterVector)\right) \text{d}\parameterVector
+\] and we set \[
+\approxProb(\parameterVector) = \statsProb(\parameterVector |\dataVariables)
+\] then we have \[
+A^\prime_{\domainVariables|\parameterVector} = -\frac{1}{\beta} \log  Z^{\prime\prime}_{\parameterVector|\dataVariables} - T\expDist{S^\prime_{\domainVariables | \parameterVector}}{\statsProb(\parameterVector | \dataVariables)} - T\expDist{B_{\domainVariables | \parameterVector}}{\statsProb(\parameterVector | \dataVariables)}  - \frac{1}{\beta}\expDist{\log\frac{\statsProb(\parameterVector|\dataVariables)}{\physicsProb(\parameterVector|\dataVariables)}}{\statsProb(\parameterVector|\dataVariables)}
+\] where \[
+B^\prime_{\domainVariables | \parameterVector} = k_B \expDist{\log\frac{\physicsProb(\domainVariables | \parameterVector)}{\physicsProb(\domainVariables| \parameterVector , \dataVariables)}}{\physicsProb(\domainVariables | \parameterVector)}
+\] so overall we have \[
+A_{\stateVariables|\dataVariables} = -\frac{1}{\beta} \log  Z^{\prime\prime}_{\parameterVector|\dataVariables} - T\expDist{S^\prime_{\domainVariables | \parameterVector}}{\statsProb(\parameterVector | \dataVariables)} - T\expDist{B^\prime_{\domainVariables | \parameterVector}}{\statsProb(\parameterVector | \dataVariables)}  - TM^\prime_{\parameterVector|\dataVariables} - TS^\prime_{\nullVariables|\dataVariables}- TM_{\stateVariables|\dataVariables}
+\] where \[
+M^\prime_{\stateVariables|\dataVariables} =  k_B\expDist{\log\frac{\statsProb(\parameterVector|\dataVariables)}{\physicsProb(\parameterVector|\dataVariables)}}{\statsProb(\parameterVector|\dataVariables)}
+\] Collecting terms \[
+A_{\stateVariables|\dataVariables} = A^{\prime\prime}_{\parameterVector|\dataVariables} - T\left[\expDist{S^\prime_{\domainVariables | \parameterVector}}{\statsProb(\parameterVector | \dataVariables)} + S^\prime_{\nullVariables|\dataVariables}\right]   - T\left[M^\prime_{\parameterVector|\dataVariables} + M_{\stateVariables|\dataVariables} + \expDist{B^\prime_{\domainVariables | \parameterVector}}{\statsProb(\parameterVector | \dataVariables)}\right]
+\] Or \[
+A^{\prime\prime}_{\parameterVector|\dataVariables} = A_{\stateVariables|\dataVariables} + T\left[\expDist{S^\prime_{\domainVariables | \parameterVector}}{\statsProb(\parameterVector | \dataVariables)} + S^\prime_{\nullVariables|\dataVariables}\right]  + T\left[M^\prime_{\parameterVector|\dataVariables} + M_{\stateVariables|\dataVariables} + \expDist{B^\prime_{\domainVariables | \parameterVector}}{\statsProb(\parameterVector | \dataVariables)}\right]
+\]
+
+\hypertarget{speculative-on-naming}{%
+\subsection{Speculative on Naming}\label{speculative-on-naming}}
+
+Spilt the statistical model mismatch into two terms that represent how
+'correct' and how 'consistent' the statistical model is.
+
+Correctness represents the ability of the model to reconstruct the
+information about domain variables, \(\domainVariables\), that is
+provided by the data, \(\dataVariables\), through the parameters,
+\(\parameterVector\), alone. The value of
+\(B^\prime_{\domainVariables|\dataVariables}\) increases with
+incorrectness.
+
+Consistency reflects how likely different data sets are to give us
+different parameters. is the relative entropy (KL divergence) between
+the parameters of the statistical model,
+\(\statsProb(\parameterVector|\dataVariables)\), and the physical model,
+\(\physicsProb(\parameterVector|\dataVariables)\). T
+
+\hypertarget{absence-of-the-bayesian-controversy}{%
+\subsection{Absence of the Bayesian
+Controversy}\label{absence-of-the-bayesian-controversy}}
+
+While these ideas are normally considered for thermodynamics, they can
+also be seen as an attempt to capture the full state of a physical
+system through probability. In a classical system, each of these states
+is the result of some deterministic (physical) relationship.
+
+The fundamentals of statistical mechanics were derived by physicists and
+chemists such as Maxwell, Boltzmann, Gibbs and Helmholtz. In chemistry,
+particle theories of matter were uncontroversial, although in physics,
+Boltzmann struggled throughout his life to have his fellow physicists
+accept these ideas and it wasn't until Einstein formulated Brownian
+motion with a particle model {[}@Einstein-brownian05{]}, introducing
+stochasticity to \emph{differential equations} and giving predictions
+that were verified by Perrin {[}@Perrin-brownian10{]}.
+
+\hypertarget{thermodynamic-relations}{%
+\subsection{Thermodynamic Relations}\label{thermodynamic-relations}}
+
+The view that Boltzmann was competing with was the positivist view of
+physics as a universe of energy, pushed by Mach and others.
+
+The relationship between energy and particles is given through
+conservation of energy of the microstates. The total energy of a system
+is given by the expected value of those energies under probability
+distribution of states. \[
+U = \expDist{E(\stateVariables)}{\mathbb{P}(\stateVariables)}
+\] Note that this is related to the entropy of
+\(\mathbb{P}(\stateVariables)\) as follows
+\textbackslash begin\{align\emph{\} U = \&
+\textbackslash expDist\{E(\textbackslash stateVariables)\}\{\textbackslash mathbb\{P\}(\textbackslash stateVariables)\}
+\textbackslash{} = \&
+-\textbackslash frac\{1\}\{\textbackslash beta\}\textbackslash expDist\{\textbackslash log
+\textbackslash mathbb\{P\}(\textbackslash stateVariables)\}\{\textbackslash mathbb\{P\}(\textbackslash stateVariables)\}
+- \textbackslash frac\{1\}\{\textbackslash beta\} \textbackslash log Z\\
+\textbackslash end\{align}\} where in statistical mechanics we denote \[
+TS = -\frac{1}{\beta}\expDist{\log\mathbb{P}(\stateVariables)}{\mathbb{P}(\stateVariables)}
+\] where \(T\) is the temperature of the system and \(S\) is the
+thermodynamic entropy which is given by the probabilistic entropy times
+Boltzmann's constant, \(k_B\). For notational convenience the
+statistical mechanics temperature is defined as
+\(\beta = \frac{1}{T k_B}\), so \(Tk_B = \frac{1}{\beta}\).
+
+So from the probabilistic definition of expected energy, we can see that
+the total energy is related to the entropy as follows: \[
+U = TS + A
+\] where \[
+A = \frac{1}{\beta} \log Z.
+\] In statistical mechanics this is known as the Helmholtz free energy.
+It is the amount of energy available for \textbackslash emph\{work\} or
+\textbackslash emph\{Arbeit\} in Helmholtz's original German, thus the
+letter \(A\) to denote it.
+
+This decomposition of the joint distribution is a fundamental equation
+in statistical mechanics.
+
+In thermodynamics, the state variables, \(\stateVariables\) are often
+split into extensive and intensive variables. Extensive variables depend
+on the quantity of matter (total mass, volume) and intensive do not
+(temperature, density).
+
+\hypertarget{machine-learning}{%
+\subsection{Machine Learning}\label{machine-learning}}
+
+In the world of machine learning, we are more interested in the
+separation between states that are observable and states that are
+unobservable. The statistical mechanical model we've described doesn't
+include measurements. Let's modify the energy function by adding in a
+new energy, \(E(\dataVariables | \stateVariables)\), which represents
+the interaction between our measurements, \(\dataVariables\), and the
+state space \(\stateVariables\).
+
+Now the total energy is given by, \[
+U_2 = \expDist{E(\dataVariables | \stateVariables)}{\mathbb{P}(\stateVariables| \dataVariables)} + \expDist{E(\stateVariables)}{\mathbb{P}(\stateVariables| \dataVariables)}
+\] and the Boltzmann distribution for
+\(\mathbb{P}(\stateVariables | \dataVariables)\) is given by \[
+\mathbb{P}(\stateVariables,  \dataVariables) \propto \exp \left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right)
+\] where the \(\dataVariables\) are values we observe in the system.
+
+This can be related to the entropy of the system given the measurements
+as follows, \[\begin{align*}
+U_2 & = \expDist{E(\dataVariables |  \stateVariables)}{\mathbb{P}(\stateVariables |  \dataVariables)} + \expDist{E(\stateVariables)}{\mathbb{P}(\stateVariables | \dataVariables)} \\
+& = -\frac{1}{\beta} \expDist{\log \mathbb{P}(\stateVariables | \dataVariables)}{\mathbb{P}(\stateVariables | \dataVariables)} - \frac{1}{\beta}\log Z_2.
+\end{align*}\] If we define the Helmholtz free energy to be, \[
+A_2 = -\frac{1}{\beta} \log  Z_2
+\] where \[
+Z_2 = \int \exp \left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right) \text{d}\stateVariables \text{d}\dataVariables
+\] then we see that our new entropy term is \[
+TS_2 = -\frac{1}{\beta} \expDist{\log \mathbb{P}(\stateVariables | \dataVariables)}{\mathbb{P}(\stateVariables | \dataVariables)}
+\]
+
+This can be seen to be related to the original entropy as follows, \[
+\begin{align*}
+TS_1 = & -\frac{1}{\beta} \expDist{\log \mathbb{P}(\stateVariables)}{\mathbb{P}(\stateVariables )} \\
+= & -\frac{1}{\beta} \int \mathbb{P}(\dataVariables) \expDist{\log \mathbb{P}(\stateVariables | \dataVariables)}{\mathbb{P}(\stateVariables | \dataVariables)} \text{d}\mathbf{y} - \frac{1}{\beta} \expDist{\log \frac{\mathbb{P}(\stateVariables)}{\mathbb{P}(\stateVariables | \dataVariables)}}{\mathbb{P}(\stateVariables, \dataVariables)}\\
+= & -\frac{1}{\beta} \int \mathbb{P}(\dataVariables) \expDist{\log \mathbb{P}(\stateVariables | \dataVariables)}{\mathbb{P}(\stateVariables | \dataVariables)} \text{d}\mathbf{y} + \frac{1}{\beta} \expDist{\log \frac{\mathbb{P}(\stateVariables , \dataVariables)}{\mathbb{P}(\stateVariables)\mathbb{P}(\dataVariables)}}{\mathbb{P}(\stateVariables, \dataVariables)} \\
+= & T\expDist{S_2}{\mathbb{P}(\dataVariables)}  + T I
+\end{align*}
+\] where I is the mutual information between \(\dataVariables\) and
+\(\stateVariables\), \[
+I = k_B \expDist{\log \frac{\mathbb{P}(\stateVariables , \dataVariables)}{\mathbb{P}(\stateVariables)\mathbb{P}(\dataVariables)}}{\mathbb{P}(\stateVariables, \dataVariables)}. 
+\]
+
+This also allows us to look at \[
+\begin{align*}
+\expDist{U_2}{\mathbb{P}(\dataVariables)} = & \expDist{A_2}{\mathbb{P}(\dataVariables)} +  T\expDist{S_2}{\mathbb{P}(\dataVariables)} \\
+= & A_2 + TS_1 - TI.
+\end{align*}
+\]
+
+So we have \[
+\expDist{U_2}{\mathbb{P}(\dataVariables)}- U_1    = \expDist{A_2}{\mathbb{P}(\dataVariables)}  - A_1 - TI
+\]
+
+If the measurements in the ML system do not disturb the marginal
+distribution, so that
+\(\mathbb{P}_2(\stateVariables) = \mathbb{P}_1(\stateVariables)\) then
+we have \[
+\expDist{U_2}{\mathbb{P}(\dataVariables)} = U_1 + \expDist{E(\dataVariables|\stateVariables)}{\mathbb{P}(\dataVariables, \stateVariables)}
+\] we have \[
+\expDist{E(\dataVariables|\stateVariables)}{\mathbb{P}(\dataVariables, \stateVariables)}  = \expDist{A_2}{\mathbb{P}(\dataVariables)}  - A_1 - TI
+\] Which can must be greater or equal to zero so \[
+\expDist{A_2}{\mathbb{P}(\dataVariables)} \geq A_1 + TI
+\] so the amount of free energy in the machine learning system is at
+least as much as in the original system. The additional available energy
+is free energy is now available as \[
+\]
+
+We also note that \[
+TS_1  \geq TS_2 + TI
+\] with equality occuring when the mutual information is zero. So we are
+guaranteed to have reduced entropy in the machine learning system as
+long as the mutual information between \(\dataVariables\) and
+\(\stateVariables\) is greater than zero, in other words,
+\(\dataVariables\) and \(\stateVariables\) cannot be \emph{independent}.
+
+Another special case would be when mutual information is maximized,
+which would occur if we measure every state variable. In this case we
+(check this) \textbf{would expect all entropy to be removed and the
+total energy to equal the free energy}.
+
+\hypertarget{maximizing-the-free-energy}{%
+\subsection{Maximizing the Free
+Energy}\label{maximizing-the-free-energy}}
+
+The sensible strategy for the machine learning scientist is to maximize
+the free energy, \[
+A_2 = -\frac{1}{\beta} \log \int \exp \left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right) \text{d}\stateVariables \text{d}\dataVariables.
+\] We can introduce an approximating distribution,
+\(p(\dataVariables, \stateVariables)\), that represents our best
+understanding of how things interact. This allows us to decompose. \[
+\begin{align*}
+-\frac{1}{\beta} \log \int \exp \left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right) \text{d}\stateVariables \text{d}\dataVariables = & -\frac{1}{\beta} \int p(\dataVariables, \stateVariables) \log \frac{\exp\left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right)}{p(\dataVariables, \stateVariables)}\text{d}\stateVariables \text{d}\dataVariables \\
+& +\frac{1}{\beta} \int p(\dataVariables, \stateVariables) \log \frac{\mathbb{P}(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)}\text{d}\stateVariables \text{d}\dataVariables. \\
+\end{align*}
+\] or for a given observation of \(\dataVariables\) we have, \[
+\begin{align*}
+-\frac{1}{\beta} \log \int \exp \left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right) \text{d}\stateVariables  = & -\frac{1}{\beta} \int p(\stateVariables| \dataVariables) \log \frac{\exp\left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right)}{p( \stateVariables| \dataVariables)}\text{d}\stateVariables  \\
+& +\frac{1}{\beta} \int p(\stateVariables |\dataVariables) \log \frac{\mathbb{P}(\stateVariables| \dataVariables)}{p(\stateVariables | \dataVariables)}\text{d}\stateVariables. \\
+\end{align*}
+\] \[
+\begin{align*}
+A_2 = & \expDist{E(\stateVariables) +E(\dataVariables | \stateVariables)}{p(\dataVariables, \stateVariables)} \\ 
+& - \frac{1}{\beta} \expDist{\log p(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)} \\
+& +\frac{1}{\beta} \int p(\dataVariables, \stateVariables) \log \frac{\mathbb{P}(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)}\text{d}\stateVariables \text{d}\dataVariables.
+\end{align*}
+\] reordering as \[
+\begin{align*}
+A_2 + \frac{1}{\beta} \expDist{\log \frac{p(\dataVariables, \stateVariables)}{\mathbb{P}(\dataVariables, \stateVariables)}}{p(\dataVariables, \stateVariables) } = & \expDist{E(\stateVariables) +E(\dataVariables | \stateVariables)}{p(\dataVariables, \stateVariables)} 
++ \frac{1}{\beta} \expDist{\log p(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)}.
+\end{align*}
+\] We recognise that the left hand side is the free energy plus a
+Kullback-Leibler (KL) divergence between our approximating distribution,
+\(p(\dataVariables, \stateVariables)\) and the true distribution
+\(\mathbb{P}(\dataVariables, \stateVariables)\). We introduce an
+apparent free energy, \[
+\begin{align*}
+\hat{A}_2 = & A_2 + \frac{1}{\beta} \expDist{\log \frac{p(\dataVariables, \stateVariables)}{\mathbb{P}(\dataVariables, \stateVariables)}}{p(\dataVariables, \stateVariables)} \\
+= & A_2 + T \text{KL}\left(p(\dataVariables, \stateVariables) || \mathbb{P}(\dataVariables, \stateVariables)\right)
+\end{align*}
+\] which, because the KL divergence is greater than or equal to zero,
+shows that the apparent free energy is an \emph{upper bound} on the
+actual free energy. The tightness of the bound improves as our
+approximation, \(p(\dataVariables, \stateVariables)\) approaches the
+truth \(\mathbb{P}(\dataVariables, \stateVariables)\).
+
+The other two terms can be seen to be equivalent to the total energy,
+\(U_2\), and the entropy, \(S_2\). But again under the assumed
+distribution, \(p(\dataVariables, \stateVariables)\), so we have \[
+\hat{U}_2 = \expDist{E(\stateVariables) +E(\dataVariables | \stateVariables)}{p(\dataVariables, \stateVariables)}
+\] and \[
+T\hat{S}_2 = - \frac{1}{\beta} \expDist{\log p(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)}
+\] This allows us to write down a new assumed free energy relationship.
+\[
+\hat{A}_2 = \hat{U}_2 - T\hat{S}_2.
+\] This is the world that, as modellers, we play with. The total energy
+term and the entropy term are now given by our \emph{assumed}
+probability distribution for the world,
+\(p(\dataVariables, \stateVariables)\). Or in other words by the model
+we use. That model is an approximation to the truth,
+\(\mathbb{P}(\dataVariables, \stateVariables)\). However, rather
+insiduously, the worse our approximation to the truth, the greater the
+apparent free energy appears to be. Because the apparent free energy is
+an upper bound on the true free energy, we have to be very careful about
+model fitting, \[
+A_2 = \hat{A}_2 - T \text{KL}\left(p(\dataVariables, \stateVariables) || \mathbb{P}(\dataVariables, \stateVariables)\right).
+\] Normally we would be looking to maximize the free energy, which
+minimizes the entropy. But here we have to be careful about direct
+maximization, because a high \emph{apparent} free energy can be achieved
+with a poor model.
+
+Note also, that traditional approaches to probabilistic model fitting
+are often justified by minimization of the KL divergence. But that KL
+divergence is the \emph{other way around}. Classical maximum likelihoood
+minimizes
+\(T \text{KL}\left(\mathbb{P}(\dataVariables, \stateVariables) || p(\dataVariables, \stateVariables)\right)\).
+I.e. expectations are taken under the true distribution
+\(\mathbb{P}(\dataVariables, \stateVariables)\).
+
+So far, everything we've written about concerns \emph{equilibrium
+thermodynamics}. The above laws apply once we have stationary
+distributions. In theory, that might take infinite time to occur. If we
+only consider equilibrium thermodynamics, we loose the element of time.
+Time is just as important as free energy as a resource to preserve. When
+building an intelligent system we are very often faced with a time
+horizon. Algorithms that require us to compute for many billions of
+years to get their answers are not of much use.
 
 \[
 \begin{align*}
-p(v_i | s_i=0, d_i=0) & \propto \exp\left(-\mu_i\right) I(v_i, s_i=0)\exp\left(\frac{\lambda_1}{2} v_i^2\right) + I(v_i, s_i=1)\exp\left(\frac{\lambda_1}{2} v_i^2\right) \\
-p(v_i | s_i=1, d_i=0) & \propto I(v_i, s_i=0)\exp\left(\frac{\lambda_1}{2} v_i^2\right) + \exp\left(-\mu_i\right) I(v_i, s_i=1)\exp\left(\frac{\lambda_1}{2} v_i^2\right)  \\
-p(v_i | s_i=0, d_i=1) & \propto I(v_i, s_i=0)\exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 d_i v_i\right) + \exp(\mu_i)I(v_i, s_i=1)\exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 d_i v_i\right) \\
-p(v_i | s_i=1, d_i=1) & \propto \exp(\mu_i)I(v_i, s_i=0)\exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 d_i v_i\right) + I(v_i, s_i=1)\exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 d_i v_i\right)
+-\frac{1}{\beta} \log \int \exp \left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right) \text{d}\stateVariables \text{d}\dataVariables = & -\frac{1}{\beta} \int p(\dataVariables)p(\stateVariables | \dataVariables) \log \frac{\exp\left(-\beta E(\stateVariables) -\beta E(\dataVariables | \stateVariables)\right)}{p(\stateVariables|\dataVariables) }\text{d}\stateVariables \text{d}\dataVariables  \\
+& +\frac{1}{\beta} \int p(\dataVariables) p(\stateVariables|\dataVariables) \log \frac{\mathbb{P}( \stateVariables| \dataVariables)}{p( \stateVariables | \dataVariables)}\text{d}\stateVariables \text{d}\dataVariables + \frac{1}{\beta} \int p(\dataVariables)  \log  \mathbb{P}(  \dataVariables) \text{d}\dataVariables.\\
+= & -\frac{1}{\beta} \int p(\dataVariables)p(\stateVariables | \dataVariables) \log \frac{\exp\left( -\beta E(\dataVariables | \stateVariables)\right)}{p(\stateVariables|\dataVariables) }\text{d}\stateVariables \text{d}\dataVariables + \int p(\dataVariables) p(\stateVariables|\dataVariables) E(\stateVariables) \text{d}\stateVariables \\
+& +\frac{1}{\beta} \int p(\dataVariables) p(\stateVariables|\dataVariables) \log \frac{\mathbb{P}( \stateVariables| \dataVariables)}{p( \stateVariables | \dataVariables)}\text{d}\stateVariables \text{d}\dataVariables + \frac{1}{\beta} \int p(\dataVariables)  \log  \mathbb{P}(  \dataVariables) \text{d}\dataVariables.
 \end{align*}
 \]
 
-Which we can rewrite as
+\hypertarget{maximizing-the-available-energy}{%
+\subsection{Maximizing the Available
+Energy}\label{maximizing-the-available-energy}}
 
-\[\begin{align*}
-p(v_i, s_i, d_i) \propto & \exp\left( s_i (1-d_i) \frac{\lambda_1}{2}v_i^2\right) \\
-& \times \exp\left((1-s_i)d_i \frac{\lambda_1}{2} v_i^2\right) \\
-& \times \exp\left(s_i d_i \left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 v_i\right)\right) \\
-& \times \exp\left((1-s_i)(1-d_i) \left(\frac{\lambda_1}{2} v_i^2- v_i\right)\right)
-\end{align*}\]
+The apparent available energy is given by \[
+\hat{A}_2 =  \expDist{E(\stateVariables) +E(\dataVariables | \stateVariables)}{p(\dataVariables, \stateVariables)} + \frac{1}{\beta} \expDist{\log p(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)}
+\] which differs from the true available energy by a KL divergence that
+represents the \emph{physical plausibility} of the model,
+\(T \text{KL}\left(p(\dataVariables, \stateVariables) || \mathbb{P}(\dataVariables, \stateVariables)\right)\).
 
-where the components in the product are switched in according to the
-configuration of the binary variables \(d_i\) and \(s_i\). Each
-component can be recognised as a Gaussian,
+\hypertarget{maximising-the-apparent-total-energy}{%
+\subsubsection{Maximising the Apparent Total
+Energy}\label{maximising-the-apparent-total-energy}}
 
-\(\newcommand{\gaussianDist}[3]{\mathcal{N}\left(#1|#2, #3\right)}\)
-\[\begin{align*}
-p(v_i, s_i, d_i) = & \frac{1}{4}\gaussianDist{v_i}{0}{-\lambda_1^{-1}}^{s_i (1-d_i)} \\
-& \times \gaussianDist{v_i}{0}{-\lambda_1^{-1}}^{(1 -s_i) d_i} \\
-& \times \gaussianDist{v_i}{\frac{\lambda_2}{2\lambda_1}}{-\lambda_1^{-1}}^{s_i d_i}\\
-& \times \gaussianDist{v_i}{-\frac{\lambda_2}{2\lambda_1}}{-\lambda_1^{-1}}^{(1-s_i) (1-d_i)}.
-\end{align*}\]
+Our first idea could be to maximise the apparent total energy,
+\(\hat{U}_2\). This would require us to have an estimate of what that
+total energy is so we would have, \[
+\hat{E}(\dataVariables, \stateVariables)  \approx E(\stateVariables) + E(\dataVariables | \stateVariables).
+\] Or more precisely an estimate of the expectations under our joint
+distribution. \[
+\expDist{\hat{E}(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)} \approx \expDist{E(\stateVariables) + E(\dataVariables | \stateVariables)}{p(\dataVariables, \stateVariables)}.
+\] Maximising the expected total energy could be done through proxies
+which relate those energies to actual costs in the real world, so we can
+see the approximation
+\(\expDist{\hat{E}_2(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)}\)
+as an objective to be maximised, or its negative as cost to be
+minimized.
 
-And the marginal distribution over velocities is therefore a
-\emph{mixture of Gaussians}. \[
-\begin{align*}
-p(v_i) = & \frac{1}{2}\gaussianDist{v_i}{0}{-\lambda_1^{-1}} 
- + \frac{1}{4}\gaussianDist{v_i}{\frac{\lambda_2}{2\lambda_1}}{-\lambda_1^{-1}}
- + \frac{1}{4}\gaussianDist{v_i}{-\frac{\lambda_2}{2\lambda_1}}{-\lambda_1^{-1}}.
-\end{align*}
-\] We are interested in the \emph{entropy} of this distribution. The
-entropy of a mixture can be problematic, we first decompose it into the
-entropy of the components and a mutual information term. \[
-H(v_i) =  - \int \sum_m p(v_i | m) p(m) \log \sum p(v_i | m) p(m) \text{d}v_i
-\] \[
-H(v_i) =  - \int \sum_m p(v_i | m) p(m) \log p(v_i | m)  \text{d}v_i - \int \sum_m p(v_i | m) p(m) \log \frac{\sum_m p(v_i | m) p(m)}{p(v_i | m)}  \text{d}v_i
-\] \[
-H(v_i) =  - \sum_m  p(m)\int p(v_i | m) \log p(v_i | m)  \text{d}v_i - \int \sum_m p(v_i , m) \log \frac{p(v_i) p(m)}{p(v_i,m)}  \text{d}v_i
-\] \[
-H(v_i) =  - \sum_m  p(m)\int p(v_i | m) \log p(v_i | m)  \text{d}v_i + \int \sum_m p(v_i , m) \log \frac{p(v_i,m)}{p(v_i) p(m)}  \text{d}v_i
+Minimising expected costs is reminiscient of operational research, where
+the (often montetary) costs of a process are enumerated, and
+optimization algorithms are used to find configurations that minimize
+expected cost. Optimisng the total energy in this way is optimal when
+there is no uncertainty, i.e. when \[
+\expDist{\hat{E}(\dataVariables, \stateVariables)}{\mathbb{P}(\dataVariables, \stateVariables)} =  \hat{E}\left(\expDist{\stateVariables}{\mathbb{P}(\dataVariables)}, \expDist{\dataVariables}{\mathbb{P}(\dataVariables)}\right) .
+\] Because in this case the entropy term can be ignored and the apparent
+available energy is equal to the total energy. In this case, our
+estimate of the apparent available energy would differ from the true
+available energy by the following residual, \[
+E(\langle\stateVariables\rangle) + E(\langle\dataVariables\rangle | \langle\stateVariables\rangle) - \hat{E}(\langle\dataVariables\rangle | \langle\stateVariables\rangle).
+\] But for our focus, when there is uncertainty in the system, we need
+to consider the entropy term, \(T\hat{S}_2\).
+
+\hypertarget{maximum-entropy-distribution}{%
+\subsubsection{Maximum Entropy
+Distribution}\label{maximum-entropy-distribution}}
+
+Maximising the apparent total energy is the most optimistic we can be,
+we assume no uncertainty. The most pessimistic we can be would be to
+consider the situation where the entropy, \(\hat{S}_2\) is
+\emph{maximized}. We can see the maximum apparent total energy as an
+optimistic approach, maximising is the other extreme.
+
+The maximum entropy principle {[}@Jaynes-{]} allows us to find a form
+for \(p(\dataVariables, \stateVariables)\) that maximises \(T\hat{S}_2\)
+while ensuring constraints on the distribution moments match some known
+value. Here the idea constraint on moments would be, \[
+\expDist{E(\dataVariables | \stateVariables)}{p(\dataVariables, \stateVariables)} = \expDist{E(\dataVariables | \stateVariables)}{\mathbb{P}(\dataVariables, \stateVariables)}.
+\] This constraint would recover
+\(\mathbb{P}(\dataVariables, \stateVariables)\). This would reflect a
+world where we had full knowledge of the physics. In practice, as we
+sugged for the maximisaiton of the apparent total energy, we may \[
+p(\dataVariables, \stateVariables) \propto \exp(\lambda \hat{E}(\dataVariables, \stateVariables))
+\] with a partition function of the form \[
+\hat{Z}_2 = \int \exp(\lambda \hat{E}(\dataVariables , \stateVariables)) \text{d} \dataVariables \text{d} \stateVariables.
+\] which implies that, \[
+\hat{A}_2 = \expDist{E(\stateVariables) +E(\dataVariables | \stateVariables) - \frac{\lambda}{\beta}\hat{E}(\dataVariables, \stateVariables)}{p(\dataVariables, \stateVariables)} - \frac{1}{\beta} \log \hat{Z}_2.
+\] Which reflects how close our model is to the physical reality. We can
+substitute,
+
+\hypertarget{recap}{%
+\subsection{Recap}\label{recap}}
+
+with the different modelling steps we have taken so far, we can relate
+the original total energy of the system to our new system as follows, \[
+\hat{A}_2 = U_1 + T I(\dataVariables, \stateVariables) + T\text{KL}\left(p(\dataVariables, \stateVariables) || \mathbb{P}(\dataVariables, \stateVariables)\right) - TS_1 - TS_2 - T\hat{S}_2.
+\] where we are gaining energy from two sources, firstly through the
+information gain from \(\dataVariables\). This is genuine energy gain.
+More problematically is the information gain from the KL divergence.
+This KL divergence represents the physical plausibility of our model,
+\(p(\dataVariables, \stateVariables)\). This is an illusory gain,
+because the less physical our model, the more information we seem to
+gain. We can immediately see how easy it is to fool ourselves by
+building models that don't correspond to the physical reality of our
+world.
+
+We are loosing energy due to uncertainty, first of all we loose energy
+that corresponds to our ignorance about the phase space,
+\(\stateSpace\). Then we loose energy that conforms to our ignorance
+
+We can also see the difference between \(\hat{A}_2\) Laplace's demon can
+be seen as relating the total energy to the available enrgy. , these two
+terms relate to
+
+\hypertarget{computational-approximations}{%
+\subsection{Computational
+Approximations}\label{computational-approximations}}
+
+Firstly, let's deal with computational approximations.
+
+Introduce an auxilliary variable to the system, \(\parameterVector\).
+Assume we can decompose, \[
+p(\stateVariables, \dataVariables) = \int p(\dataVariables| p(\stateVariables | \parameterVector) p(\parameterVector) \text{d} \parameterVector
 \]
 
-Consider some scenarios.
+\[
+\hat{A}_2 = \expDist{E(\dataVariables , \stateVariables) - \frac{\lambda}{\beta}\hat{E}(\dataVariables, \stateVariables)}{p(\stateVariables | \dataVariables)} - \frac{1}{\beta} \log \hat{Z}_2.
+\] \[\begin{align*}
+\hat{Z}_2 = & \int \exp\left(\lambda\hat{E}(\dataVariables, \stateVariables)\right) \text{d}\stateVariables\\
+= & \int q(\stateVariables, \parameterVector) \log \frac{\exp\left(\lambda\hat{E}(\dataVariables, \stateVariables)\right)p(\stateVariables|\parameterVector) p(\parameterVector)}{q(\stateVariables, \parameterVector)} \text{d}\stateVariables \text{d}\parameterVector+ \int q(\stateVariables, \parameterVector) \log \frac{q(\stateVariables, \parameterVector)p(\dataVariables)}{p(\dataVariables|\stateVariables)p(\stateVariables | \parameterVector)p(\parameterVector)} \text{d}\stateVariables \text{d}\parameterVector
+\end{align*}\]
 
-\begin{enumerate}
-\item
-  Let's assume that no particles are allowed to pass the membrane, this
-  means \(d_i=0\). In this case the system separates into two
-  compartments, with mean zero and variance \(-\lambda_1^2\) for each
-  compartment.
-\item
-  Let's assume that all particles are always allowed to pass the
-  membrane. Now \(d_i=1\) for all \(i\).
-\end{enumerate}
+\[\begin{align*}
+\hat{Z}_2 = & \int \exp\left(\lambda\hat{E}(\dataVariables, \stateVariables)\right) \text{d}\stateVariables\\
+= & \int q(\parameterVector) \log \frac{\exp\left(\lambda\hat{E}(\dataVariables, \expDist{\stateVariables}{p(\stateVariables|\parameterVector)})\right)p(\parameterVector)}{q(\parameterVector)} \text{d}\stateVariables \text{d}\parameterVector+ \int q(\stateVariables, \parameterVector) \log \frac{q(\stateVariables, \parameterVector)p(\dataVariables)}{p(\dataVariables|\stateVariables)p(\stateVariables | \parameterVector)p(\parameterVector)} \text{d}\stateVariables \text{d}\parameterVector
+\end{align*}\]
 
-and distribution no longer depends on \(s_i\)Now if we imagine that the
-demon is capable of observing which particles are on which side and
-which
+\hypertarget{non-equilibrium-thermodynamics}{%
+\subsection{Non Equilibrium
+Thermodynamics}\label{non-equilibrium-thermodynamics}}
+
+\hypertarget{crooks-fluctuation-theorem}{%
+\subsubsection{Crook's Fluctuation
+Theorem}\label{crooks-fluctuation-theorem}}
+
+Crook's fluctuation theorem {[}@Crooks-fluctuation99{]} relates the work
+done on a system to the free energy difference between the final and
+initial state even when the system has not reached equilibrium.
+
+is an equation in statistical mechanics that relates the work done on a
+system during a non-equilibrium transformation to the free energy
+difference between the final and the initial state of the
+transformation. During the non-equilibrium transformation the system is
+at constant volume and in contact with a heat reservoir. The CFT is
+named after the chemist Gavin E. Crooks (then at University of
+California) \textbackslash cite\{\}.
 
 \begin{Shaded}
 \begin{Highlighting}[]

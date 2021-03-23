@@ -1,0 +1,258 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{maxwells-demon}{%
+\section{Maxwell's Demon}\label{maxwells-demon}}
+
+\hypertarget{neil-d-lawrence}{%
+\subsubsection{Neil D. Lawrence}\label{neil-d-lawrence}}
+
+\hypertarget{2020-01-01}{%
+\subsubsection{2020-01-01}\label{2020-01-01}}
+
+Our Maxwell's demon is formed by a chamber with a dividing membrane. The
+chamber contains particles, all of equall mass \(m=1\). The chamber is
+split in two parts by a membrane. The membrane's effect on the particles
+is controlled by the demon.
+
+The velocities of the particles are given by, \(\mathbf{v} = \{ v_i\}\).
+Each particle sits on either the right or left hand side of the
+membrane. The position of each particle is denoted by
+\(\mathbf{s} = \{ s_i \}\), with \(s_i=0\) if the \(i\)th particle is on
+the left hand side of the membrane, and \(s_i = 1\) if the \(i\)th
+particle is on the right hand side of the membrane.
+
+The demon has the power to allow particles to pass through the membrane.
+Any particle which is allowed to pass through the membrane is labelled
+with \(d_i = 1\). Particles that don't pass the membrane rebound with an
+elastic collision. The full set of state variables associated with the
+demon's decisions are given by \(\mathbf{d} = \{ d_i \}\).
+
+We are interested in the joint distribution of these states, \[
+p(\mathbf{v}, \mathbf{s}, \mathbf{d}).
+\]
+
+We assume that the particles are colliding with elastic collisions, so
+that the kinetic energy of the system is conserved and we have, \[
+E = \frac{1}{2}\sum_{i}v_i^2.
+\] We are intererested in the stationary distribution of this system.
+That stationary distribution will occur when equal number of particles
+pass from the left hand side of the membrane to the right hand side and
+when particles passing the membrane loose the demon mark. These
+condition are expressed by \[\begin{align*}
+-\eta\sum_{i} (1-s_i)(1-d_i) v_i & = -\eta\sum_{i} s_i d_i v_i,\\
+\eta\sum_{i} (1-s_i) d_i v_i & = \eta\sum s_i(1- d_i) v_i,\\
+\eta\sum_{i} (1-s_i) d_i v_i & = -\eta\sum_{i} s_i d_i v_i.
+\end{align*}\]
+
+Finally, we have the demon, who selects which particles will be able to
+pass through the membrane. The demon operates on the particles according
+to the side of the membrane they are on and the speed they are
+travelling. We introduce an indicator function, \(I(\cdot)\), that
+depends on the side, \(s_i\), and the velocity, \(v_i\), which returns a
+value of zero or one to set \(d_i\), \[
+d_i = I(v_i, s_i).
+\] We also set \(I(v_i, s_i=0) = 1- I(v_i, s_i=1)\), so that the value
+of \(d_i\) is reversed on the two different sides of the membrane.
+
+These constraints allow us to build the stationary distribution through
+the principle of maximum entropy. The idea of maximum entropy is that
+the distribution will tend to its maximum entropy variant over time, so
+we have, \[\begin{align*}
+p(\mathbf{v}, \mathbf{s}, \mathbf{d}) \propto & \exp\left(\frac{\lambda_1}{2}\sum_i v_i^2 \right. \\ & 
++ \lambda_2\left(\sum_{i} (1-s_i)(1-d_i) v_i - \sum_{i} s_i d_i v_i\right) \\ &
++ \lambda_3\left(\sum_{i} s_i(1-d_i)v_i - \sum_{i} (1-s_i) d_i v_i\right) \\ &
++ \lambda_4\left(\sum_{i} s_i d_i v_i + \sum_{i} (1-s_i)d_i v_i\right) \\ &
++ \left. \sum_i \mu_i \left(d_i - I(v_i, s_i)\right)\right),
+\end{align*}\] where \(\lambda_1\), \(\lambda_2\) and
+\(\left\{\mu_i\right\}\) are the Lagrange multipliers associated with
+the conditions on the moments.
+
+The distribution factorises over particles so we can consider the
+distribution for an individual particle which has the form,
+\[\begin{align*}
+p(v_i, s_i, d_i) \propto & \exp\left(\frac{\lambda_1}{2} v_i^2 \right. \\ 
+& + \lambda_2 \left((1-s_i)(1-d_i) -s_i d_i\right)v_i \\
+& + \lambda_3 \left(s_i(1-d_i) - (1-s_i) d_i\right)v_i \\
+& + \lambda_4\left( s_i d_i + (1-s_i)d_i \right)v_i \\
+& + \left. \mu_i \left(d_i - I(v_i, s_i)\right)\right)
+\end{align*}\]
+
+We consider the distribution for the different values of \(s_i\) and
+\(d_i\). \[
+\begin{align*}
+p(v_i | s_i=0, d_i=0) & \propto \exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 v_i\right) \exp\left(-\mu_i I(v_i, s_i=0)\right) \\
+p(v_i | s_i=1, d_i=0) & \propto \exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_3 v_i\right) \exp\left(-\mu_i I(v_i, s_i=1)\right) \\
+p(v_i | s_i=0, d_i=1) & \propto \exp\left(\frac{\lambda_1}{2} v_i^2 + (\lambda_4 - \lambda_3) d_i v_i\right)\exp\left(\mu_i\left(1-I(v_i, s_i=0)\right)\right) \\
+p(v_i | s_i=1, d_i=1) & \propto \exp\left(\frac{\lambda_1}{2} v_i^2 + (\lambda_4 - \lambda_2) d_i v_i\right)\exp\left(\mu_i\left(1-I(v_i, s_i=1)\right)\right)
+\end{align*}
+\]
+
+\[\begin{align*}
+f(v_i)\exp\left( k I(v_i, s_i=0) \right) & = I(v_i, s_i=0)\exp(k)f(v_i) +  (1-I(v_i, s_i=0)) f(v_i) \\
+& = \exp(k)I(v_i, s_i=0)f(v_i) + I(v_i, s_i=1) f(v_i).
+\end{align*}\]
+
+\[
+\begin{align*}
+p(v_i | s_i=0, d_i=0) & \propto \exp\left(-\mu_i\right) I(v_i, s_i=0)\exp\left(\frac{\lambda_1}{2} v_i^2\right) + I(v_i, s_i=1)\exp\left(\frac{\lambda_1}{2} v_i^2\right) \\
+p(v_i | s_i=1, d_i=0) & \propto I(v_i, s_i=0)\exp\left(\frac{\lambda_1}{2} v_i^2\right) + \exp\left(-\mu_i\right) I(v_i, s_i=1)\exp\left(\frac{\lambda_1}{2} v_i^2\right)  \\
+p(v_i | s_i=0, d_i=1) & \propto I(v_i, s_i=0)\exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 d_i v_i\right) + \exp(\mu_i)I(v_i, s_i=1)\exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 d_i v_i\right) \\
+p(v_i | s_i=1, d_i=1) & \propto \exp(\mu_i)I(v_i, s_i=0)\exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 d_i v_i\right) + I(v_i, s_i=1)\exp\left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 d_i v_i\right)
+\end{align*}
+\]
+
+Which we can rewrite as
+
+\[\begin{align*}
+p(v_i, s_i, d_i) \propto & \exp\left( s_i (1-d_i) \frac{\lambda_1}{2}v_i^2\right) \\
+& \times \exp\left((1-s_i)d_i \frac{\lambda_1}{2} v_i^2\right) \\
+& \times \exp\left(s_i d_i \left(\frac{\lambda_1}{2} v_i^2 + \lambda_2 v_i\right)\right) \\
+& \times \exp\left((1-s_i)(1-d_i) \left(\frac{\lambda_1}{2} v_i^2- v_i\right)\right)
+\end{align*}\]
+
+where the components in the product are switched in according to the
+configuration of the binary variables \(d_i\) and \(s_i\). Each
+component can be recognised as a Gaussian,
+
+\(\newcommand{\gaussianDist}[3]{\mathcal{N}\left(#1|#2, #3\right)}\)
+\[\begin{align*}
+p(v_i, s_i, d_i) = & \frac{1}{4}\gaussianDist{v_i}{0}{-\lambda_1^{-1}}^{s_i (1-d_i)} \\
+& \times \gaussianDist{v_i}{0}{-\lambda_1^{-1}}^{(1 -s_i) d_i} \\
+& \times \gaussianDist{v_i}{\frac{\lambda_2}{2\lambda_1}}{-\lambda_1^{-1}}^{s_i d_i}\\
+& \times \gaussianDist{v_i}{-\frac{\lambda_2}{2\lambda_1}}{-\lambda_1^{-1}}^{(1-s_i) (1-d_i)}.
+\end{align*}\]
+
+And the marginal distribution over velocities is therefore a
+\emph{mixture of Gaussians}. \[
+\begin{align*}
+p(v_i) = & \frac{1}{2}\gaussianDist{v_i}{0}{-\lambda_1^{-1}} 
+ + \frac{1}{4}\gaussianDist{v_i}{\frac{\lambda_2}{2\lambda_1}}{-\lambda_1^{-1}}
+ + \frac{1}{4}\gaussianDist{v_i}{-\frac{\lambda_2}{2\lambda_1}}{-\lambda_1^{-1}}.
+\end{align*}
+\] We are interested in the \emph{entropy} of this distribution. The
+entropy of a mixture can be problematic, we first decompose it into the
+entropy of the components and a mutual information term. \[
+H(v_i) =  - \int \sum_m p(v_i | m) p(m) \log \sum p(v_i | m) p(m) \text{d}v_i
+\] \[
+H(v_i) =  - \int \sum_m p(v_i | m) p(m) \log p(v_i | m)  \text{d}v_i - \int \sum_m p(v_i | m) p(m) \log \frac{\sum_m p(v_i | m) p(m)}{p(v_i | m)}  \text{d}v_i
+\] \[
+H(v_i) =  - \sum_m  p(m)\int p(v_i | m) \log p(v_i | m)  \text{d}v_i - \int \sum_m p(v_i , m) \log \frac{p(v_i) p(m)}{p(v_i,m)}  \text{d}v_i
+\] \[
+H(v_i) =  - \sum_m  p(m)\int p(v_i | m) \log p(v_i | m)  \text{d}v_i + \int \sum_m p(v_i , m) \log \frac{p(v_i,m)}{p(v_i) p(m)}  \text{d}v_i
+\]
+
+Consider some scenarios.
+
+\begin{enumerate}
+\item
+  Let's assume that no particles are allowed to pass the membrane, this
+  means \(d_i=0\). In this case the system separates into two
+  compartments, with mean zero and variance \(-\lambda_1^2\) for each
+  compartment.
+\item
+  Let's assume that all particles are always allowed to pass the
+  membrane. Now \(d_i=1\) for all \(i\).
+\end{enumerate}
+
+and distribution no longer depends on \(s_i\)Now if we imagine that the
+demon is capable of observing which particles are on which side and
+which
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
