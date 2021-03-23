@@ -85,40 +85,36 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\author{}
-\date{}
+\title{Information Engines: Intelligence and
+Thermodynamics}
+
+\author{Neil D. Lawrence}
+
+\date{9th January 2021}
 
 \begin{document}
 
-\hypertarget{information-engines-intelligence-and-thermodynamics}{%
-\section{Information Engines: Intelligence and
-Thermodynamics}\label{information-engines-intelligence-and-thermodynamics}}
+\maketitle
 
-\hypertarget{neil-d-lawrence}{%
-\subsection{Neil D. Lawrence}\label{neil-d-lawrence}}
 
-\hypertarget{9th-january-2021}{%
-\subsection{9th January 2021}\label{9th-january-2021}}
-
-\[
 \newcommand{\phaseVariables}{\boldsymbol{\Gamma}}
 \newcommand{\stateVariables}{\mathbf{x}}
 \newcommand{\nullVariables}{\mathbf{x}_0}
 \newcommand{\domainVariables}{\mathbf{x}_1}
 \newcommand{\dataVariables}{\mathbf{y}}
 \newcommand{\parameterVector}{\mathbf{w}}
-\renewcommand{\phaseVariables}{\Gamma}
-\renewcommand{\stateVariables}{X}
-\renewcommand{\nullVariables}{X_0}
-\renewcommand{\domainVariables}{X_1}
-\renewcommand{\dataVariables}{Y}
-\renewcommand{\parameterVector}{W}
+\newcommand{\phaseVariables}{\Gamma}
+\newcommand{\stateVariables}{X}
+\newcommand{\nullVariables}{X_0}
+\newcommand{\domainVariables}{X_1}
+\newcommand{\dataVariables}{Y}
+\newcommand{\parameterVector}{W}
 \newcommand{\expDist}[2]{\left\langle #1 \right\rangle_{#2}}
 \newcommand{\trueProb}{\mathbb{P}}
 \newcommand{\physicsProb}{p}
 \newcommand{\approxProb}{q}
 \newcommand{\statsProb}{\pi}
-\]
+
 
 Ashby's concept of "variety", the requisite law of vareity:
 \url{https://en.wikipedia.org/wiki/Variety_(cybernetics)}
@@ -140,26 +136,35 @@ the the \emph{Hamiltonian}, the energy associated with the phase space.
 \] where \(E(\phaseVariables)\) is the energy of the system in
 microstate \(\phaseVariables\).
 
-The partition function is given by \[
+The partition function is given by 
+\[
 Z_\phaseVariables = \sum_\phaseVariables \exp(-\beta E(\phaseVariables)),
-\] where the \(Z\) comes from the German for "sum over states" or
-\emph{Zustandssumme}, reflecting Boltzmann's Austrian heritage. In the
-case of continuous systems we have, \[
+\] 
+where the \(Z\) comes from the German for "sum over states" or \emph{Zustandssumme}, reflecting Boltzmann's Austrian heritage. In the case of continuous systems we have, 
+\[
 Z_\phaseVariables = \frac{1}{h^3}\int \exp(-\beta E(\phaseVariables)) \text{d} \phaseVariables
-\] and \(E(\phaseVariables)\) is the Hamiltonian of the system.
+\] 
+and 
+\(E(\phaseVariables)\) is the Hamiltonian of the system.
 
 \hypertarget{total-energy}{%
 \subsection{Total Energy}\label{total-energy}}
 
 The total energy, \(U_\phaseVariables\) is defined as the expected
-energy, \[
+energy, 
+\[
 U_\phaseVariables = \expDist{E(\phaseVariables)}{\trueProb(\phaseVariables)}
-\] which can be decomposed using the definition of
-\(\trueProb(\phaseVariables)\) as \[
+\] 
+which can be decomposed using the definition of
+\(\trueProb(\phaseVariables)\) as 
+\[
 U_\phaseVariables = A_\phaseVariables + TS_\phaseVariables
-\] where \[
+\] 
+where 
+\[
 A_\phaseVariables = - \frac{1}{\beta}\log Z_\phaseVariables
-\] is the \emph{Helmholtz free energy} and \[
+\] 
+is the \emph{Helmholtz free energy} and \[
 S_\phaseVariables = -k_B \expDist{\log \trueProb(\phaseVariables)}{\trueProb(\phaseVariables)}
 \] is the entropy of the system and \(T\) is the temperature.
 
