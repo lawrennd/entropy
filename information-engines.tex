@@ -30,7 +30,7 @@
 \newcommand{\statsProb}{\pi}
 
 
-Ashby's concept of "variety", the requisite law of variety: \url{https://en.wikipedia.org/wiki/Variety_(cybernetics)}
+\todo{Wonder how this is related to Ashby's concept of "variety", e.g. the requisite law of variety: \url{https://en.wikipedia.org/wiki/Variety_(cybernetics)}}
 
 \section{Introduction}
 
@@ -172,7 +172,7 @@ and we can also consider the expected available energy change,
 \expDist{\Delta E}{\trueProb(\dataVariables)} = T k_B\expDist{\log I}{\trueProb(\dataVariables)}.
 \]
 
-\subsection{Approximate Available Energy}
+\subsection{Apparent Available Energy}
 
 In practice, we don't know (precisely) the energies, relationships,
 \(E(\cdot)\), and consequently we don't know the true distribution,
@@ -189,44 +189,47 @@ The available energy is
 A_{\stateVariables|\dataVariables} = & -\frac{1}{\beta} \log Z_{\stateVariables|\dataVariables} \\
 = & -\frac{1}{\beta} \log \int \exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right) \text{d}\stateVariables.
 \end{align*}
-Introducing a new probability distribution \(\physicsProb(\cdot)\) we
-can rewrite the available energy as 
+
+We now introduce a new probability distribution,  \(\physicsProb(\cdot)\), that we refer to as our 'simulation distribution'. It represents the physics as best we understand and/or can simulate it. The accuracy of the simulation distribution can be limited by, for example, gaps in our understanding of the underlying physics. Even if we do have a good grasp on all the physics there will be limitations on our ability to compute outcomes. These challenges mean that our simulation distribution represents our best practical guess rather than an underlying truth.
+
+Introducing the simulation distribution we rewrite the available energy as
 \[
 A_{\stateVariables|\dataVariables} =  -\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }
 \] 
-where \(\physicsProb(\stateVariables|\dataVariables)\) is our
-estimate of the effect of our observations of \(\dataVariables\) on the
-microstates of the system.
+where \(\physicsProb(\stateVariables|\dataVariables)\) represents how our simulation encodes the effect of our  observations of \(\dataVariables\) on the
+microstates.
 
-This expression can be rewritten in terms of 'apparent energies' and
-related to the original available energy as follows, 
+This expression can be rewritten in terms of 'apparent energies'. We use the term apparent energies to represent the idea that these are the energies under our simulation distribution, rather than the actual energies. The apparent available energies can be related to the true available energy as follows, 
 \[
 A_{\stateVariables|\dataVariables} = U^\prime_{\stateVariables|\dataVariables} - TS^\prime_{\stateVariables|\dataVariables} - TD_{\stateVariables|\dataVariables}
-\] where the apparent total energy is given by \[
+\] 
+where the difference is given by the simulation divergence
+which then allows us to write ere the apparent total energy is given by 
+\[
 U^\prime_{\stateVariables|\dataVariables} = \expDist{E(\dataVariables|\stateVariables)}{\physicsProb(\stateVariables|\dataVariables) } 
 \] and the apparent entropy can be computed as \[
 S^\prime_{\stateVariables|\dataVariables}=k_B\expDist{\log\physicsProb(\stateVariables|\dataVariables) }{\physicsProb(\stateVariables|\dataVariables) }
 \] and we have introduced a new term,
-\(D_{\stateVariables|\dataVariables}\), which we refer to as the model
-discrimination, 
+\(D_{\stateVariables|\dataVariables}\), which we refer to as the simulation
+divergence, 
 \[
 D_{\stateVariables|\dataVariables} = k_B \expDist{\log \frac{\physicsProb(\stateVariables| \dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }.
 \]
 
-The simulation discrimination is recognised as the Kullback-Leibler
+The simulation divergence is in the form of a Kullback-Leibler
 divergence (information theoretic term) or the \emph{relative entropy}
 between the true model, \(\trueProb(\cdot)\) and our approximation,
 \(\physicsProb(\cdot)\). It is large if our approximation gives high
 probability to regions which in reality are low probability.
 
-We borrow the term discrimination from Kullback himself. He referred to the divergence as representing the average information you get to discriminate between the two distributions per sample from the distribution. By minimizing this discrimination information you ensure that the two distributions become identical. In our case, the distributions are over 'all microstates in the universe', so the discrimination information we are measuring is the information we get to discriminate between the true universe, and the universe implied by our approximation $\physicsProb(\cdot)$.
+The simulation divergence representing the average information per sample you get to discriminate between the simulation distribution and the actual physics of the universe. In our case we are discriminating between the physics as best we understand it, the simulation distribution, $p(\stateVariables|\dataVariables)$ and the true universe, $\trueProb(\stateVariables | \dataVariables)$. By minimizing this discrimination information you ensure that your simulation distribution and the true universe become impossible to separate. So we can think of this discrimination information as representing the physical plausibility of our simulation. 
 
 We can also define the apparent available energy, 
 \[
 A^\prime_{\stateVariables|\dataVariables} = U^\prime_{\stateVariables|\dataVariables} - TS^\prime_{\stateVariables|\dataVariables}
 \] 
-and we can see it's related to the true available energy through the
-simulation discrimination, 
+and we can see it's again related to the true available energy through the
+simulation divergence, 
 \[
 A^\prime_{\stateVariables|\dataVariables} = A_{\stateVariables|\dataVariables} + TD_{\stateVariables|\dataVariables}.
 \] 
@@ -236,77 +239,72 @@ on the true available energy,
 \[
 A^\prime_{\stateVariables|\dataVariables} \geq A_{\stateVariables|\dataVariables}.
 \]
-
-
-\subsubsection{Remark 1}\label{remark-1}
-
 This has important consequences for how we model. If we maximize the
 apparent available energy, we aren't necessarily maximizing the true
-available energy. We might be maximizing simulation discrimination.
+available energy. If we unthinkingly maximize the apparent available energy, then in all likelihood we are simply maximizing the simulation discrimination, $D_{\stateVariables | \dataVariables}$. This is a pitfall of modelling, that naive maximisation of the available energy serves only to destroy the physical plausibility of our simulation.
 
 \subsection{Available Energy Gain}
 
-To estimate the intelligence quotient, we're interested in the available energy we gain through our observation of $\dataVariables$, this is denoted 
+We've looked at the apparent available energy, but in practice we are normally interested in energy gains. In particular, when defining the intelligence quotient we were interested in the relationship between the energy dispersed when taking a measurement and the available energy gain from observing $\dataVariables$. 
+
+The available energy gain is given by
 \begin{align*}
 A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} = & -\frac{1}{\beta} \log \int \exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right) \text{d}\stateVariables \\
 & +\frac{1}{\beta} \log \int \exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right) \text{d}\stateVariables\text{d}\dataVariables.
 \end{align*}
-
-
-\begin{align*}
-A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & -\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }\\
-& +\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables,\dataVariables)}{\trueProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) }
-\end{align*} 
-Extracting the marginal probabilities of the observations from the final term we can rewrite as 
-\begin{align*}
-A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & -\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta \hat{E}(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }\\
-& +\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) }
-\end{align*}
-We now rewrite in terms of the apparent total energies giving 
-\begin{align*}
-A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & U^\prime_{\stateVariables|\dataVariables} - U^\prime_{\stateVariables,\dataVariables} + TS^\prime_\dataVariables \\
-& - \frac{1}{\beta}\expDist{\log\frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } \\
- & + \expDist{\frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\dataVariables)}\\
-&  + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) }
-\end{align*}
-
+%
+and introducing our simulation distribution we can rewrite this difference as follows (see Appendix \ref{sec-apparent-available-energy-gain}),
+%
 \begin{align*}
 A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & U^\prime_{\stateVariables|\dataVariables} - U^\prime_{\stateVariables,\dataVariables} + TS^\prime_\dataVariables - T\left(D_{\stateVariables|\dataVariables} - \expDist{D_{\stateVariables|\dataVariables}}{\physicsProb(\dataVariables)} - M_{\dataVariables}\right)
 \end{align*} 
 where 
 \[
 S^\prime_{\dataVariables}=-k_B\expDist{\log\physicsProb(\dataVariables) }{\physicsProb(\dataVariables) }
-\] and \(M_{\dataVariables}\) is the model misspecification, \[
-M_{\dataVariables} = k_B \expDist{\log \frac{\physicsProb( \dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) },
-\]
-
-If we look at the expected change under all data sets we get \[
-\expDist{A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables}}{\trueProb(\dataVariables)} =  \expDist{E(\dataVariables)}{\trueProb(\dataVariables)} + TS^\prime_\dataVariables + TM_{\dataVariables}  - T\left(\expDist{D_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} - \expDist{D_{\stateVariables|\dataVariables}}{\physicsProb(\dataVariables)}\right)
-\] where \(E(\dataVariables)\) is the energy cost of measuring
-\(\dataVariables\) and 
-\[
-\expDist{\left(D_{\stateVariables|\dataVariables} - \expDist{D_{\stateVariables|\dataVariables}}{\physicsProb(\dataVariables)}\right)}{\trueProb(\dataVariables)}
-\]
-
-So we have 
-\[
-\expDist{\Delta A^\prime_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} = -\expDist{E(\dataVariables)}{\trueProb(\dataVariables)} + TS^\prime_\dataVariables,
 \] 
+is the entropy of $\physicsProb(\dataVariables)$. This distribution $\physicsProb(\dataVariables)$, which arises from decomposing our joint distribution of $\dataVariables$ and $\stateVariables$ into two parts, the original simulation, $\physicsProb(\stateVariables |\dataVariables)$ and what we'll term `the \emph{model}', $\physicsProb(\dataVariables)$,
+\[
+\physicsProb(\stateVariables ,\dataVariables) = \physicsProb(\stateVariables |\dataVariables)\physicsProb(\dataVariables).
+\]
+We also introduced, 
+\(M_{\dataVariables}\), which is the KL divergence between the true distribution observables, $\trueProb(\dataVariables)$ and our model
+\[
+M_{\dataVariables} = k_B \expDist{\log \frac{\physicsProb( \dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) }.
+\]
+we therefore call it the \emph{model misspecification}.
+%
+Before making observations, we can look at the expected change in apparent available energy as follows,
+%
+\[
+\expDist{A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables}}{\trueProb(\dataVariables)} =  \expDist{E(\dataVariables)}{\trueProb(\dataVariables)} + TS^\prime_\dataVariables + TM_{\dataVariables}  - T\left(\expDist{D_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} - \expDist{D_{\stateVariables|\dataVariables}}{\physicsProb(\dataVariables)}\right)
+\] 
+%
 where 
 \[
-E(\dataVariables) = \expDist{E(\dataVariables|\stateVariables)}{\physicsProb(\stateVariables|\dataVariables)} - \expDist{E(\dataVariables|\stateVariables)}{\physicsProb(\stateVariables,\dataVariables)}
+E(\dataVariables) = \expDist{E(\dataVariables|\stateVariables)}{\physicsProb(\stateVariables|\dataVariables)} - \expDist{E(\dataVariables|\stateVariables)}{\physicsProb(\stateVariables,\dataVariables)}.
 \]
+Dropping the simulation divergences, 
+\[
+\expDist{D_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} - \expDist{D_{\stateVariables|\dataVariables}}{\physicsProb(\dataVariables)},
+\]
+we recover the apparent change in available energy,
+\[
+\expDist{\Delta A^\prime_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} = -\expDist{E(\dataVariables)}{\trueProb(\dataVariables)} + TS^\prime_\dataVariables.
+\] 
 
+It's worth pausing for a moment and noting the similarity between the apparent available energy change and the true available energy change. The true change involves the entropy of $\trueProb(\dataVariables)$ whereas the apparent change involves the entropy of the observables under our model, $\physicsProb(\dataVariables)$. The additional energy term, $E(\dataVariables)$, arises from differences in expectations of the energies under the model and the truth. Clearly, if the model matches the truth, we recover the true available energy. On the other hand, if the simulation divergence is zero (recall the simulation divergence compares distributions under the simulation with the true distribution of the microstates), then our estimate upper bounds the true available energy, with the difference between the two being given by the model misspecification. 
 
+In the previous section, we saw how maximising the apparent available energy could result in an increase in the simulation divergence. Here the situation is more complex, because another simulation divergence has emerged arising from $A_{\stateVariables,\dataVariables}$. But even if those two terms are small, it is still problematic to maximise the apparent energy gain because we will now be maximising the model misspecification. Looking at the formulae, it seems that maximising the model misspecification is worse than maximising the simulation divergence. Large simulation divergence can be compensated by a model that is close to truth, but the misspecification of the model cannot be compensated by a low simulation divergence.
 
+We'll return to the model shortly, but despite what it appears to be its lesser role, we'll first of all focus on the simulation divergence. So far we've been assuming that our simulation can account for all microstates in the universe, $\stateVariables$, that's clearly impractical from a computational perspective. We need to deal with that before considering the model further.
 
 \subsection{Null Space and Domain Space}
 
-One with the scenario as we've laid it out so far is dealing with the number of variables and/or microstates in the universe. When making a prediction, we don't normally consider all the variables in the universe. There are particular variables we include in our model, and other variables that we choose to ignore. 
+In the scenario as we've laid it out so far is dealing with the number of variables and/or microstates in the universe. But when considering an individual simulation, we don't incorporate all the variables in the universe. There are particular variables we include in our model, and other variables that we choose to ignore. 
 
-In this analysis we describe these two sets of variables as different spaces. We call the space of variables we'd like to ignore the \emph{null space} and we denote them by $\nullVariables$. The variables of interest we call the \emph{domain space} and we denote by $\domainVariables$.
+We'll introduce this idea into our simulation, $p(\stateVariables |\dataVariables)$. We'll introduce two different spaces for our variables. We call the space of variables we'd like to ignore the \emph{null space} and we denote them by $\nullVariables$. The variables of interest we call the \emph{domain space} and we denote by $\domainVariables$.
 
-To model in practice, we must make some assumptions about the relationship between the null space and the domain space. In thermodynamic systems, two different assumptions are common. One approach is to consider an 
+To build a simulation in practice, we must make some assumptions about the relationship between the null space and the domain space. To see this, let's first of all think of thermodynamic systems. In those systems two different assumptions are common. One approach is to consider an 
 \href{https://en.wikipedia.org/wiki/Isolated_system}{\emph{isolated
 system}} where no exchange of energy or matter occurs between the null
 space and the domain space. In this circumstance, we can ignore the null space and focus only on the domain space. 
@@ -318,7 +316,7 @@ space and the domain space. In this circumstance, we can ignore the null space a
 
 An alternative assumption is to assume that the null
 space is a \href{https://en.wikipedia.org/wiki/Thermal_reservoir}{\emph{thermal
-resevoir}} where heat energy may flow from the null space to the domain
+resevoir}}.  The idea is that the thermal reservoir is many times larger than the system of interest. So much greater that heat energy may flow from the null space to the domain
 space \emph{without} a change in the temperature of the null space.
 
 We represent the microstates of the \emph{null space} as
@@ -342,7 +340,7 @@ We impose the following constraint on our approximation of the underlying physic
 \physicsProb(\nullVariables, \domainVariables | \dataVariables) = \physicsProb(\nullVariables|\dataVariables) \physicsProb(\domainVariables | \dataVariables).
 \]
 
-Within the family of physical models that is consistent with our constraint, we can see the model that minimizes the simulation discrimination of the system, \(D_{\stateVariables|\dataVariables}\). We can perform a freeform minimization of the simulation discrimination (see appendix). That tells us that the optimal form of the factor representing the domain variables is given by 
+Within the family of physical simulations that are consistent with our constraint, we find the simulation distribution  that minimizes the simulation divergence of the system, \(D_{\stateVariables|\dataVariables}\). To do this we perform a freeform minimization of the simulation discrimination (see Appendix \ref{sec-free-form-optimization-of-the-domain-space-simulation-distribution}). This gives us the optimal form of the factor representing the domain variables as
 \[
 \physicsProb(\domainVariables|\dataVariables) = \frac{\exp\left(-\beta E^\prime(\dataVariables |\domainVariables) - \beta E^\prime(\domainVariables)\right)}{Z^\prime_{\domainVariables | \dataVariables}}, 
 \] 
@@ -353,7 +351,7 @@ E^\prime(\domainVariables) = & \expDist{E(\stateVariables)}{\physicsProb(\nullVa
 Z^\prime_{\domainVariables | \dataVariables} = & \int \exp\left(-\beta E^\prime(\dataVariables |\domainVariables) - \beta E^\prime(\domainVariables)\right) \text{d}\domainVariables. 
 \end{align*}
 
-The factor representing the null variables can be found and has a symmetric form (see Appendix).
+The factor representing the null variables can be found and has a symmetric form (see Appendix \ref{sec-symmetric-form-of-the-null-space-simulation-distribution}).
 
 Note that these two distributions are interdependent. The optimal
 form of \(\physicsProb(\domainVariables|\dataVariables)\) is dependent on
@@ -380,6 +378,7 @@ But our approximation also allows us to make more general statements about valid
     \label{fig-null-space-factorisation}
 \end{figure}
 
+\todo{Relate to Kullback minimum discriminaton and Jaynes maximum entropy}
 The approach of minimising discrimination was proposed by \cite{Kullback-} as minimum discrimination information and by Jaynes as maximum entropy \cite{} \todo{citations to kullback and Jaynes}.
 
 \subsection{Apparent Free Energy}
@@ -911,7 +910,33 @@ California) \cite{Crooks-fluctuation99}.
 
 \appendix
 
+\subsection{Apparent Available Energy Gain}\label{sec-apparent-available-energy-gain}
+
+The apparent available energy gain can be computed as follows:
+
+%
+\begin{align*}
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & -\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }\\
+& +\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables,\dataVariables)}{\trueProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) }
+\end{align*} 
+Extracting the marginal probabilities of the observations from the final term we can rewrite as 
+\begin{align*}
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & -\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta \hat{E}(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } - \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }\\
+& +\frac{1}{\beta}\expDist{\log \frac{\exp\left(-\beta E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)}{\physicsProb(\stateVariables,\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables,\dataVariables) } + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) }
+\end{align*}
+We now rewrite in terms of the apparent total energies giving 
+\begin{align*}
+A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} =  & U^\prime_{\stateVariables|\dataVariables} - U^\prime_{\stateVariables,\dataVariables} + TS^\prime_\dataVariables \\
+& - \frac{1}{\beta}\expDist{\log\frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) } \\
+ & + \expDist{\frac{1}{\beta}\expDist{\log \frac{\physicsProb(\stateVariables|\dataVariables)}{\trueProb(\stateVariables|\dataVariables) }}{\physicsProb(\stateVariables|\dataVariables) }}{\physicsProb(\dataVariables)}\\
+&  + \frac{1}{\beta}\expDist{\log \frac{\physicsProb(\dataVariables)}{\trueProb(\dataVariables) }}{\physicsProb(\dataVariables) }
+\end{align*}
+
+
+\section{Free Form Optimization of the Domain Space Simulation Distribution} \label{sec-free-form-optimization-of-the-domain-space-simulation-distribution}
 \todo{Free form optimisation of the domain space distribution description.}
+
+\section{Symmetric form of the Null Space Simulation}\label{sec-symmetric-form-of-the-null-space-simulation}
 
 Similary, 
 \[
@@ -923,6 +948,7 @@ E^\prime(\dataVariables |\nullVariables) = & \expDist{E(\dataVariables |\stateVa
 E^\prime(\nullVariables) = & \expDist{E(\stateVariables)}{\physicsProb(\domainVariables|\dataVariables)} \\
 Z^\prime_{\nullVariables | \dataVariables} = & \int \exp\left(-\beta E^\prime(\dataVariables |\nullVariables) - \beta E^\prime(\nullVariables)\right) \text{d}\nullVariables. 
 \end{align*}
+
 
 
 \end{document}
