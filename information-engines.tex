@@ -92,7 +92,7 @@ moment, time will not enter our calculations because we will focus on
 of as the \emph{steady state} condition.
 
 Our first step will be to split our phase space into variables we can
-observable and those that are unobservable,
+observe and the other variables,
 \(\phaseVariables = \{\stateVariables, \dataVariables\}\), this allows
 us to write 
 \[
@@ -106,8 +106,11 @@ and
 \[
 S_{\stateVariables,\dataVariables} = -k_B \expDist{\log \trueProb({\stateVariables,\dataVariables})}{\trueProb({\stateVariables,\dataVariables})}.
 \]
+In thermodynamics we might think of the observable values as 'measurable states variables', where as the microstates, $\stateVariables$, are normally considered to be not directly measurable. In machine learning though, we might simply think of $\stateVariables$ as latent variables and $\dataVariables$ as data, or potential data.
 
-Next we introduce variables that dictate which of the 
+To interact with our system we will introduce a new set of variables, $\measuredVariables$ which is a $(0,1)$-matrix that contains a one if a corresponding variable is observed. We place the corresponding variable in the subscript, so $\measuredVariables_\dataVariables$ is the matrix that indicates whether or not $\dataVariables$ is observed. So if we have $\measuredVariables_\dataVariables = \mathbf{1}$ then all elements of $\dataVariables$ are observed. 
+
+We can now denote interactions with the system through changing the values of $\measuredVariables_\dataVariables$. These interactions will have their own energy cost that we denote $E(\measuredVariables)$.
 
 If we instantiate the observable states. We change our system. From a
 probabilistic perspective, this change is equivalent to
@@ -116,8 +119,10 @@ probabilistic perspective, this change is equivalent to
 Making an observation in this system is equivalent to conditioning on
 \(\dataVariables\) for the total energy which we write as 
 \[
-U_{\stateVariables|\dataVariables} = \expDist{E({\stateVariables|\dataVariables})}{\trueProb({\stateVariables|\dataVariables})}
-\] 
+U_{\stateVariables|\dataVariables} = E(\measuredVariables_\dataVariables=\mathbf{1}) +  \expDist{E({\stateVariables|\dataVariables})}{\trueProb({\stateVariables|\dataVariables})},
+\]
+where we have used $E(\measuredVariables_\dataVariables=\mathbf{1})$ to denote the energy associated with making the observation.
+
 Inspired by probability notation, we decompose that updated energy
 state \(E(\stateVariables| \dataVariables)\) into two parts, one which
 represents the interaction between our measurements and the state,
@@ -132,7 +137,7 @@ Z_{\stateVariables|\dataVariables} = \int \exp\left(-\beta E(\dataVariables|\sta
 \] 
 The new total energy, conditioning on the measurements is 
 \[
-U_{\stateVariables|\dataVariables} = A_{\stateVariables|\dataVariables} + TS_{\stateVariables|\dataVariables}
+U_{\stateVariables|\dataVariables} = E(\measuredVariables_\dataVariables=\mathbf{1})  A_{\stateVariables|\dataVariables} + TS_{\stateVariables|\dataVariables}
 \] 
 where 
 \[
@@ -149,18 +154,31 @@ observation is,
 A_{\stateVariables|\dataVariables} - A_{\stateVariables,\dataVariables} = & -\frac{1}{\beta} \log \frac{Z_{\stateVariables|\dataVariables}}{Z_{\stateVariables,\dataVariables}}\\
 & -T k_B \log \trueProb(\dataVariables)
 \end{align*}
-which is the information gained through the observation, \(\dataVariables\).
+which is the information gained through the observation, \(\dataVariables\). This needs to be traded off against the cost of observing given by $E(\measuredVariables_\dataVariables=\mathbf{1}) $.
 
+This is the fundamental relation between information and energy that we need to pursue our definition of intelligence. By measuring our system we gain available energy. If the cost of the measurement is less than the amount of available energy we gain, then this is an action worth taking. 
+
+We can define a dimensonionless quotient the intelligence of an action (meaning a change of $\measuredVariables$) to be,
+\[
+T k_B\log I_Q = -T k_B \log \trueProb(\dataVariables) - E(\measuredVariables_\dataVariables=\mathbf{1})
+\]
+giving 
+\[
+I_Q = \frac{\exp(-\beta E(\measuredVariables_\dataVariables=\mathbf{1}))}{\trueProb(\dataVariables)},\]
+where $\beta$ is the thermodynamic temperature
+\(
+\beta = \frac{1}{Tk_B}.
+\).
 This shows the relationship between measurement and energy. By measuring
 the system we can gain free energy. The less likely the measurements,
 the more energy we gain.
 
 \subsection{Approximate Available Energy}
 
-In practice, we don't know (precisely) these energy relationships,
+In practice, we don't know (precisely) the energies, relationships,
 \(E(\cdot)\), and consequently we don't know the true distribution,
 \(\trueProb(\cdot)\). So we can't calculate how much energy we're likely
-to gain by observing \(\dataVariables\).
+to gain by observing \(\dataVariables\) or measure the intelligence quotient.
 
 The full model, \(\trueProb(\stateVariables, \dataVariables)\), is not
 available to us. Indeed, the number of states across the universe is so
