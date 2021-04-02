@@ -8,9 +8,9 @@
 \bibliographystyle{unsrtnat}
 
 
-\title{INFORMATION THEORY AND STATISTICAL MECHANICS}
+\title{Information Theory and Statistical Mechanics}
 
-\author{E. T. JAYNES\\
+\author{E. T. Jaynes\\
 Washington University}
 
 
@@ -320,7 +320,7 @@ result qualitatively such as Fig. \ref{fig-six} should be used also when
 
 This is about as far as qualitative reasoning can take us, and I have carried the argument through on that basis in order to show how ordinary common sense leads us to a result that has all the important features of the quantitative solution given below. The probability assignment $P _{ n }$ which most honestly describes what we know is the one that is as smooth and "spread out" as possible subject to the data. It is the most conservative assignment in the sense that it does not permit one to draw any conclusions not warranted by the data.
 
-This suggests that the problem is a variational one; we need a measure of the "spread" of a probability distribution which we can maximize, subject to constraints which represent the available information. It is by now amply demonstrated by many workers that the "information measure" introduced by Shannon' has special properties of consistency and uniqueness which make it \emph{the} correct measure of "amount of uncertainty" in a probability distribution. This is, of course, the expression
+This suggests that the problem is a variational one; we need a measure of the "spread" of a probability distribution which we can maximize, subject to constraints which represent the available information. It is by now amply demonstrated by many workers that the "information measure" introduced by Shannon\citep{Shannon-mathematical48} has special properties of consistency and uniqueness which make it \emph{the} correct measure of "amount of uncertainty" in a probability distribution. This is, of course, the expression
 %
 \begin{equation}
 S_{I} = - \sum_{i}^{} p_{i}\log p_{i}
@@ -345,7 +345,7 @@ p(x_i)$ which satisfies the given data: $p_i \geq 0$,
 and, subject to (\ref{eqn-five}) and (\ref{eqn-six}), maximizes the entropy
 %
 \begin{equation}
-S_{I} = - \sum_{i = 1}^{n} p_{i}\log p_{1}
+S_{I} = - \sum_{i = 1}^{n} p_{i}\log p_{1} \label{eqn-seven}
 \end{equation}
 %
 The solution to this mathematical problem can be found immediately by
@@ -370,75 +370,85 @@ Then, by using the fact that
 \paragraph{Lemma}
 
 \begin{equation}
-\sum_{i = 1}^{n}  p_{i}\log\frac{p_{i}}{u_{i}} \geq \sum_{i = 1}^{n}  p_{i}\left( 1 - \frac{u_{i}}{p_{i}} \right) = 0
+\sum_{i = 1}^{n}  p_{i}\log\frac{p_{i}}{u_{i}} \geq \sum_{i = 1}^{n}  p_{i}\left( 1 - \frac{u_{i}}{p_{i}} \right) = 0 \label{eqn-nine}
 \end{equation}
 %
 with equality if and only if \(p_{i} = u_{i},i = 1,2,\ldots n\). Now
 make the choice
 %
 \begin{equation}
-u_{i} = \frac{1}{Z\left( \lambda_{1}\ldots\lambda_{m}) \right.\ }\exp\left( - \lambda_{1}f_{1}\left( x_{i} \right) - \ldots - \lambda_{m}f_{m}\left( x_{i} \right) \right)
+u_{i} = \frac{1}{Z\left( \lambda_{1}\ldots\lambda_{m}) \right.\ }\exp\left( - \lambda_{1}f_{1}\left( x_{i} \right) - \ldots - \lambda_{m}f_{m}\left( x_{i} \right) \right) \label{eqn-ten}
 \end{equation}
 %
 where \(\lambda_{1}\ldots\lambda_{m}\) are fixed constants, and
 %
 \begin{equation}
-Z\left( \lambda_{1}\ldots\lambda_{m} \right) \equiv \sum_{i = 1}^{n}  \exp\left( - \lambda_{1}f_{1}\left( x_{1} \right) - \ldots - \lambda_{m}f_{m}\left( x_{i} \right) \right)
+Z\left( \lambda_{1}\ldots\lambda_{m} \right) \equiv \sum_{i = 1}^{n}  \exp\left( - \lambda_{1}f_{1}\left( x_{1} \right) - \ldots - \lambda_{m}f_{m}\left( x_{i} \right) \right) \label{eqn-eleven}
 \end{equation}
 %
-will be called the ``partition function.'' Substituting (10) into (9)
+will be called the ``partition function.'' Substituting (\ref{eqn-ten}) into (\ref{eqn-nine})
 results in the inequality
 
 \begin{align*}
 \sum_{i = 1}^{n}   p_{i}\log p_{i} \geq \sum_{i = 1}^{n}   p_{i}\log u_{i} = &  - \sum_{i = 1}^{n}   p_{i}\left\lbrack \lambda_{1}f_{1}\left( x_{i} \right) + \ldots \right. \\
  & \left.  + \lambda_{m}f_{m}\left( x_{i} \right) \right\rbrack - \log Z\left( \lambda_{1}\ldots\lambda_{m} \right) \\
 \end{align*}
-
-or
-
-\begin{equation}s_{1} \leq  \log Z\left( \lambda_{1}\ldots\lambda_{m} \right) + \sum_{k = 1}^{m} \lambda_{k}\left\langle f_{k} \right\rangle\end{equation}
-
-Now let the distribution \(p_{1}\) vary over the class of all possible
-distributions that satisfy (6). The right-hand side of (12) remains
-fixed, and (12) shows that \(S_{1}\) attains its maximum possible value
 %
-\begin{equation}\left( S_{I} \right)_{\max} =  \log Z + \sum_{k = 1}^{m} \lambda_{k}\left\langle f_{k} \right\rangle\end{equation}
+or
+%
+\begin{equation}
+S_{I} \leq  \log Z\left( \lambda_{1}\ldots\lambda_{m} \right) + \sum_{k = 1}^{m} \lambda_{k}\left\langle f_{k} \right\rangle \label{eqn-twelve}
+\end{equation}
+%
+Now let the distribution \(p_{i}\) vary over the class of all possible
+distributions that satisfy (\ref{eqn-six}). The right-hand side of (\ref{eqn-twelve}) remains
+fixed, and (\ref{eqn-twelve}) shows that \(S_{I}\) attains its maximum possible value
+%
+\begin{equation}
+\left( S_{I} \right)_{\max} =  \log Z + \sum_{k = 1}^{m} \lambda_{k}\left\langle f_{k} \right\rangle \label{eqn-thirteen}
+\end{equation}
 %
 if and only if \(p_{i}\) is taken as the generalized canonical
-distribution\\
-(10). It only remains to choose the unspecified constants
-\(\lambda_{k}\) so that (6) is satisfied. This is the case, as one
+distribution
+(\ref{eqn-ten}). It only remains to choose the unspecified constants
+\(\lambda_{k}\) so that (\ref{eqn-six}) is satisfied. This is the case, as one
 readily verifies, if the \(\lambda_{k}\) are determined in terms of the
 given data \(F_{k} = \left\langle f_{k} \right\rangle\) by
-
-\begin{equation}\left\langle f_{k} \right\rangle = - \frac{\partial}{\partial\lambda_{k}} \log Z\left( \lambda_{1}\ldots\lambda_{m} \right)\ k = 1,2,\ldots,m\end{equation}
-
+%
+\begin{equation}
+\left\langle f_{k} \right\rangle = - \frac{\partial}{\partial\lambda_{k}} \log Z\left( \lambda_{1}\ldots\lambda_{m} \right)\ \quad  k = 1,2,\ldots,m \label{eqn-fourteen}
+\end{equation}
+%
 We now survey rapidly the main formal properties of the distribution
-found. The maximum attainable entropy (13) is some function of the given
+found. The maximum attainable entropy (\ref{eqn-thirteen}) is some function of the given
 data:
-
-\begin{equation}\left( S_{I} \right)_{\max} = S\left( \left( f_{2} \right),\ldots\left\langle f_{m} \right\rangle \right)\end{equation}
-
-and, by using (13) and (14), we find
-
-\begin{equation}\frac{\partial S}{\partial\left\langle f_{k} \right\rangle} = \lambda_{k}\ k = 1,2,\ldots,m\end{equation}
-
-Regarding, in (14), the \(\left\langle f_{k} \right\rangle\) expressed
+%
+\begin{equation}
+\left( S_{I} \right)_{\max} = S\left( \left\langle f_{1} \right\rangle,\ldots\left\langle f_{m} \right\rangle \right)
+\end{equation}
+%
+and, by using (\ref{eqn-thirteen}) and (\ref{eqn-fourteen}), we find
+%
+\begin{equation}
+\frac{\partial S}{\partial\left\langle f_{k} \right\rangle} = \lambda_{k}\ k = 1,2,\ldots,m \label{eqn-sixteen}
+\end{equation}
+%
+Regarding, in (\ref{eqn-fourteen}), the \(\left\langle f_{k} \right\rangle\) expressed
 as functions of \(\left( \lambda_{1}\ldots\lambda_{m} \right)\) we find,
 on differentiating, the reciprocity law
-
-\begin{equation}\frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{j}} = \frac{\partial\left\langle f_{j} \right\rangle}{\partial\lambda_{k}} = - \frac{\partial^{2}}{\partial\lambda_{k}\partial\lambda_{j}} \log Z = A_{\text{jk}}\end{equation}
-
-while by the same argument, if we regard \(\lambda_{k}\) in (16)
-expressed as
-
-a function of
-\(\left\langle f_{1} \right\rangle\ldots\left\langle f_{m} \right\rangle,\)
-we find a corresponding law
-
-\begin{equation}\frac{\partial\lambda_{k}}{\partial\left\langle f_{j} \right\rangle} = \frac{\partial\lambda_{j}}{\partial\left\langle f_{k} \right\rangle} = \frac{\partial^{2}S}{\partial\left\langle f_{j} \right\rangle\partial\left\langle f_{k} \right\rangle} = B_{\text{jk}}\end{equation}
-
-Comparing (17) and (18) and remembering the chain rule for
+%
+\begin{equation}
+\frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{j}} = \frac{\partial\left\langle f_{j} \right\rangle}{\partial\lambda_{k}} = - \frac{\partial^{2}}{\partial\lambda_{k}\partial\lambda_{j}} \log Z = A_{jk} \label{eqn-seventeen}
+\end{equation}
+%
+while by the same argument, if we regard \(\lambda_{k}\) in (\ref{eqn-sixteen})
+expressed as a function of \(\left\langle f_{1} \right\rangle\ldots\left\langle f_{m} \right\rangle,\) we find a corresponding law
+%
+\begin{equation}
+\frac{\partial\lambda_{k}}{\partial\left\langle f_{j} \right\rangle} = \frac{\partial\lambda_{j}}{\partial\left\langle f_{k} \right\rangle} = \frac{\partial^{2}S}{\partial\left\langle f_{j} \right\rangle\partial\left\langle f_{k} \right\rangle} = B_{jk} \label{eqn-eighteen}
+\end{equation}
+%
+Comparing (\ref{eqn-seventeen}) and (\ref{eqn-eighteen}) and remembering the chain rule for
 differentiating,
 %
 \begin{equation*}
@@ -447,44 +457,48 @@ differentiating,
 %
 we see that the second derivatives of \(S\) and of $\log Z$ yield
 inverse matrices:
-
-\begin{equation}A = B^{- 1}\end{equation}
-
+%
+\begin{equation}
+A = B^{- 1}
+\end{equation}
+%
 The functions \( \log Z\left( \lambda_{1}\ldots\lambda_{n} \right)\) and
 \(S\left( \left\langle f_{1} \right\rangle\ldots\left\langle f_{n} \right\rangle \right)\)
 are equivalent in the sense that each gives full information about the
-probability distribution; indeed (13) is just the Legendre
+probability distribution; indeed (\ref{eqn-thirteen}) is just the Legendre
 transformation that takes us from one representative function to the
 other.
 
-The reciprocity law (17) acquires a deeper meaning when we consider the
+The reciprocity law (\ref{eqn-seventeen}) acquires a deeper meaning when we consider the
 ``fluctuations'' in our probability distribution. Using the distribution
-(10), a short calculation shows that the second central moments of the
+(\ref{eqn-ten}), a short calculation shows that the second central moments of the
 distribution of the \(f_{k}(x)\) are given by
-
+%
 \begin{align}
-\left\langle \left( f_{k} - \left\langle f_{k} \right\rangle \right)\left( f_{ \ell} - \left\langle f_{ \ell} \right\rangle \right) \right\rangle = \left\langle f_{k}f_{ \ell} \right\rangle & \  - \left\langle f_{k} \right\rangle\left\langle f_{ \ell} \right\rangle \nonumber \\
-& \\
- = & \frac{\partial^{2}}{\partial\lambda_{k}\partial\lambda_{ \ell}} \log Z \nonumber
+\left\langle \left( f_{k} - \left\langle f_{k} \right\rangle \right)\left( f_{ \ell} - \left\langle f_{ \ell} \right\rangle \right) \right\rangle & = \left\langle f_{k}f_{ \ell} \right\rangle & \  - \left\langle f_{k} \right\rangle\left\langle f_{ \ell} \right\rangle \nonumber \\
+& \label{eqn-twenty} \\
+ & = & \frac{\partial^{2}}{\partial\lambda_{k}\partial\lambda_{ \ell}} \log Z \nonumber
 \end{align}
-
-and so, comparing with (17) , there is a universal relation between the
+%
+and so, comparing with (\ref{eqn-seventeen}) , there is a universal relation between the
 ``fluctuations'' of the \(f_{k}\) and the ``compliance coefficients''
 \(\partial\left\langle f_{k} \right\rangle/\partial\lambda_{ \ell}:\)
-
-\begin{equation}\left\langle f_{k}f_{l} \right\rangle - \left\langle f_{k} \right\rangle\left\langle f_{ \ell} \right\rangle = - \frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{ \ell}} = - \frac{\partial\left\langle f_{ \ell} \right\rangle}{\partial\lambda_{k}}\end{equation}
-
+%
+\begin{equation}
+\left\langle f_{k}f_{l} \right\rangle - \left\langle f_{k} \right\rangle\left\langle f_{ \ell} \right\rangle = - \frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{ \ell}} = - \frac{\partial\left\langle f_{ \ell} \right\rangle}{\partial\lambda_{k}} \label{eqn-twenty-one}
+\end{equation}
+%
 Likewise, higher derivatives of
 \( \log Z\left( \lambda_{1}\ldots\lambda_{n} \right)\) yield higher central
-moments of the \(f_{k}\), in a manner analogous to (20), and a hierarchy
-of fluctuation laws similar to (21).
-
+moments of the \(f_{k}\), in a manner analogous to (\ref{eqn-twenty}), and a hierarchy
+of fluctuation laws similar to (\ref{eqn-twenty-one}).
+%
 In addition to their dependence on \(x\), the functions \(f_{k}\) may
 depend on another parameter, \(\alpha.\) The partition function will
 then also have an explicit dependence on \(\alpha\) :
 %
 \begin{equation}
-Z\left( \lambda_{1}\ldots\lambda_{m};\alpha \right) \equiv \sum_{i = 1}^{n}  exp\left( - \lambda_{1}f_{1}\left( x_{i};\alpha \right) - \ldots - \lambda_{m}f_{m}\left( x_{i};\alpha \right) \right)
+Z\left( \lambda_{1}\ldots\lambda_{m};\alpha \right) \equiv \sum_{i = 1}^{n}  \exp\left( - \lambda_{1}f_{1}\left( x_{i};\alpha \right) - \ldots - \lambda_{m}f_{m}\left( x_{i};\alpha \right) \right)
 \end{equation}
 %
 and a short calculation shows that the expected derivatives
@@ -495,29 +509,31 @@ and a short calculation shows that the expected derivatives
 %
 satisfy the relations
 %
-\begin{equation}\sum_{k = 1}^{m} \lambda_{k}\left\langle \frac{\partial f_{k}}{\partial\alpha} \right\rangle = - \frac{\partial}{\partial\alpha} \log Z = - \frac{\partial S}{\partial\alpha}\end{equation}
+\begin{equation}
+\sum_{k = 1}^{m} \lambda_{k}\left\langle \frac{\partial f_{k}}{\partial\alpha} \right\rangle = - \frac{\partial}{\partial\alpha} \log Z = - \frac{\partial S}{\partial\alpha} \label{eqn-twenty-three}
+\end{equation}
 %
 If several parameters \(\alpha_{1}\ldots\alpha_{r}\) are present, a
 relation of this form will hold for each of them.
 
 Finally, we note an important variational property which generalizes
-(16) to the case where we have also variations in the parameters
+(\ref{eqn-sixteen}) to the case where we have also variations in the parameters
 \(\alpha_{1}\ldots\alpha_{r}.\) Let
 \(Z = Z\left( \lambda_{1}\ldots\lambda_{m};\alpha_{1}\ldots\alpha_{r} \right),\)
 and consider an arbitrary small change in the problem, where the given
 data \(\left\langle f_{k} \right\rangle\) and the parameters
 \(\alpha_{j}\) are changed by small amounts
 \(\delta\left\langle f_{k} \right\rangle/\delta\alpha_{j}\) This will
-lead to a change \(\delta\lambda_{k}\) in \(\lambda_{k}\). From (13),
+lead to a change \(\delta\lambda_{k}\) in \(\lambda_{k}\). From (\ref{eqn-thirteen}),
 the maximum attainable entropy is changed by
 
 \begin{align}
 \delta S = & \sum_{k = 1}^{m}  \frac{\partial  \log Z}{\partial\lambda_{k}}\delta\lambda_{k} + \sum_{j = 1}^{r}  \frac{\partial  \log Z}{\partial\alpha_{j}}\delta\alpha_{j} \nonumber \\
-\\
+\label{eqn-twenty-four} \\
  & \  + \sum_{k = 1}^{m}  \left\langle f_{k} \right\rangle\delta\lambda_{k} + \sum_{k = 1}^{m}  \lambda_{k}\delta\left\langle f_{k} \right\rangle \nonumber
 \end{align}
 
-The first and third terms cancel by virtue of (14). Then, using (23), we
+The first and third terms cancel by virtue of (\ref{eqn-fourteen}). Then, using (\ref{eqn-twenty-three}), we
 have
 %
 \begin{equation}
@@ -532,16 +548,20 @@ Now we can write
 %
 and so finally
 %
-\begin{equation}\text{δS} = \sum_{k = 1}^{m} \lambda_{k}\left\lbrack \delta\left( f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle \right\rbrack\end{equation}
+\begin{equation}
+\delta S = \sum_{k = 1}^{m} \lambda_{k}\left\lbrack \delta\left( f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle \right\rbrack
+\end{equation}
 %
 or
 %
-\begin{equation}\text{δS} = \sum_{k = 1}^{m} \lambda_{k}\delta Q_{k}\end{equation}
+\begin{equation}
+\delta S = \sum_{k = 1}^{m} \lambda_{k}\delta Q_{k} \label{eqn-twenty-eight}
+\end{equation}
 %
 where
 %
 \begin{equation}
-\delta Q_{k} \equiv \delta\left\langle f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle
+\delta Q_{k} \equiv \delta\left\langle f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle \label{eqn-twenty-nine}
 \end{equation}
 
 In general \(\delta Q_{k}\) is not an exact differential; i.e., there is
@@ -553,14 +573,14 @@ which yields \(\delta Q_{k}\) by differentiation. But (28) shows that
 differential of some ``state function''
 \(S\left( \lambda_{1}\cdots\lambda_{m};\alpha_{2}\cdots\alpha_{r} \right)\).
 
-All the above relations, (10) to (29), are elementary consequences of
+All the above relations, (\ref{eqn-ten}) to (\ref{eqn-twenty-nine}), are elementary consequences of
 maximizing the information theory entropy subject to constraints on
 average values of certain quantities. Although they bear a strong formal
 resemblance to the rules of calculation provided by statistical
 mechanics, they make no reference to physics, and, therefore, they must
 apply equally well to any problem, in or out of physics, where the
-situation can be described by (1) enumerating a discrete set of
-possibilities and by (2) specifying average values of various
+situation can be described by (\ref{eqn-one}) enumerating a discrete set of
+possibilities and by (\ref{eqn-two}) specifying average values of various
 quantities. The above formalism has been applied also to problems in
 engineering\citep{Jaynes-decipherability59} and economics.\citep{Jaynes-engineering63}
 
@@ -590,16 +610,16 @@ are now asked a different question. If the random experiment is repeated
 average values tells us that
 %
 \begin{equation}
-\sum_{i = 1}^{n} \frac{m_{i}}{N}f_{k}\left( x_{i} \right) = \left\langle f_{k} \right\rangle\ k = 1,2,\ldots,m
+\sum_{i = 1}^{n} \frac{m_{i}}{N}f_{k}\left( x_{i} \right) = \left\langle f_{k} \right\rangle\ k = 1,2,\ldots,m \label{eqn-thirty}
 \end{equation}
 %
 and, of course,
 %
 \begin{equation}
-\sum_{i = 1}^{n} \frac{m_{i}}{N} = 1
+\sum_{i = 1}^{n} \frac{m_{i}}{N} = 1 \label{eqn-thirty-one}
 \end{equation}
 %
-Equations (30) and (31) do not uniquely determine the \(m_{i}\) if
+Equations (\ref{eqn-thirty}) and (\ref{eqn-thirty-one}) do not uniquely determine the \(m_{i}\) if
 \(m < n - 1,\) and so again it is necessary to introduce some additional
 principle, which now amounts to stating what we mean by the ``best''
 estimate. The following criterion seems reasonable. In \(N\) repetitions
@@ -609,7 +629,7 @@ the results \(\left( x_{1},x_{2},\ldots,x_{n} \right)\). But for given
 \(m_{i}\), there are only \(W\) of these possible, where
 %
 \begin{equation}
-W \equiv \frac{N!}{m_{1}!\ldots m_{n}!} = \frac{N!}{\left( Ng_{1} \right)!\left( Ng_{2} \right)!\ldots\left( Ng_{n} \right)!}
+W \equiv \frac{N!}{m_{1}!\ldots m_{n}!} = \frac{N!}{\left( Ng_{1} \right)!\left( Ng_{2} \right)!\ldots\left( Ng_{n} \right)!} \label{eqn-thirty-two}
 \end{equation}
 %
 and
@@ -618,32 +638,32 @@ and
 g_{i} = \frac{m_{i}}{N}\ i = 1,2,\ldots,n
 \end{equation}
 %
-is the relative frequency with which the result \(x_{i}\) is obtained.
-Which cholce of the \(g_{1}\) can happen in the greatest number of ways?
+is the \emph{relative frequency} with which the result \(x_{i}\) is obtained.
+Which cholce of the \(g_{i}\) can happen in the greatest number of ways?
 If we have to guess the frequencies on the basis of no more information
-than \((30),\) it seems that a reasonable criterion is to ask what
-choice will maximize (32) while agreeing with (30). Now in the limit of
+than (\ref{eqn-thirty}) it seems that a reasonable criterion is to ask what
+choice will maximize (\ref{eqn-thirty-two}) while agreeing with (\ref{eqn-thirty}). Now in the limit of
 large \(N\), we have by the Stirling formula,
 %
 \begin{align}
 \lim_{N \rightarrow \infty} \frac{1}{N}\log W & \  = \lim_{N \rightarrow \infty} \frac{1}{N}\log\left\lbrack
 \frac{N!}{\left( Ng_{1} \right)!\ldots\left( Ng_{n} \right)!} \right\rbrack \nonumber \\
-\\
+\label{eqn-thirty-four}\\
  & \  = - \sum_{i = 1}^{n}   g_{i}\log g_{i} \nonumber
 \end{align}
 %
 and so, if we are to estimate limiting frequencies in an indefinitely
-large number of trials, we have in (30) and (34) formulated exactly the
-same mathematical problem as in (6) and (7). The same solution (10) and
-formal properties, Eqs, (11) to (29), follow immediately, and we have an
+large number of trials, we have in (\ref{eqn-thirty}) and (\ref{eqn-thirty-four}) formulated exactly the
+same mathematical problem as in (\ref{eqn-six}) and (\ref{eqn-seven}). The same solution (\ref{eqn-ten}) and
+formal properties, Eqs, (\ref{eqn-eleven}) to (\ref{eqn-twenty-nine}), follow immediately, and we have an
 alternative interpretation of the maximum-entropy formalism: the
 probability \(p_{i}\) which information theory assigns to the event
 \(x_{i}\) at a \emph{single} trial is numerically equal to an estimate
-of the relative frequency \(g_{1}\) of this result in an indefinitely
+of the relative frequency \(g_{i}\) of this result in an indefinitely
 large number of trials, obtained by enumerating all cases consistent
 with our knowledge, and placing our bets on the situation that can
 happen in the greatest number of ways. Thus, for example, the
-fluctuation laws (21) describe, on the one hand, our uncertainty as to
+fluctuation laws (\ref{eqn-twenty-one}) describe, on the one hand, our uncertainty as to
 the unknown true values of \(f_{k}(x)\) in a specific instance; on the
 other hand, they give the best estimates we can make of the
 \emph{average} departures from \(\left\langle f_{k} \right\rangle\) in
@@ -661,7 +681,7 @@ points about these interpretations should be noted:
   interpretation is valid, the result would be to deny ourselves the use
   of this formalism in most of the problems where it is helpful.
 \item
-  The argument leading from the averages (30) to the estimate of
+  The argument leading from the averages (\ref{eqn-thirty}) to the estimate of
   frequencies \(g_{i}\) was not deductive reasoning, but only plausible
   reasoning. Consequently, we are not entitled to assert that the
   estimates \(g_{i}\) \emph{must} be right; only that, in order to make
@@ -669,6 +689,107 @@ points about these interpretations should be noted:
   apparently greater ``objectivity'' of the second interpretation is to
   a large extent illusory.
 \end{enumerate}
+
+\section{Application to Equilibrium Thermodynamics}
+
+We apply the formalism of the preceding section to the following situation: $m =1$, $f_{1}\left( x _{ j }, \alpha\right)= E _{ i }( V ) .$ The parameter $V$ (volume)
+and the expectation value of the energy of the system $\langle E\rangle$ are given. The partition function is
+\begin{equation}
+Z(\lambda, V) \equiv \sum_{i=1}^{\infty} e^{-\lambda E_{i}(V)}
+\end{equation}
+Then, by (\ref{eqn-fourteen}), $\lambda$ is determined from
+\begin{equation}
+\langle E\rangle=-\frac{\partial}{\partial \lambda} \log Z
+\end{equation}
+and, as a special case of (\ref{eqn-twenty-three}) we have
+\begin{equation}
+\lambda\left\langle\frac{\partial E}{\partial V}\right\rangle=-\frac{\partial}{\partial V} \log Z
+\end{equation}
+But $-\langle\partial E / \partial V\rangle=\langle P\rangle$ is the maximum-entropy estimate of pressure, and so the predicted equation of state is
+\begin{equation}
+\langle P \rangle=\frac{1}{\lambda} \frac{\partial}{\partial V} \log Z
+\end{equation}
+To identify the temperature and entropy, we use the general variational property (\ref{eqn-twenty-eight}). A small change $\delta V$ in volume will change the energy levels by $\delta E _{ i }=\left(\partial E _{ i } / \partial V \right) \delta V$, and if this is carried out infinitely slowly (i.e., reversibly), the "adiabatic theorem" of quantum mechanics tells us that the probabilities $p _{ i }$ will not be changed. So, the maximum-entropy estimate of the work done is
+\begin{equation}
+\delta W=-\langle\delta E\rangle
+\end{equation}
+Of course, the given $\langle E\rangle$ is interpreted as the thermodynamic energy function $U$. In addition to the change $\delta V$, we allow a small reversible heat flow $\delta Q$, and by the first law, the net change in energy is $\delta U =\delta Q -\delta W$, or 
+%
+\begin{equation}
+    
+\end{equation}
+%
+Thus, if $f_{k}$ is the energy, then the $\delta Q_{k}$ defined by (\ref{eqn-twenty-nine}) is the predicted heat flow in the ordinary sense. Equation (\ref{eqn-twenty-eight}) shows that for \emph{any} quantity $f_{k}$, there is a quantity $\delta Q_{k}$ formally analogous to heat. 
+
+In the present case (\ref{eqn-twenty-eight}) reduces to
+\begin{equation}
+\delta S(\langle E\rangle, V)=\lambda \delta Q \label{eqn-forty-one}
+\end{equation}
+Now the Kelvin temperature is defined by the condition that $(1 / T)$ is the integrating factor for infinitesimal reversible heat in closed systems and the experimental entropy $S_{e}$ is defined as the resulting state function. So from (\ref{eqn-forty-one}) the predicted temperature $T^\prime$ and experimental entropy $S _{ e }^{\prime}$ are given by
+%
+\begin{align}
+\lambda= & \frac{1}{ kT ^{\prime}} \\
+S _{ e }^{\prime}= & kS (\langle E \rangle, V )= k \left( S _{ I }\right)_{\max }
+\end{align}
+
+The presence of Boltzmann's constant k merely indicates the particular practical units in which we choose to measure temperature and entropy. For theoretical discussions, we may as well adopt units such that $k=1$.
+
+All that we have shown so far is that the general maximum entropy formalism leads automatically to definitions of quantities \emph{analogous} to those of thermodynamics. This is, of course, as far as any mathematical theory can go; no amount of mathematics can prove anything about experimental facts. To put it differently, before we can establish any connection between our theoretical entropy $S_{e}^{\prime}$ and the experimentally measured quantity $S_{e}$, we have to introduce some physical assumption about what the result of an experiment would in fact be:
+
+\paragraph{Physical assumption} The equilibrium thermodynamic properties of a system, as measured experimentally, agree with the results calculated by the usual methods of statistical mechanics; i.e., from the canonical or grand canonical ensemble appropriate to the problem. \begin{equation} \label{eqn-forty-four}\end{equation}
+
+
+This assumption has proved correct in every case where one has succeeded in carrying out the calculations, and its universal validity is taken so much for granted nowadays that authors of textbooks no longer list it as an assumption. But strictly speaking, all we can prove here is that systems conforming to this assumption will also conform to various other statements made below.
+
+If we accept (\ref{eqn-forty-four}), then the identification of entropy is complete, and connection between information theory entropy and experimental entropy for the present problem can be stated as a theorem.
+
+\paragraph{Theorem}: Let $p _{i} \equiv$ prob $\left( E _{ i }\right)$ be any probability ąssignment which conforms to the data in the sense that $\langle E \rangle=\sum_{ i } p _{ i } E _{ i }$ is the
+measured energy. Let $S_{I} \equiv-\sum p_{i} \log p_{i}$ be the corresponding information theory entropy, and $S _{e}$ be the experimentally measured entropy for the system. The additive constant is chosen so that at zero temperature $S_{e}=\log n,$ where $n$ is the degeneracy of the ground state, and let $S_{e}$ be expressed in units such that Boltzmann's constant $k \equiv 1$. Then
+\begin{equation}
+S _{ I } \leq S _{ e }
+\end{equation}
+with equality if and only if $p _{ i }$ is chosen as the canonical distribution
+\begin{equation}
+p_{i}=\frac{1}{Z} \exp \left(-\lambda E_{i}(V)\right) \label{eqn-forty-six}
+\end{equation}
+This is the physical meaning, for the present problem, of the general inequality (\ref{eqn-twelve}). Obviously, the above statement can be greatly generalized; we can introduce more degrees of freedom in addition to $V$, we can consider open systems, where the number of molecules can change, and we can use the grand canonical ensemble, etc. The corresponding statement will still hold; over all probability assignments that agree with the data in the aforementioned sense, the information theory entropy attains an absolute maximum, equal to the experimental entropy, if and only if $p _{ i }$ is taken as the appropriate canonical or grand canonical distribution. 
+
+\paragraph{Remarks:} 
+
+\begin{enumerate}
+    
+\item  We have taken $\langle E \rangle$ as the given quantity. In practice, it is usually the temperature that is measured. To treat the temperature as the observable, one must regard the system of interest to be in contact with a heat reservoir, with which it may exchange energy and which acts as a thermometer. Detailed analysis of the resulting system (given in reference\citep{Jaynes-information57}) leads to the same probability assignments as we have found with
+$\langle E \rangle$ as the
+given datum.
+
+\item  If not only $\langle E\rangle$ is known, but also the accuracy of the measurement, as given for example by $\left\langle E^{2}\right\rangle$, then this information may be incorporated into the problem by taking $f_{1}\left(x_{1}, \alpha\right)=$ $E _{1}( V ), f _{2}\left( x _{ 1 }, \alpha\right)= E _{ i }^{2}( V ) .$ The partition function (\ref{eqn-eleven}) becomes 
+\begin{equation}
+Z \left(\lambda_{1}, \lambda_{2}, V \right)=\sum_{ i } \exp \left[-\lambda_{1} E _{ i }( V )-\lambda_{2} E _{ i }^{2}( V )\right]
+\end{equation}
+and from (\ref{eqn-fourteen}),
+\begin{equation}
+\langle E \rangle=-\frac{\partial}{\partial \lambda_{1}} \log Z \quad\left\langle E ^{2}\right\rangle=-\frac{\partial}{\partial \lambda_{2}} \log Z
+\end{equation}
+The fluctuation theorem (\ref{eqn-twenty-one}) then gives the relation
+\begin{equation}
+\left\langle E^{3}\right\rangle-\langle E\rangle\left\langle E^{2}\right\rangle=-\frac{\partial(E\rangle}{\partial \lambda_{2}}=-\frac{\partial\left\langle E^{2}\right\rangle}{\partial \lambda_{1}}
+\end{equation}
+
+In principle, whenever information of this sort is available, it should be incorporated into the problem. In practice, however, we find that for the macroscopic systems that exhibit reproducible thermodynamic properties, the variance $\left(E^{2}\right\rangle-\langle E\rangle^{2}$ as calculated from (\ref{eqn-forty-six}) is already very small compared to any reasonable mean-square experimental error, and so the additional information about accuracy of the measurement did not lead to any difference in the predictions. This is, of course, the basic reason for the success of the Gibbs canonical ensemble formalism.
+
+\item The theory as developed here has, in principle, an additional freedom of choice not present in conventional statistical mechanics. The statement that a system has a definite, reproducible equation of state means, for example, that if we fix \emph{experimentally} any two of the parameters $P$, $V$, $T$, then the third is determined. Correspondingly, in the theory it should be true that \emph{information} about any two of these quantities should suffice to enable us to \emph{predict} the third; there is no basic reason for constructing our ensembles always in terms of energy rather than any other measurable quantities. Use of energy has the mathematical convenience that energy is a constant of the motion, and so the statement that the system is in equilibrium (i.e., measurable parameters are not time-dependent) requires no additional constraint. With an ensemble based on some quantity, such as pressure or magnetization, which is not an intrinsic constant of the motion, if we wish to predict equilibrium properties we need to incorporate into the theory an additional statement, involving the equations of motion, which specifies that these quantities are constant. To do this requires no new principles of reasoning beyond those given above; we merely include the values of such a quantity $f \left( t _{ i }\right)$ at many different times (or in the limit, at all times) into the set of quantities $f _{ k }$ whose expectation values are given. In the limit, the partition function thus becomes a partition functional:
+\begin{equation}
+Z [\lambda( t )]=\sum_{ i } \exp \left[-\int \lambda( t ) f \left( x _{ i }, t \right) d t \right] \label{eqn-fifty}
+\end{equation}
+and the relations (\ref{eqn-fourteen}) determining the $\lambda$'s go into the corresponding functional derivative relations
+\begin{equation}
+\langle f(t)\rangle=-\frac{\delta}{\delta \lambda(t)} \log Z[\lambda(t)] \label{eqn-fifty-one}
+\end{equation}
+which determine the function $\lambda(t)$ We have not found any general proof that the predicted equation of state is independent of the type of information used, but a special case is proved in the 1961 Stanford thesis of Dr. Douglas Scalapino. There it is shown that the same equation of state of a paramagnetic substance with spin-spin interaction is obtained whatever the input information. We conjecture that this is true for any system that exhibits an experimentally reproducible equation of state.
+
+It is doubtful whether this new degree of freedom in applying the theory will prove useful in calculations pertaining to the equilibrium state, since it is more complicated than the usual procedure. However, it is just this extra freedom that makes it possible to develop a general formalism for irreversible processes; indeed, prediction of time-dependent phenomena is obviously impossible as long as our probability distributions depend only on constants of the motion, Equations (\ref{eqn-fifty}) and (\ref{eqn-fifty-one}) form the starting point for a general theory of the nonequilibrium steady state, the Scalapino thesis providing an example of the calculation of transport coefficients from them.
+\end{enumerate}
+
 
 \bibliography{gibbs-vs-boltzmann}
 
