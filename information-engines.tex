@@ -40,21 +40,15 @@ Because the paper bridges some different fields, and tries to equate thermodynam
 
 In particular, we use the word \emph{simulation} to imply a physical model over the microstates of the universe that represents our 'best practical' understanding of the underlying physics. In what follows this simulation is denoted by $\physicsProb(\stateVariables|\dataVariables)$. Alongside this we have the \emph{data model}, which represents the marginal distribution for the data we observe, $\physicsProb(\dataVariables)$. Quite often in the below we will refer to this simply as `the model' as it will turn out to be one of the main objects of focus. 
 
-The Helmholtz free energy was derived by Hermann von Helmholtz in the
-study of electrochemistry.
-
-In a thermodynamic system, the state space is referred to as the phase
-space.\footnote{Here we are referring to the microstates, the macrostates would be the sufficient statistics of the microstates.}
-
-Boltzmann's distribution gives us the probability distribution
-associated with that state space. In a continuous system, we write down
-the the \emph{Hamiltonian}, the energy associated with the phase space.
+Our investigation is centred around the concept of \emph{free energy}. The free energy is the energy in a system that is available to us for use. In particular we focus on the Helmholtz free energy which was introduced by Hermann von Helmholtz in the study of electrochemistry. In a thermodynamic system, the state space is referred to as the phase
+space.\footnote{Here we are referring to the microstates, the macrostates would be the sufficient statistics of the microstates.} The distribution of the phase space is given by \emph{Boltzmann's distribution} which is derived by considering the energy levels of different configurations of microstates.  In a continuous system, we write down
+the\emph{Hamiltonian} as follows,
 \[
 \mathbb{P}(\phaseVariables) = \frac{1}{Z_\phaseVariables} \exp(-\beta E(\phaseVariables)),
 \] 
 where \(E(\phaseVariables)\) is the energy of the system in microstate \(\phaseVariables\).
 
-The partition function is given by 
+The partition function is then given by 
 \[
 Z_\phaseVariables = \sum_\phaseVariables \exp(-\beta E(\phaseVariables)),
 \] 
@@ -372,13 +366,12 @@ E^\prime(\domainVariables) = & E(\domainVariables),
 %
 and the approximation becomes exact.
 
-The thermal reservoir is somewhat different. The definition of the thermal reservoir is such that it does not change its macroscopic properties in response to changes in the domain variables. This assumption arises from the assumed much larger size of the null space to the domain space. Further, it is only through these macroscopic properties, e.g. in thermodynamics it would be temperature and pressure, that the reservoir influences the domain space. So, in the thermal reservoir case, we no longer have $E^\prime(\dataVariables |\domainVariables) = E(\dataVariables |\domainVariables)$, because the null space (i.e. the reservoir) \emph{does} influence the domain space. But the size of this reservoir means that the influence of the null space does \emph{not} change over time as the domain space is updated. So the influence of $p(\nullVariables|\dataVariables)$ can be seen as static  and $E^\prime(\dataVariables |\domainVariables)$ can be genuinely seen as a proxy for the true Hamiltonian (even if it is not directly equal to it).  
+The thermal reservoir is somewhat different. The definition of the thermal reservoir is such that it does not change its macroscopic properties in response to changes in the domain variables. This assumption arises from the assumed much larger size of the null space to the domain space. Further, it is only through these macroscopic properties that the reservoir influences the domain space, e.g. in thermodynamics it would be temperature and pressure. So, in the thermal reservoir case, we no longer have $E^\prime(\dataVariables |\domainVariables) = E(\dataVariables |\domainVariables)$, because the null space (i.e. the reservoir) \emph{does} influence the domain space. But the size of this reservoir means that the influence of the null space does \emph{not} change over time as the domain space is updated. So the influence of $p(\nullVariables|\dataVariables)$ can be seen as static  and $E^\prime(\dataVariables |\domainVariables)$ can be genuinely seen as a proxy for the true Hamiltonian (even if it is not directly equal to it).  
 
-But our approximation also allows us to make more general statements about validity. The isolated system and the thermodynamic bath are two cases where the simulation discrimination can be minimized to zero, but in general modelling scenarios we are unlikely to be in either of these two situations. So we may have to interact between updates to the domain space factor and the null space factor to minimize simulation discrimination and improve our estimate of the apparent available energy and the intelligence quotient. In this case we can drive the simulation discrimination to zero as long as we choose our null space, domain space and observed variables such that the factorise in one of the manners shown in Figure \ref{fig-null-space-factorisation}.
+Our approximation goes beyond the two different cases considered in thermodynamics and also allows us to make more general statements about validity. The isolated system and the thermodynamic bath are two cases where the simulation divergence can be minimized to zero, but in general modelling scenarios we are unlikely to be in either of these two situations. So we may have to interact between updates to the domain space factor and the null space factor to minimize simulation divergence and improve our estimate of the apparent available energy and the intelligence quotient. In this case we can drive the simulation divergence to zero as long as we choose our null space, domain space and observed variables such that the factorise in one of the manners shown in Figure \ref{fig-null-space-factorisation}.
 
 \begin{figure}
     \centering
-    \includegraphics{}
     \missingfigure{Graphical model showing valid factorizations of the null space and domain space.}
     \caption{Different factorizations of the null space and domain space that allow us to drive the simulation discrimination to zero. In practice definition of the null space and the domain space is a component of our model choice, e.g. we need to decide which features we might include in a neural network classifier. Different choices affect our ability to estimate the intelligence quotient in different ways.}
     \label{fig-null-space-factorisation}
@@ -387,41 +380,34 @@ But our approximation also allows us to make more general statements about valid
 \todo{Relate to Kullback minimum discriminaton and Jaynes maximum entropy}
 The approach of minimising discrimination was proposed by \cite{Kullback-} as minimum discrimination information and by Jaynes as maximum entropy \cite{} \todo{citations to kullback and Jaynes}.
 
-\subsection{Apparent Free Energy}
+\section{The Data Model}
 
-Assuming we have made appropriate selections for the null space and the domain space, we can drop the model misspecification, $M_\dataVariables$ term, and we now have an upper bound on the
-free energy, 
+The factorisation of our simulation distribution allows us to return our attention to the \emph{data model}, $\physicsProb(\dataVariables)$. Recalling the apparent available energy gain, 
 \[
-A_{\stateVariables|\dataVariables} \leq U^\prime_{\stateVariables|\dataVariables} - TS^\prime_{\stateVariables|\dataVariables} 
+\expDist{\Delta A^\prime_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} = -\expDist{E(\dataVariables)}{\trueProb(\dataVariables)} + TS^\prime_\dataVariables.
 \] 
-or alternatively, we can define 
+and re-expanding $E(\dataVariables)$ as 
 \[
-A^\prime_{\stateVariables|\dataVariables} = U^\prime_{\stateVariables|\dataVariables} - TS^\prime_{\stateVariables|\dataVariables},
+\expDist{\Delta A^\prime_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} = \expDist{E^\prime(\dataVariables|\stateVariables_1)}{\trueProb(\dataVariables)} + -\expDist{E^\prime(\dataVariables|\stateVariables_1)}{\physicsProb(\dataVariables)}+ TS^\prime_\dataVariables.
 \] 
-which we call the \emph{apparent free energy}. The apparent free
-energy is an upper bound on the true free energy. Our factorisation into
-domain and null space reflects the fact that we think we view
-\(\physicsProb(\domainVariables | \dataVariables)\) as a model emerging
-from a domain expert.
+an interesting way forward emerges. 
 
-By our definitions above, the apparent total energy can be written as 
+In practice, we do not have access to the true probability distributions, we can only sample from the world, with a corresponding energy cost, $E(\measuredVariables_\dataVariables=\textbf{1})$. This sample of variables is associated with the following apparent change in energy, 
 \[
-U^\prime_{\stateVariables|\dataVariables} = \expDist{E^\prime(\dataVariables |\domainVariables)}{\physicsProb(\domainVariables| \dataVariables)} + \expDist{E^\prime(\domainVariables)}{\physicsProb(\domainVariables| \dataVariables)} = U^\prime_{\domainVariables|\dataVariables} = U^\prime_{\nullVariables|\dataVariables}
+\expDist{\Delta A^\prime_{\stateVariables|\dataVariables}}{\trueProb(\dataVariables)} = \expDist{E^\prime(\dataVariables|\stateVariables_1)}{\physicsProb(\stateVariables_1|\dataVariables)}  -\expDist{E^\prime(\dataVariables|\stateVariables_1)}{\physicsProb(\stateVariables_1|\dataVariables)\physicsProb(\dataVariables)}+ TS^\prime_\dataVariables.
 \] 
-and our independence assumption means that 
+for simplicity we denote,
 \[
-S^\prime_{\stateVariables|\dataVariables} = S^\prime_{\domainVariables|\dataVariables} + S^\prime_{\nullVariables|\dataVariables}.
-\] 
-We now can define 
-\[
-A^\prime_{\domainVariables|\dataVariables} = U^\prime_{\domainVariables|\dataVariables} - TS^\prime_{\domainVariables|\dataVariables} = -\frac{1}{\beta} \log Z^\prime_{\domainVariables|\dataVariables}
-\] 
-and can see that the apparent free energy is 
-\[
-A^\prime_{\stateVariables|\dataVariables} = A^\prime_{\domainVariables|\dataVariables} - TS^\prime_{\nullVariables|\dataVariables}.
+f(\dataVariables) = \expDist{E^\prime(\dataVariables|\stateVariables_1)}{\physicsProb(\stateVariables_1|\dataVariables)}.
 \]
-
-\subsection{Parameterised Model}
+and now we write
+\[
+A_{\stateVariables|\dataVariables} = \sum f(\dataVariables) -
+\]
+The form of our apparent AEG 
+then we can choose a form for $\physicsProb(\dataVariables)$ that minimizes 
+we can look at an empirical estimate by taking 
+\section{Parameterised Model}
 
 The next step is to include \emph{parameters} with the model. To do this
 we first separate a new set of auxiliary variables from the domain
