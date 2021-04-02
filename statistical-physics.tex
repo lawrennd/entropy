@@ -117,11 +117,11 @@ the independent achievements of Van Hove and Prigogine and their
 schools, in their progress toward better understanding the APPROACH TO
 EQUILIBRIUM OF A MANY-PARTICLE SYSTEM.
 
-\section{Contents}
 
-\tableofcontents
 
-\section{Foreword}
+
+
+\section*{Foreword}
 
 It is now an established tradition of the Brandeis Summer Institute in
 Theoretical Physics to have lecturers who present a systematic account
@@ -153,7 +153,7 @@ Notes by the lecturer
 
 \tableofcontents
 
-\section{INTRODUCTION}\label{introduction}
+\section{Introduction}\label{introduction}
 
 At the beginning of every problem in probability theory, there arises a
 need to assign some initial probability distribution; or what is the
@@ -161,7 +161,7 @@ same thing, to ``set up an ensemble.'' This is a problem which cannot be
 evaded, and for which the laws of physics give us no help. For example,
 the laws of physics tell us that a density matrix
 \(\rho\left( t \right)\) must vary with time according to
-\(\dot{\rho\left( t \right) = \lbrack H,\rho\rbrack}\), but they do not
+\(\dot{\rho} = \lbrack H,\rho\rbrack}\), but they do not
 tell us what function \(\rho(0)\) should be put in at the start.
 Assignment of \(\rho(0)\) is, of course, a matter of free choice on our
 part---it is for us to say which problem we want to solve.
@@ -177,16 +177,18 @@ time. What initial density matrix for the spin system \(\rho(0)\),
 should we use? Evidently, we shall want it to satisfy, at the very
 least,
 
-\[\text{Tr}\left( \rho(0)M_{o_{p}} \right) = M(0)\]
+\begin{equation}
+\text{Tr}\left( \rho(0)M_{o_{p}} \right) = M(0) \label{eqn-one}
+\end{equation}
 
-where \(M \ll p\) moment. But Eq. (1) is very far from uniquely
-specifying \(\rho(0)\)p. Out of the infinite number of density matrices
-satisfying (1), which should we choose as the starting point of our
+where \(M_{o_p}\) is the operator corresponding to total magnetic moment. But Eq. (\ref{eqn-one}) is very far from uniquely
+specifying \(\rho(0)\). Out of the infinite number of density matrices
+satisfying (\ref{eqn-one}), which should we choose as the starting point of our
 calculation to predict \(M(t)\)?
 
 Conventional quantum theory has provided an answer to the problem of
 setting up initial state descriptions only in the limiting case where
-measurements of a "complete set of commuting observables" have been
+measurements of a ``complete set of commuting observables'' have been
 made, the density matrix \(\rho(0)\) then reducing to the projection
 operator onto a pure state \(\psi(0)\) which is the appropriate
 simultaneous eigenstate of all the measured quantities. But there is
@@ -198,8 +200,8 @@ results of measurements into a definite state description \(\rho(0)\).
 Note that the problem is not to find the \(\rho(0)\) which correctly
 describes the "true physical situation." That is unknown, and always
 remains so, because of incomplete information. In order to have a usable
-theory we must ask the much more modest question: "What \(\rho(0)\) best
-describes our \emph{state of knowledge} about the physical situation?"
+theory we must ask the much more modest question: ``What \(\rho(0)\) best
+describes our \emph{state of knowledge} about the physical situation?''
 
 In order to emphasize that this problem really has nothing to do with
 the laws of physics (and, as a corollary, that its solution will have
@@ -231,37 +233,70 @@ continually faced with situations where some definite decision must be
 made \emph{now}, even though we do not have all the information we might
 like.
 
-\[{\sum_{n = 1}^{6}\mspace{2mu} P_{n} = 1
-}{\sum_{n = 1}^{6}\mspace{2mu} nP_{n} = 4.5}\]
+\begin{align}
+\sum_{n = 1}^{6} P_{n} = & 1  \label{eqn-two} \\
+\sum_{n = 1}^{6} nP_{n} = & 4.5 \label{eqn-three}
+\end{equation}
 
-\includegraphics[width=3.20866in,height=1.75197in]{media/image1.jpeg}\includegraphics[width=3.16142in,height=2in]{media/image2.png}where
-(3) is analogous to (1). A possible solution of (2) and (3) is indicated
-in Fig. 1; we could take \(P_{4} = P_{5} = 1/2\), all other
+\begin{figure}
+    \centering
+    \includegraphics[width=3.20866in,height=1.75197in]{media/image1.jpeg}
+    \caption{}
+    \label{fig-one}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=3.16142in,height=2in]{media/image2.png}
+    \caption{}
+    \label{fig-two}
+\end{figure}
+
+}where
+(\ref{eqn-three}) is analogous to (\ref{eqn-one}). A possible solution of (\ref{eqn-two}) and (\ref{eqn-three}) is indicated
+in Fig. \ref{fig-one}; we could take \(P_{4} = P_{5} = 1/2\), all other
 \(P_{n} = 0\), This agrees with all the given data. But our common sense
 tells us it is not a \emph{reasonable} assignment. The assignment of
-Fig. 2 is evidently a more honest description of what we know. But even
+Fig. \ref{fig-two} is evidently a more honest description of what we know. But even
 this is not reasonable---nothing in the data tells us that n = 1, 2 are
-impossible events. In Fig. 2, we are still jumping to conclusions not
+impossible events. In Fig. \ref{fig-two}, we are still jumping to conclusions not
 warranted by the available evidence. Evidently, it is unreasonable to
 assign probability zero to any situation unless our data really rules
 out that case. If we assign \(P_{1} > 0\), \(P_{2} > 0\), then in order
 to keep the average at 4.5, we shall have to give some increased weight
-to the cases \(n = 5,\ 6\). Figure 3 shows an assignment that agrees
+to the cases \(n = 5,\ 6\). Figure \ref{fig-three} shows an assignment that agrees
 with the data and does not ignore any possibility. But it still seems
 unreasonable to give the case \(n = 6\) such exceptional treatment.
-Figure 4 represents what we should probably call a
-\includegraphics[width=3.39764in,height=1.64567in]{media/image3.jpeg}backward
+Figure \ref{fig-four} represents what we should probably call a
+\begin{figure}
+    \centering
+    \includegraphics[width=3.39764in,height=1.64567in]{media/image3.jpeg}
+    \caption{}
+    \label{fig-three}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=2.71319in,height=1.81042in]{media/image4.jpeg}
+    \caption{}
+    \label{fig-four}
+\end{figure}
+backward
 step---nothing in the data of the problem indicates any reason for such
 an uneven treatment. A reasonable assignment \(P_{n}\) must not only
-agree with the data and must not ignore any
-\includegraphics[width=2.71319in,height=1.81042in]{media/image4.jpeg}possibility---but
+agree with the data and must not ignore any possibility---but
 it must also not give undue emphasis to any possibility. The \(P_{n}\)
 should vary as smoothly as possible, in some sense. One criterion of
 "smoothness" might be that adjacent differences \(P_{n + 1} - P_{n}\)
 should be constant; and, indeed, there is a solution with that property.
 It is given by \(P_{n} = (12n - 7)/210\) and
-\includegraphics[width=2.48031in,height=1.82283in]{media/image5.jpeg}is
-shown in Fig. 5. This is evidently the most reasonable probability
+\begin{figure}
+    \centering
+    \includegraphics[width=2.48031in,height=1.82283in]{media/image5.jpeg}
+    \caption{}
+    \label{fig-five}
+\end{figure}
+is
+shown in Fig. \ref{fig-five}. This is evidently the most reasonable probability
 assignment so far. But there is a limit to how high an average you can
 get with this linear variation of \(P_{n}\). If we took the extreme
 case, \(P_{n} = (const.)(n - 1)\), we should again violate one of our
@@ -271,33 +306,48 @@ had been changed so that the average is to be 4.7 instead of 4.5. Then
 there is no straight-line solution satisfying \(P_{n} \geq 0\). The
 \(P_{n}\) must lie on some concave curve, as in Fig. 6. But the
 principles by which we reason
-surely\includegraphics[width=3.16535in,height=1.84252in]{media/image6.jpeg}
+surely
+\begin{figure}
+    \centering
+    \includegraphics[width=3.16535in,height=1.84252in]{media/image6.jpeg}
+    \caption{}
+    \label{fig-six}
+\end{figure}
+%
 are the same whether the data specify 4.5 or 4.7; so it appears that a
-result qualitatively such as Fig. 6 should be used also when
+result qualitatively such as Fig. \ref{fig-six} should be used also when
 \(n = 4.5\).
 
-\[S_{I} = - \sum_{i}^{}\mspace{2mu} p_{i}\log p_{i}
-\]
+This is about as far as qualitative reasoning can take us, and I have carried the argument through on that basis in order to show how ordinary common sense leads us to a result that has all the important features of the quantitative solution given below. The probability assignment $P _{ n }$ which most honestly describes what we know is the one that is as smooth and "spread out" as possible subject to the data. It is the most conservative assignment in the sense that it does not permit one to draw any conclusions not warranted by the data.
 
+This suggests that the problem is a variational one; we need a measure of the "spread" of a probability distribution which we can maximize, subject to constraints which represent the available information. It is by now amply demonstrated by many workers that the "information measure" introduced by Shannon' has special properties of consistency and uniqueness which make it \emph{the} correct measure of "amount of uncertainty" in a probability distribution. This is, of course, the expression
+%
+\begin{equation}
+S_{I} = - \sum_{i}^{} p_{i}\log p_{i}
+\end{equation}
+%
+which, \emph{for some distributions} and \emph{in some physical situations}, has long been recognized as representing entropy. However, we have to emphasize that "information-theory entropy" $S _{ I }$ and the experimental thermodynamic entropy $S _{e}$ are entirely different concepts. Our job cannot be to \emph{postulate} any relation between them; it is rather to \emph{deduce} whatever relations we can from known mathematical and physical facts. Confusion about the relation between entropy and probability has been one of the main stumbling blocks in developing a general theory of irreversibility.
 
-\section{THE GENERAL MAXIMUM-ENTROPY FORMALISM}\label{the-general-maximum-entropy-formalism}
+\section{The General Maximum-Entropy Formalism}\label{the-general-maximum-entropy-formalism}
 
 To generalize the above problem somewhat, suppose that the quantity
-\(x\) can take on the values \((\_ 1\ \)(x\textsubscript{1\}}
-x\textsubscript{2},. .., x\textsubscript{n}) where n can be finite or
-infinite, and that the average values of several functions fjtx),
-f\textsubscript{2}(x),..., f\textsubscript{m}(x) are given, where m
-\textless{} n. The problem is to find the probability assignment pj =
-p(xj) which satisfies the given data: pj \textgreater{} 0,
-
-\[\sum_{i = 1}^{n}\mspace{2mu} p_{i} = 1\]
-
-\[\sum_{i = 1}^{n}\mspace{2mu} p_{i}f_{k}\left( x_{i} \right) = \left\langle f_{k}(x) \right\rangle = F_{k}k = 1,2,\ldots,m\]
-
-and, subject to (5) and (6), maximizes the entropy
-
-\[S_{I} = - \sum_{i = 1}^{n}\mspace{2mu} p_{i}\log p_{1}\]
-
+\(x\) can take on the values \((x_1, x_2, \dots x_n)\) where $n$ can be finite or
+infinite, and that the average values of several functions $(f_1(x), f_2(x), \dots f_m(x)$ are given, where $m < n$. The problem is to find the probability assignment $p_i =
+p(x_i)$ which satisfies the given data: $p_i \geq 0$,
+%
+\begin{equation}
+\sum_{i = 1}^{n} p_{i} = 1 \label{eqn-five}
+\end{equation}
+\begin{equation}
+\sum_{i = 1}^{n}  p_{i}f_{k}\left( x_{i} \right) = \left\langle f_{k}(x) \right\rangle = F_{k} \quad k = 1,2,\ldots,m \label{eqn-six}
+\end{equation}
+%
+and, subject to (\ref{eqn-five}) and (\ref{eqn-six}), maximizes the entropy
+%
+\begin{equation}
+S_{I} = - \sum_{i = 1}^{n} p_{i}\log p_{1}
+\end{equation}
+%
 The solution to this mathematical problem can be found immediately by
 the method of Lagrangian multipliers, and special cases are given in
 every statistical mechanics textbook. This method has the merit that it
@@ -308,44 +358,52 @@ Let \(\left( p_{1}\ldots p_{n} \right)\) and
 \(\left( u_{1}\ldots u_{n} \right)\) be any two possible probability
 distributions over the \(x_{1};\) i.e.,
 \(p_{i} \geq 0,u_{i} \geq 0,i = 1,2,\ldots\) n and
-
-\[\sum_{i = 1}^{n}\mspace{2mu} p_{1} = \sum_{i = 1}^{n}\mspace{2mu} u_{i} = 1\]
-
-\(S_{I}\)Then, by using the fact that
+%
+\begin{equation}
+\sum_{i = 1}^{n} p_{1} = \sum_{i = 1}^{n} u_{i} = 1
+\end{equation}
+%
+Then, by using the fact that
 \(logx \geq \left( 1 - x^{- 1} \right),\) with equality if and only if
 \(x = 1,\) we find the following:
 
-Lemma
+\paragraph{Lemma}
 
-\[\sum_{i = 1}^{n}\mspace{2mu} p_{i}log\frac{p_{i}}{u_{i}} \geq \sum_{i = 1}^{n}\mspace{2mu} p_{i}\left( 1 - \frac{u_{i}}{p_{i}} \right) = 0\]
-
+\begin{equation}
+\sum_{i = 1}^{n}  p_{i}\log\frac{p_{i}}{u_{i}} \geq \sum_{i = 1}^{n}  p_{i}\left( 1 - \frac{u_{i}}{p_{i}} \right) = 0
+\end{equation}
+%
 with equality if and only if \(p_{i} = u_{i},i = 1,2,\ldots n\). Now
 make the choice
-
-\[u_{i} = \frac{1}{Z\left( \lambda_{1}\ldots\lambda_{m}) \right.\ }exp\left( - \lambda_{1}f_{1}\left( x_{i} \right) - \ldots - \lambda_{m}f_{m}\left( x_{i} \right) \right)\]
-
+%
+\begin{equation}
+u_{i} = \frac{1}{Z\left( \lambda_{1}\ldots\lambda_{m}) \right.\ }\exp\left( - \lambda_{1}f_{1}\left( x_{i} \right) - \ldots - \lambda_{m}f_{m}\left( x_{i} \right) \right)
+\end{equation}
+%
 where \(\lambda_{1}\ldots\lambda_{m}\) are fixed constants, and
-
-\[Z\left( \lambda_{1}\ldots\lambda_{m} \right) \equiv \sum_{i = 1}^{n}\mspace{2mu} exp\left( - \lambda_{1}f_{1}\left( x_{1} \right) - \ldots - \lambda_{m}f_{m}\left( x_{i} \right) \right)\]
-
+%
+\begin{equation}
+Z\left( \lambda_{1}\ldots\lambda_{m} \right) \equiv \sum_{i = 1}^{n}  \exp\left( - \lambda_{1}f_{1}\left( x_{1} \right) - \ldots - \lambda_{m}f_{m}\left( x_{i} \right) \right)
+\end{equation}
+%
 will be called the ``partition function.'' Substituting (10) into (9)
 results in the inequality
 
-\[\begin{matrix}
-\sum_{i = 1}^{n}\mspace{2mu}\mspace{2mu} p_{i}logp_{i} \geq \sum_{i = 1}^{n}\mspace{2mu}\mspace{2mu} p_{i}logu_{i} = & \  - \sum_{i = 1}^{n}\mspace{2mu}\mspace{2mu} p_{i}\left\lbrack \lambda_{1}f_{1}\left( x_{i} \right) + \ldots \right.\  \\
- & \left. \  + \lambda_{m}f_{m}\left( x_{i} \right) \right\rbrack - logZ\left( \lambda_{1}\ldots\lambda_{m} \right) \\
-\end{matrix}\]
+\begin{align*}
+\sum_{i = 1}^{n}   p_{i}\log p_{i} \geq \sum_{i = 1}^{n}   p_{i}\log u_{i} = &  - \sum_{i = 1}^{n}   p_{i}\left\lbrack \lambda_{1}f_{1}\left( x_{i} \right) + \ldots \right. \\
+ & \left.  + \lambda_{m}f_{m}\left( x_{i} \right) \right\rbrack - \log Z\left( \lambda_{1}\ldots\lambda_{m} \right) \\
+\end{align*}
 
 or
 
-\[s_{1} \leq logZ\left( \lambda_{1}\ldots\lambda_{m} \right) + \sum_{k = 1}^{m}\mspace{2mu}\lambda_{k}\left\langle f_{k} \right\rangle\]
+\begin{equation}s_{1} \leq  \log Z\left( \lambda_{1}\ldots\lambda_{m} \right) + \sum_{k = 1}^{m} \lambda_{k}\left\langle f_{k} \right\rangle\end{equation}
 
 Now let the distribution \(p_{1}\) vary over the class of all possible
 distributions that satisfy (6). The right-hand side of (12) remains
-fixed, and (12) shows that \(S_{1}\) attains itsmaximum possible value
-
-\[\left( S_{I} \right)_{\max} = logZ + \sum_{k = 1}^{m}\mspace{2mu}\lambda_{k}\left\langle f_{k} \right\rangle\]
-
+fixed, and (12) shows that \(S_{1}\) attains its maximum possible value
+%
+\begin{equation}\left( S_{I} \right)_{\max} =  \log Z + \sum_{k = 1}^{m} \lambda_{k}\left\langle f_{k} \right\rangle\end{equation}
+%
 if and only if \(p_{i}\) is taken as the generalized canonical
 distribution\\
 (10). It only remains to choose the unspecified constants
@@ -353,23 +411,23 @@ distribution\\
 readily verifies, if the \(\lambda_{k}\) are determined in terms of the
 given data \(F_{k} = \left\langle f_{k} \right\rangle\) by
 
-\[\left\langle f_{k} \right\rangle = - \frac{\partial}{\partial\lambda_{k}}logZ\left( \lambda_{1}\ldots\lambda_{m} \right)\ k = 1,2,\ldots,m\]
+\begin{equation}\left\langle f_{k} \right\rangle = - \frac{\partial}{\partial\lambda_{k}} \log Z\left( \lambda_{1}\ldots\lambda_{m} \right)\ k = 1,2,\ldots,m\end{equation}
 
 We now survey rapidly the main formal properties of the distribution
 found. The maximum attainable entropy (13) is some function of the given
 data:
 
-\[\left( S_{I} \right)_{\max} = S\left( \left( f_{2} \right),\ldots\left\langle f_{m} \right\rangle \right)\]
+\begin{equation}\left( S_{I} \right)_{\max} = S\left( \left( f_{2} \right),\ldots\left\langle f_{m} \right\rangle \right)\end{equation}
 
 and, by using (13) and (14), we find
 
-\[\frac{\partial S}{\partial\left\langle f_{k} \right\rangle} = \lambda_{k}\ k = 1,2,\ldots,m\]
+\begin{equation}\frac{\partial S}{\partial\left\langle f_{k} \right\rangle} = \lambda_{k}\ k = 1,2,\ldots,m\end{equation}
 
 Regarding, in (14), the \(\left\langle f_{k} \right\rangle\) expressed
 as functions of \(\left( \lambda_{1}\ldots\lambda_{m} \right)\) we find,
 on differentiating, the reciprocity law
 
-\[\frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{j}} = \frac{\partial\left\langle f_{j} \right\rangle}{\partial\lambda_{k}} = - \frac{\partial^{2}}{\partial\lambda_{k}\partial\lambda_{j}}logZ = A_{\text{jk}}\]
+\begin{equation}\frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{j}} = \frac{\partial\left\langle f_{j} \right\rangle}{\partial\lambda_{k}} = - \frac{\partial^{2}}{\partial\lambda_{k}\partial\lambda_{j}} \log Z = A_{\text{jk}}\end{equation}
 
 while by the same argument, if we regard \(\lambda_{k}\) in (16)
 expressed as
@@ -378,19 +436,21 @@ a function of
 \(\left\langle f_{1} \right\rangle\ldots\left\langle f_{m} \right\rangle,\)
 we find a corresponding law
 
-\[\frac{\partial\lambda_{k}}{\partial\left\langle f_{j} \right\rangle} = \frac{\partial\lambda_{j}}{\partial\left\langle f_{k} \right\rangle} = \frac{\partial^{2}S}{\partial\left\langle f_{j} \right\rangle\partial\left\langle f_{k} \right\rangle} = B_{\text{jk}}\]
+\begin{equation}\frac{\partial\lambda_{k}}{\partial\left\langle f_{j} \right\rangle} = \frac{\partial\lambda_{j}}{\partial\left\langle f_{k} \right\rangle} = \frac{\partial^{2}S}{\partial\left\langle f_{j} \right\rangle\partial\left\langle f_{k} \right\rangle} = B_{\text{jk}}\end{equation}
 
 Comparing (17) and (18) and remembering the chain rule for
 differentiating,
-
-\[\frac{\partial\left\langle f_{j} \right\rangle}{\partial\left\langle f_{k} \right\rangle} = \sum_{\mathcal{l}}^{}\mspace{2mu}\frac{\partial\left\langle f_{j} \right\rangle}{\partial\lambda_{\mathcal{l}}}\frac{\partial\lambda_{\mathcal{l}}}{\partial\left\langle f_{k} \right\rangle} = \delta_{\text{jk}}\]
-
-we see that the second derivatives of \(S\) and of log \(Z\) yield
+%
+\begin{equation*}
+\frac{\partial\left\langle f_{j} \right\rangle}{\partial\left\langle f_{k} \right\rangle} = \sum_{ \ell}^{} \frac{\partial\left\langle f_{j} \right\rangle}{\partial\lambda_{ \ell}}\frac{\partial\lambda_{ \ell}}{\partial\left\langle f_{k} \right\rangle} = \delta_{jk}
+\end{equation*}
+%
+we see that the second derivatives of \(S\) and of $\log Z$ yield
 inverse matrices:
 
-\[A = B^{- 1}\]
+\begin{equation}A = B^{- 1}\end{equation}
 
-The functions \(logZ\left( \lambda_{1}\ldots\lambda_{n} \right)\) and
+The functions \( \log Z\left( \lambda_{1}\ldots\lambda_{n} \right)\) and
 \(S\left( \left\langle f_{1} \right\rangle\ldots\left\langle f_{n} \right\rangle \right)\)
 are equivalent in the sense that each gives full information about the
 probability distribution; indeed (13) is just the Legendre
@@ -402,36 +462,41 @@ The reciprocity law (17) acquires a deeper meaning when we consider the
 (10), a short calculation shows that the second central moments of the
 distribution of the \(f_{k}(x)\) are given by
 
-\[\begin{matrix}
-\left\langle \left( f_{k} - \left\langle f_{k} \right\rangle \right)\left( f_{\mathcal{l}} - \left\langle f_{\mathcal{l}} \right\rangle \right) \right\rangle = \left\langle f_{k}f_{\mathcal{l}} \right\rangle & \  - \left\langle f_{k} \right\rangle\left\langle f_{\mathcal{l}} \right\rangle \\
- = & \frac{\partial^{2}}{\partial\lambda_{k}\partial\lambda_{\mathcal{l}}}logZ \\
-\end{matrix}\]
+\begin{align}
+\left\langle \left( f_{k} - \left\langle f_{k} \right\rangle \right)\left( f_{ \ell} - \left\langle f_{ \ell} \right\rangle \right) \right\rangle = \left\langle f_{k}f_{ \ell} \right\rangle & \  - \left\langle f_{k} \right\rangle\left\langle f_{ \ell} \right\rangle \nonumber \\
+& \\
+ = & \frac{\partial^{2}}{\partial\lambda_{k}\partial\lambda_{ \ell}} \log Z \nonumber
+\end{align}
 
 and so, comparing with (17) , there is a universal relation between the
 ``fluctuations'' of the \(f_{k}\) and the ``compliance coefficients''
-\(\partial\left\langle f_{k} \right\rangle/\partial\lambda_{\mathcal{l}}:\)
+\(\partial\left\langle f_{k} \right\rangle/\partial\lambda_{ \ell}:\)
 
-\[\left\langle f_{k}f_{l} \right\rangle - \left\langle f_{k} \right\rangle\left\langle f_{\mathcal{l}} \right\rangle = - \frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{\mathcal{l}}} = - \frac{\partial\left\langle f_{\mathcal{l}} \right\rangle}{\partial\lambda_{k}}\]
+\begin{equation}\left\langle f_{k}f_{l} \right\rangle - \left\langle f_{k} \right\rangle\left\langle f_{ \ell} \right\rangle = - \frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{ \ell}} = - \frac{\partial\left\langle f_{ \ell} \right\rangle}{\partial\lambda_{k}}\end{equation}
 
 Likewise, higher derivatives of
-\(logZ\left( \lambda_{1}\ldots\lambda_{n} \right)\) yield higher central
+\( \log Z\left( \lambda_{1}\ldots\lambda_{n} \right)\) yield higher central
 moments of the \(f_{k}\), in a manner analogous to (20), and a hierarchy
 of fluctuation laws similar to (21).
 
 In addition to their dependence on \(x\), the functions \(f_{k}\) may
 depend on another parameter, \(\alpha.\) The partition function will
 then also have an explicit dependence on \(\alpha\) :
-
-\[Z\left( \lambda_{1}\ldots\lambda_{m};\alpha \right) \equiv \sum_{i = 1}^{n}\mspace{2mu} exp\left( - \lambda_{1}f_{1}\left( x_{i};\alpha \right) - \ldots - \lambda_{m}f_{m}\left( x_{i};\alpha \right) \right)\]
-
+%
+\begin{equation}
+Z\left( \lambda_{1}\ldots\lambda_{m};\alpha \right) \equiv \sum_{i = 1}^{n}  exp\left( - \lambda_{1}f_{1}\left( x_{i};\alpha \right) - \ldots - \lambda_{m}f_{m}\left( x_{i};\alpha \right) \right)
+\end{equation}
+%
 and a short calculation shows that the expected derivatives
-
-\[\left\langle \frac{\partial f_{k}}{\partial\alpha} \right\rangle\]
-
+%
+\begin{equation*}
+\left\langle \frac{\partial f_{k}}{\partial\alpha} \right\rangle
+\end{equation*}
+%
 satisfy the relations
-
-\[\sum_{k = 1}^{m}\mspace{2mu}\lambda_{k}\left\langle \frac{\partial f_{k}}{\partial\alpha} \right\rangle = - \frac{\partial}{\partial\alpha}logZ = - \frac{\partial S}{\partial\alpha}\]
-
+%
+\begin{equation}\sum_{k = 1}^{m} \lambda_{k}\left\langle \frac{\partial f_{k}}{\partial\alpha} \right\rangle = - \frac{\partial}{\partial\alpha} \log Z = - \frac{\partial S}{\partial\alpha}\end{equation}
+%
 If several parameters \(\alpha_{1}\ldots\alpha_{r}\) are present, a
 relation of this form will hold for each of them.
 
@@ -446,38 +511,45 @@ data \(\left\langle f_{k} \right\rangle\) and the parameters
 lead to a change \(\delta\lambda_{k}\) in \(\lambda_{k}\). From (13),
 the maximum attainable entropy is changed by
 
-\[\begin{matrix}
-\text{sS} = & \ \sum_{k = 1}^{m}\mspace{2mu}\mspace{2mu}\frac{\partial logZ}{\partial\lambda_{k}}\delta\lambda_{k} + \sum_{j = 1}^{r}\mspace{2mu}\mspace{2mu}\frac{\partial logZ}{\partial\alpha_{j}}\delta\alpha_{j} \\
- & \  + \sum_{k = 1}^{m}\mspace{2mu}\mspace{2mu}\left\langle f_{k} \right\rangle\delta\lambda_{k} + \sum_{k = 1}^{m}\mspace{2mu}\mspace{2mu}\lambda_{k}\delta\left\langle f_{k} \right\rangle \\
-\end{matrix}\]
+\begin{align}
+\delta S = & \sum_{k = 1}^{m}  \frac{\partial  \log Z}{\partial\lambda_{k}}\delta\lambda_{k} + \sum_{j = 1}^{r}  \frac{\partial  \log Z}{\partial\alpha_{j}}\delta\alpha_{j} \nonumber \\
+\\
+ & \  + \sum_{k = 1}^{m}  \left\langle f_{k} \right\rangle\delta\lambda_{k} + \sum_{k = 1}^{m}  \lambda_{k}\delta\left\langle f_{k} \right\rangle \nonumber
+\end{align}
 
 The first and third terms cancel by virtue of (14). Then, using (23), we
 have
-
-\[\text{δS} = - \sum_{j = 1}^{r}\mspace{2mu}\sum_{k = 1}^{m}\mspace{2mu}\lambda_{k}\left\langle \frac{\partial f_{k}}{\partial\alpha_{j}} \right\rangle\delta\alpha_{j} + \sum_{k = 1}^{m}\mspace{2mu}\lambda_{k}\delta\left\langle f_{k} \right\rangle\]
-
+%
+\begin{equation}
+\delta S = - \sum_{j = 1}^{r} \sum_{k = 1}^{m} \lambda_{k}\left\langle \frac{\partial f_{k}}{\partial\alpha_{j}} \right\rangle\delta\alpha_{j} + \sum_{k = 1}^{m} \lambda_{k}\delta\left\langle f_{k} \right\rangle
+\end{equation}
+%
 Now we can write
-
-\[\sum_{j = 1}^{r}\mspace{2mu}\left\langle \frac{\partial f_{k}}{\partial\alpha_{j}} \right\rangle\delta\alpha_{j} = \left\langle \sum_{j = 1}^{r}\mspace{2mu}\mspace{2mu}\frac{\partial f_{k}}{\partial\alpha_{j}}\delta\alpha_{j} \right\rangle = \left\langle \delta f_{k} \right\rangle\]
-
+%
+\begin{equation}
+\sum_{j = 1}^{r} \left\langle \frac{\partial f_{k}}{\partial\alpha_{j}} \right\rangle\delta\alpha_{j} = \left\langle \sum_{j = 1}^{r}  \frac{\partial f_{k}}{\partial\alpha_{j}}\delta\alpha_{j} \right\rangle = \left\langle \delta f_{k} \right\rangle
+\end{equation}
+%
 and so finally
-
-\[\text{δS} = \sum_{k = 1}^{m}\mspace{2mu}\lambda_{k}\left\lbrack \delta\left( f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle \right\rbrack\]
-
+%
+\begin{equation}\text{δS} = \sum_{k = 1}^{m} \lambda_{k}\left\lbrack \delta\left( f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle \right\rbrack\end{equation}
+%
 or
-
-\[\text{δS} = \sum_{k = 1}^{m}\mspace{2mu}\lambda_{k}\delta Q_{k}\]
-
+%
+\begin{equation}\text{δS} = \sum_{k = 1}^{m} \lambda_{k}\delta Q_{k}\end{equation}
+%
 where
-
-\[\delta Q_{k} \equiv \delta\left\langle f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle\]
+%
+\begin{equation}
+\delta Q_{k} \equiv \delta\left\langle f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle
+\end{equation}
 
 In general \(\delta Q_{k}\) is not an exact differential; i.e., there is
 no function
 \(Q_{k}\left( \lambda_{1}\ldots\lambda_{m};\alpha_{1}\ldots\alpha_{r} \right)\)
 which yields \(\delta Q_{k}\) by differentiation. But (28) shows that
 \(\lambda_{k}\) is an integrating factor such that
-\(\sum_{k}\mspace{2mu}\lambda_{k}\delta Q_{k}\) is the exact
+\(\sum_{k} \lambda_{k}\delta Q_{k}\) is the exact
 differential of some ``state function''
 \(S\left( \lambda_{1}\cdots\lambda_{m};\alpha_{2}\cdots\alpha_{r} \right)\).
 
@@ -490,12 +562,7 @@ apply equally well to any problem, in or out of physics, where the
 situation can be described by (1) enumerating a discrete set of
 possibilities and by (2) specifying average values of various
 quantities. The above formalism has been applied also to problems in
-engineering\footnote{E. T. Jaynes, Note on unique decipherability, IRE
-  Trans. Inform. Theory, Sept. 1959.} and economics.\footnote{E, T.
-  Jaynes, New engineering applications of information theory, in
-  '\,'Symposium on Engineering Applications of Random Function Theory
-  and Probability" (J. L. Bogdanoff and F. Kozin, eds.), Wiley, New
-  York, 1963.}
+engineering\citep{Jaynes-decipherability59} and economics.\citep{Jaynes-engineering63}
 
 In most problems, interest centers on making the best possible
 predictions for a \emph{specific} situation, and we are not really
@@ -513,7 +580,7 @@ that the predictions must be ``right,'' only that to make any better
 ones, we should need more information than was given. However, in cases
 where it makes sense to imagine \(x_{i}\) as being the result of some
 random experiment which can be repeated many times, a somewhat more
-``objective'' interepretation of this formalism is possible, which in
+``objective'' interpretation of this formalism is possible, which in
 its essentials was given already by Boltzmann. We are given the same
 average values \(\left\langle f_{k}(x) \right\rangle\) as before, but we
 are now asked a different question. If the random experiment is repeated
@@ -521,13 +588,17 @@ are now asked a different question. If the random experiment is repeated
 \(1 = 1,2,\ldots,n,\) We are to make the best estimates of the numbers
 \(m_{i}\) on the basis of this much information. The knowledge of
 average values tells us that
-
-\[\sum_{i = 1}^{n}\mspace{2mu}\frac{m_{i}}{N}f_{k}\left( x_{i} \right) = \left\langle f_{k} \right\rangle\ k = 1,2,\ldots,m\]
-
+%
+\begin{equation}
+\sum_{i = 1}^{n} \frac{m_{i}}{N}f_{k}\left( x_{i} \right) = \left\langle f_{k} \right\rangle\ k = 1,2,\ldots,m
+\end{equation}
+%
 and, of course,
-
-\[\sum_{i = 1}^{n}\mspace{2mu}\frac{m_{i}}{N} = 1\]
-
+%
+\begin{equation}
+\sum_{i = 1}^{n} \frac{m_{i}}{N} = 1
+\end{equation}
+%
 Equations (30) and (31) do not uniquely determine the \(m_{i}\) if
 \(m < n - 1,\) and so again it is necessary to introduce some additional
 principle, which now amounts to stating what we mean by the ``best''
@@ -536,25 +607,31 @@ of the random experiment, there are \emph{a priori} \(n^{N}\)
 conceivable results, since each trial could give independently any of
 the results \(\left( x_{1},x_{2},\ldots,x_{n} \right)\). But for given
 \(m_{i}\), there are only \(W\) of these possible, where
-
-\[W \equiv \frac{N!}{m_{1}!\ldots m_{n}!} = \frac{N!}{\left( Ng_{1} \right)!\left( Ng_{2} \right)!\ldots\left( Ng_{n} \right)!}\]
-
+%
+\begin{equation}
+W \equiv \frac{N!}{m_{1}!\ldots m_{n}!} = \frac{N!}{\left( Ng_{1} \right)!\left( Ng_{2} \right)!\ldots\left( Ng_{n} \right)!}
+\end{equation}
+%
 and
-
-\[g_{i} = \frac{m_{i}}{N}\ i = 1,2,\ldots,n\]
-
+%
+\begin{equation}
+g_{i} = \frac{m_{i}}{N}\ i = 1,2,\ldots,n
+\end{equation}
+%
 is the relative frequency with which the result \(x_{i}\) is obtained.
 Which cholce of the \(g_{1}\) can happen in the greatest number of ways?
 If we have to guess the frequencies on the basis of no more information
 than \((30),\) it seems that a reasonable criterion is to ask what
 choice will maximize (32) while agreeing with (30). Now in the limit of
 large \(N\), we have by the Stirling formula,
-
-\[\begin{matrix}
-\lim_{N \rightarrow \infty}\mspace{2mu}\frac{1}{N}logW & \  = \lim_{N \rightarrow \infty}\mspace{2mu}\frac{1}{N}log\left\lbrack \frac{N!}{\left( Ng_{1} \right)!\ldots\left( Ng_{n} \right)!} \right\rbrack \\
- & \  = - \sum_{i = 1}^{n}\mspace{2mu}\mspace{2mu} g_{i}logg_{i} \\
-\end{matrix}\]
-
+%
+\begin{align}
+\lim_{N \rightarrow \infty} \frac{1}{N}\log W & \  = \lim_{N \rightarrow \infty} \frac{1}{N}\log\left\lbrack
+\frac{N!}{\left( Ng_{1} \right)!\ldots\left( Ng_{n} \right)!} \right\rbrack \nonumber \\
+\\
+ & \  = - \sum_{i = 1}^{n}   g_{i}\log g_{i} \nonumber
+\end{align}
+%
 and so, if we are to estimate limiting frequencies in an indefinitely
 large number of trials, we have in (30) and (34) formulated exactly the
 same mathematical problem as in (6) and (7). The same solution (10) and
@@ -575,7 +652,7 @@ on the situation that can happen in the greatest number of ways. Two
 points about these interpretations should be noted:
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+
 \item
   In most practical problems, repeated repetition of the experiment is
   either impossible or not relevant to the real problem, which is to do
@@ -592,5 +669,7 @@ points about these interpretations should be noted:
   apparently greater ``objectivity'' of the second interpretation is to
   a large extent illusory.
 \end{enumerate}
+
+\bibliography{gibbs-vs-boltzmann}
 
 \end{document}
