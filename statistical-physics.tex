@@ -58,6 +58,7 @@ Rosenzwcig • A. J. F Siegert • E. T. Jaynes • S. Fujita
 \end{quote}
 
 \end{enumerate}
+\pagebreak
 
 Brandeis Summer Institute 1962
 
@@ -69,7 +70,12 @@ PHYSICS
 
 G. E. Uhlenbeck N. Hosenzweig A. J, F. Siegert E. T. Jaynes S. Fujita
 
-\emph{\textbf{W. A.}} BENJAMIN, INC\emph{\textbf{.}} STATISTICAL PHYSICS
+\emph{\textbf{W. A.}} BENJAMIN, INC\emph{\textbf{.}} 
+\pagebreak
+
+\twocolumn
+
+STATISTICAL PHYSICS
 
 \begin{quote}
 1962 Brandeis Lectures in Theoretical Physics, Volume 3
@@ -106,6 +112,8 @@ schools, in their progress toward better understanding the APPROACH TO
 EQUILIBRIUM OF A MANY-PARTICLE SYSTEM.
 
 
+\pagebreak
+\onecolumn
 
 \section*{Foreword}
 
@@ -137,6 +145,7 @@ lectures.
 \maketitle 
 
 Notes by the lecturer
+\pagebreak
 
 \tableofcontents
 
@@ -200,7 +209,7 @@ information into a probability assignment
 \(P_{n},n = 1,\ 2,\ \ldots,6\), for the \(n\)th face to come up on the
 next toss.
 
-To explain more fully what is meant by this, note that we are not asking
+To explain more fully what is meant by this, note that we are \emph{not} asking
 for an estimate of the fraction (i.e., the relative frequency) of tosses
 which give \(n\) spots There is, indeed, a connection between the
 probability and the frequency, which we will derive later. But the
@@ -219,11 +228,7 @@ the statistician, the politician; and indeed all of us. We are
 continually faced with situations where some definite decision must be
 made \emph{now}, even though we do not have all the information we might
 like.
-%
-\begin{align}
-\sum_{n = 1}^{6} P_{n} = & 1  \label{eqn-two} \\
-\sum_{n = 1}^{6} nP_{n} = & 4.5 \label{eqn-three}
-\end{align}
+
 %
 \begin{figure}
     \centering
@@ -238,7 +243,12 @@ like.
     \caption{}
     \label{fig-two}
 \end{figure}
-%
+
+Conventional probability theory does not provide any principle for assigning the probabilities $P_n$; so let us think about it a little. We must evidently, choose $P_n$ such that
+\begin{align}
+\sum_{n = 1}^{6} P_{n} = & 1  \label{eqn-two} \\
+\sum_{n = 1}^{6} nP_{n} = & 4.5 \label{eqn-three}
+\end{align}
 where (\ref{eqn-three}) is analogous to (\ref{eqn-one}). A possible solution of (\ref{eqn-two}) and (\ref{eqn-three}) is indicated
 in Fig. \ref{fig-one}; we could take \(P_{4} = P_{5} = 1/2\), all other
 \(P_{n} = 0\), This agrees with all the given data. But our common sense
@@ -247,13 +257,36 @@ Fig. \ref{fig-two} is evidently a more honest description of what we know. But e
 this is not reasonable---nothing in the data tells us that n = 1, 2 are
 impossible events. In Fig. \ref{fig-two}, we are still jumping to conclusions not
 warranted by the available evidence. Evidently, it is unreasonable to
-assign probability zero to any situation unless our data really rules
+assign probability zero to \emph{any} situation unless our data really rules
 out that case. If we assign \(P_{1} > 0\), \(P_{2} > 0\), then in order
 to keep the average at 4.5, we shall have to give some increased weight
 to the cases \(n = 5,\ 6\). Figure \ref{fig-three} shows an assignment that agrees
 with the data and does not ignore any possibility. But it still seems
 unreasonable to give the case \(n = 6\) such exceptional treatment.
 Figure \ref{fig-four} represents what we should probably call a
+backward step---nothing in the data of the problem indicates any reason for such
+an uneven treatment. A reasonable assignment \(P_{n}\) must not only
+agree with the data and must not ignore any possibility---but
+it must also not give undue emphasis to any possibility. The \(P_{n}\)
+should vary as smoothly as possible, in some sense. One criterion of
+"smoothness" might be that adjacent differences \(P_{n + 1} - P_{n}\)
+should be constant; and, indeed, there is a solution with that property.
+It is given by \(P_{n} = (12n - 7)/210\) and
+is
+shown in Fig. \ref{fig-five}. This is evidently the most reasonable probability
+assignment so far. But there is a limit to how high an average you can
+get with this linear variation of \(P_{n}\). If we took the extreme
+case, \(P_{n} = (\text{const.})(n - 1)\), we should again violate one of our
+principles because \(P_{1} = 0\), and the average would be only
+\(\sum_{n}^{}{P_{n} = 70/15} = 4.67\). Suppose the data of the problem
+had been changed so that the average is to be 4.7 instead of 4.5. Then
+there is \emph{no} straight-line solution satisfying \(P_{n} \geq 0\). The
+\(P_{n}\) must lie on some concave curve, as in Fig. 6. But the
+principles by which we reason
+surely are the same whether the data specify 4.5 or 4.7; so it appears that a
+result qualitatively such as Fig. \ref{fig-six} should be used also when
+\(n = 4.5\).
+
 \begin{figure}
     \centering
     \includegraphics[width=3.39764in,height=1.64567in]{media/image3.jpeg}
@@ -266,43 +299,19 @@ Figure \ref{fig-four} represents what we should probably call a
     \caption{}
     \label{fig-four}
 \end{figure}
-backward
-step---nothing in the data of the problem indicates any reason for such
-an uneven treatment. A reasonable assignment \(P_{n}\) must not only
-agree with the data and must not ignore any possibility---but
-it must also not give undue emphasis to any possibility. The \(P_{n}\)
-should vary as smoothly as possible, in some sense. One criterion of
-"smoothness" might be that adjacent differences \(P_{n + 1} - P_{n}\)
-should be constant; and, indeed, there is a solution with that property.
-It is given by \(P_{n} = (12n - 7)/210\) and
 \begin{figure}
     \centering
     \includegraphics[width=2.48031in,height=1.82283in]{media/image5.jpeg}
     \caption{}
     \label{fig-five}
 \end{figure}
-is
-shown in Fig. \ref{fig-five}. This is evidently the most reasonable probability
-assignment so far. But there is a limit to how high an average you can
-get with this linear variation of \(P_{n}\). If we took the extreme
-case, \(P_{n} = (const.)(n - 1)\), we should again violate one of our
-principles because \(P_{1} = 0\), and the average would be only
-\(\sum_{n}^{}{P_{n} = 70/15} = 4.67\). Suppose the data of the problem
-had been changed so that the average is to be 4.7 instead of 4.5. Then
-there is no straight-line solution satisfying \(P_{n} \geq 0\). The
-\(P_{n}\) must lie on some concave curve, as in Fig. 6. But the
-principles by which we reason
-surely
 \begin{figure}
     \centering
     \includegraphics[width=3.16535in,height=1.84252in]{media/image6.jpeg}
     \caption{}
     \label{fig-six}
 \end{figure}
-%
-are the same whether the data specify 4.5 or 4.7; so it appears that a
-result qualitatively such as Fig. \ref{fig-six} should be used also when
-\(n = 4.5\).
+
 
 This is about as far as qualitative reasoning can take us, and I have carried the argument through on that basis in order to show how ordinary common sense leads us to a result that has all the important features of the quantitative solution given below. The probability assignment $P _{ n }$ which most honestly describes what we know is the one that is as smooth and "spread out" as possible subject to the data. It is the most conservative assignment in the sense that it does not permit one to draw any conclusions not warranted by the data.
 
@@ -340,6 +349,7 @@ every statistical mechanics textbook. This method has the merit that it
 leads immediately to the answer, but the weakness that it does not make
 it obvious whether one obtains a true absolute maximum of \(S_{I}\). The
 following argument establishes this important result more rigorously.
+
 Let \(\left( p_{1}\ldots p_{n} \right)\) and
 \(\left( u_{1}\ldots u_{n} \right)\) be any two possible probability
 distributions over the \(x_{1};\) i.e.,
@@ -468,7 +478,7 @@ distribution of the \(f_{k}(x)\) are given by
 %
 and so, comparing with (\ref{eqn-seventeen}) , there is a universal relation between the
 ``fluctuations'' of the \(f_{k}\) and the ``compliance coefficients''
-\(\partial\left\langle f_{k} \right\rangle/\partial\lambda_{ \ell}:\)
+\(\partial\left\langle f_{k} \right\rangle/\partial\lambda_{ \ell}\):
 %
 \begin{equation}
 \left\langle f_{k}f_{l} \right\rangle - \left\langle f_{k} \right\rangle\left\langle f_{ \ell} \right\rangle = - \frac{\partial\left\langle f_{k} \right\rangle}{\partial\lambda_{ \ell}} = - \frac{\partial\left\langle f_{ \ell} \right\rangle}{\partial\lambda_{k}} \label{eqn-twenty-one}
@@ -478,10 +488,10 @@ Likewise, higher derivatives of
 \( \log Z\left( \lambda_{1}\ldots\lambda_{n} \right)\) yield higher central
 moments of the \(f_{k}\), in a manner analogous to (\ref{eqn-twenty}), and a hierarchy
 of fluctuation laws similar to (\ref{eqn-twenty-one}).
-%
+
 In addition to their dependence on \(x\), the functions \(f_{k}\) may
 depend on another parameter, \(\alpha.\) The partition function will
-then also have an explicit dependence on \(\alpha\) :
+then also have an explicit dependence on \(\alpha\):
 %
 \begin{equation}
 Z\left( \lambda_{1}\ldots\lambda_{m};\alpha \right) \equiv \sum_{i = 1}^{n}  \exp\left( - \lambda_{1}f_{1}\left( x_{i};\alpha \right) - \ldots - \lambda_{m}f_{m}\left( x_{i};\alpha \right) \right)
@@ -518,7 +528,6 @@ the maximum attainable entropy is changed by
 \label{eqn-twenty-four} \\
  & \  + \sum_{k = 1}^{m}  \left\langle f_{k} \right\rangle\delta\lambda_{k} + \sum_{k = 1}^{m}  \lambda_{k}\delta\left\langle f_{k} \right\rangle \nonumber
 \end{align}
-
 The first and third terms cancel by virtue of (\ref{eqn-fourteen}). Then, using (\ref{eqn-twenty-three}), we
 have
 %
@@ -549,7 +558,6 @@ where
 \begin{equation}
 \delta Q_{k} \equiv \delta\left\langle f_{k} \right\rangle - \left\langle \delta f_{k} \right\rangle \label{eqn-twenty-nine}
 \end{equation}
-
 In general \(\delta Q_{k}\) is not an exact differential; i.e., there is
 no function
 \(Q_{k}\left( \lambda_{1}\ldots\lambda_{m};\alpha_{1}\ldots\alpha_{r} \right)\)
@@ -578,9 +586,7 @@ example, we want to predict the magnetization \(M(t)\) of the
 case, as already emphasized, the maximum-entropy probability assignment
 \(p_{i}\) cannot be regarded as describing any objectively existing
 state of affairs; it is only a means of describing a state of knowledge
-in a way that. is ``maximally noncommital'' by a certain criterion.
-
-The above equations then represent simply the best predictions we are
+in a way that. is ``maximally noncommital'' by a certain criterion. The above equations then represent simply the best predictions we are
 able to make on the given information. We are not entitled to assert
 that the predictions must be ``right,'' only that to make any better
 ones, we should need more information than was given. However, in cases
@@ -729,15 +735,16 @@ This assumption has proved correct in every case where one has succeeded in carr
 
 If we accept (\ref{eqn-forty-four}), then the identification of entropy is complete, and connection between information theory entropy and experimental entropy for the present problem can be stated as a theorem.
 
-\paragraph{Theorem}: Let $p _{i} \equiv  \text{prob} \left( E _{ i }\right)$ be any probability assignment which conforms to the data in the sense that $\langle E \rangle=\sum_{ i } p _{ i } E _{ i }$ is the
+\paragraph{Theorem:} Let $p _{i} \equiv  \text{prob} \left( E _{ i }\right)$ be any probability assignment which conforms to the data in the sense that $\langle E \rangle=\sum_{ i } p _{ i } E _{ i }$ is the
 measured energy. Let $S_{I} \equiv-\sum p_{i} \log p_{i}$ be the corresponding information theory entropy, and $S _{e}$ be the experimentally measured entropy for the system. The additive constant is chosen so that at zero temperature $S_{e}=\log n$, where $n$ is the degeneracy of the ground state, and let $S_{e}$ be expressed in units such that Boltzmann's constant $k \equiv 1$. Then
 \begin{equation}
-S _{ I } \leq S _{ e }
+S _{ I } \leq S _{ e } \label{eqn-forty-five}
 \end{equation}
 with equality if and only if $p _{ i }$ is chosen as the canonical distribution
 \begin{equation}
 p_{i}=\frac{1}{Z} \exp \left(-\lambda E_{i}(V)\right) \label{eqn-forty-six}
 \end{equation}
+
 This is the physical meaning, for the present problem, of the general inequality (\ref{eqn-twelve}). Obviously, the above statement can be greatly generalized; we can introduce more degrees of freedom in addition to $V$, we can consider open systems, where the number of molecules can change, and we can use the grand canonical ensemble, etc. The corresponding statement will still hold; over all probability assignments that agree with the data in the aforementioned sense, the information theory entropy attains an absolute maximum, equal to the experimental entropy, if and only if $p _{ i }$ is taken as the appropriate canonical or grand canonical distribution. 
 
 \paragraph{Remarks:} 
@@ -765,13 +772,15 @@ In principle, whenever information of this sort is available, it should be incor
 
 \item The theory as developed here has, in principle, an additional freedom of choice not present in conventional statistical mechanics. The statement that a system has a definite, reproducible equation of state means, for example, that if we fix \emph{experimentally} any two of the parameters $P$, $V$, $T$, then the third is determined. Correspondingly, in the theory it should be true that \emph{information} about any two of these quantities should suffice to enable us to \emph{predict} the third; there is no basic reason for constructing our ensembles always in terms of energy rather than any other measurable quantities. Use of energy has the mathematical convenience that energy is a constant of the motion, and so the statement that the system is in equilibrium (i.e., measurable parameters are not time-dependent) requires no additional constraint. With an ensemble based on some quantity, such as pressure or magnetization, which is not an intrinsic constant of the motion, if we wish to predict equilibrium properties we need to incorporate into the theory an additional statement, involving the equations of motion, which specifies that these quantities are constant. To do this requires no new principles of reasoning beyond those given above; we merely include the values of such a quantity $f \left( t _{ i }\right)$ at many different times (or in the limit, at all times) into the set of quantities $f _{ k }$ whose expectation values are given. In the limit, the partition function thus becomes a partition functional:
 \begin{equation}
-Z [\lambda( t )]=\sum_{ i } \exp \left[-\int \lambda( t ) f \left( x _{ i }, t \right) d t \right] \label{eqn-fifty}
+Z [\lambda( t )]=\sum_{ i } \exp \left[-\int \lambda( t ) f \left( x _{ i }, t \right)\text{d}t \right] \label{eqn-fifty}
 \end{equation}
 and the relations (\ref{eqn-fourteen}) determining the $\lambda$'s go into the corresponding functional derivative relations
 \begin{equation}
 \langle f(t)\rangle=-\frac{\delta}{\delta \lambda(t)} \log Z[\lambda(t)] \label{eqn-fifty-one}
 \end{equation}
-which determine the function $\lambda(t)$ We have not found any general proof that the predicted equation of state is independent of the type of information used, but a special case is proved in the 1961 Stanford thesis of Dr. Douglas Scalapino. There it is shown that the same equation of state of a paramagnetic substance with spin-spin interaction is obtained whatever the input information. We conjecture that this is true for any system that exhibits an experimentally reproducible equation of state.
+which determine the function $\lambda(t)$. 
+
+We have not found any general proof that the predicted equation of state is independent of the type of information used, but a special case is proved in the 1961 Stanford thesis of Dr. Douglas Scalapino. There it is shown that the same equation of state of a paramagnetic substance with spin-spin interaction is obtained whatever the input information. We conjecture that this is true for any system that exhibits an experimentally reproducible equation of state.
 
 It is doubtful whether this new degree of freedom in applying the theory will prove useful in calculations pertaining to the equilibrium state, since it is more complicated than the usual procedure. However, it is just this extra freedom that makes it possible to develop a general formalism for irreversible processes; indeed, prediction of time-dependent phenomena is obviously impossible as long as our probability distributions depend only on constants of the motion, Equations (\ref{eqn-fifty}) and (\ref{eqn-fifty-one}) form the starting point for a general theory of the nonequilibrium steady state, the Scalapino thesis providing an example of the calculation of transport coefficients from them.
 \end{enumerate}
@@ -784,45 +793,47 @@ For most applications of interest, the foregoing formalism needs to be generaliz
 
 The expectation value of an operator $F _{ k }$ of a system described by the density matrix $\rho$ is
 \begin{equation}
-\left\langle F_{k}\right\rangle=\operatorname{Tr}\left(\rho F_{k}\right)
+\left\langle F_{k}\right\rangle=\operatorname{Tr}\left(\rho F_{k}\right) \label{eqn-fifty-two}
 \end{equation}
 where Tr stands for the trace. The information theory entropy corresponding to $\rho$ is
 \begin{equation}
 S_{I}=-\operatorname{Tr}(\rho \log \rho)
 \end{equation}
-(See reference $^{5}$ for the arguments that lead to this definition of $S_{I}$ and discussion of other expressions which have been proposed.) Maximizing $S_{1}$ subject to the constraints imposed by knowledge of the $\left\langle F _{ k }\right\rangle$ yields
+(See reference\citep{Jaynes-information-II-57} for the arguments that lead to this definition of $S_{I}$ and discussion of other expressions which have been proposed.) Maximizing $S_{1}$ subject to the constraints imposed by knowledge of the $\left\langle F _{ k }\right\rangle$ yields
 \begin{equation}
-\rho=\frac{1}{Z\left(\lambda_{1} \ldots \lambda_{m}\right.} \exp \left(-\lambda_{1} F_{1}-\ldots-\lambda_{m} F_{m}\right)
+\rho=\frac{1}{Z\left(\lambda_{1} \ldots \lambda_{m}\right.} \exp \left(-\lambda_{1} F_{1}-\ldots-\lambda_{m} F_{m}\right) \label{eqn-fifty-four}
 \end{equation}
 where
 \begin{equation}
 Z \left(\lambda_{1} \ldots \lambda_{ m }\right) \equiv \operatorname{Tr} \exp \left(-\lambda_{1} F _{1}-\ldots-\lambda_{ m } F _{ m }\right.
 \end{equation}
-To prove $(54),$ use the lemma
+To prove (\ref{eqn-fifty-four}), use the lemma
 \begin{equation}
 \operatorname{Tr}(\rho \log \rho) \geq \operatorname{Tr}(\rho \log \sigma)
 \end{equation}
-analogous to (\ref{eqn-nine}) Here $\rho$ is any density matrix satisfying (52), and $\sigma$ is the canonical density matrix (54). All the formal relations
+analogous to (\ref{eqn-nine}) Here $\rho$ is any density matrix satisfying (\ref{eqn-fifty-two}), and $\sigma$ is the canonical density matrix (\ref{eqn-fifty-four}). All the formal relations
 (\ref{eqn-twelve}) to (\ref{eqn-twenty-nine}) still hold, except that when the $F_{k}$ do not all commute, the fluctuation law (21) must be generalized to
 where
 \begin{equation}
 \begin{aligned}
--\frac{\partial\left(F_{k}\right\rangle}{\partial \lambda_{j}}=-\frac{\partial\left\langle F_{j}\right\rangle}{\partial \lambda_{ k }}=& \int_{0}^{1}\left\langle e^{x A} F_{k} e^{-x A} F_{j}\right\rangle d x \\
+-\frac{\partial\left(F_{k}\right\rangle}{\partial \lambda_{j}}=-\frac{\partial\left\langle F_{j}\right\rangle}{\partial \lambda_{ k }}=& \int_{0}^{1}\left\langle e^{x A} F_{k} e^{-x A} F_{j}\right\rangle\text{d}x \\
 &=\left\langle F_{k}\right\rangle\left\langle F_{j}\right\rangle
 \end{aligned}
 \end{equation}
 \begin{equation}
 A \equiv \sum_{ k =1}^{ m } \lambda_{ k } F _{ k }
 \end{equation}
-For all $\rho$ that agree with the data in the sense of (52), we have $S_{Y}(\rho) \leq S_{e},$ with equality if and only if $\rho$ is the canonical matrix (54)
-b. Continuous Distributions
+For all $\rho$ that agree with the data in the sense of (\ref{eqn-fifty-two}), we have $S_{Y}(\rho) \leq S_{e},$ with equality if and only if $\rho$ is the canonical matrix (\ref{eqn-fifty-four}).
+
+\subsection{Continuous Distributions}
+
 Shannon's fundamental uniqueness theorem (reference, $^{1}$ theorem 3) which establishes $-\sum p_{i} \log p_{i}$ as the correct information measure, goes through only for discrete probability distributions. At the present time, the only criterion we have for finding the analogous expression for the continuous case is to pass to the limit from a discrete one; presumably, future study will give a more elegant approach. The following argument can be made as rigorous as we please, but at considerable sacrifice of clarity. In the discrete entropy expression
 \begin{equation}
-S _{ I }^{( d )}=-\sum_{ i =1}^{n} p _{ i } \log p _{ i }
+S _{ I }^{(\text{d})}=-\sum_{ i =1}^{n} p _{ i } \log p _{ i }\label{eqn-fifty-nine}
 \end{equation}
 we suppose that the discrete points $x_{i}, i=1,2, \ldots, n,$ become more and more numerous, in such a way that, in the limit $n \rightarrow \infty$ the density of points approaches a definite function $m ( x ):$
 \begin{equation}
-\lim _{n \rightarrow \infty} \frac{1}{n}(\text { number of points in } a<x<b)=\int_{a}^{b} m(x) d x
+\lim _{n \rightarrow \infty} \frac{1}{n}(\text { number of points in } a<x<b)=\int_{a}^{b} m(x)\text{d}x
 \end{equation}
 If this passage to the limit is sufficiently well behaved, it will also be true that adjacent differences $\left(x_{i+1}-x_{i}\right)$ in the neighborhood of any particular value of $x$ will tend to zero so that
 \begin{equation}
@@ -836,110 +847,291 @@ or, from (\ref{eqn-sixty-one}),
 \begin{equation}
 p _{ i } \rightarrow w \left( x _{ i }\right)\left[ nm \left( x _{ i }\right)\right]^{-1}
 \end{equation}
-Consequently, the discrete entropy (59) goes over into the integral
+Consequently, the discrete entropy (\ref{eqn-fifty-nine}) goes over into the integral
 \begin{equation}
-S _{ I }^{( d )}-\int w ( x ) dx \log \left[\frac{ w ( x )}{ nm ( x )}\right] \nonumber
+S _{ I }^{(\text{d})}-\int w ( x ) dx \log \left[\frac{ w ( x )}{ nm ( x )}\right]. \nonumber
 \end{equation}
 In the limit, this contains an infinite term log $n ;$ but if we subtract this off, the difference will, in the cases of interest, approach a definite limit which we take as the continuous information measure:
 \begin{equation}
-S _{ I }^{( c )} \equiv \lim \left[ S _{ I }^{( d )}-\log n \right]=-\int w ( x ) \log \left[\frac{ w ( x )}{ m ( x )}\right] d x \label{eqn-sixty-three}
+S _{ I }^{( c )} \equiv \lim \left[ S _{ I }^{(\text{d})}-\log n \right]=-\int w ( x ) \log \left[\frac{ w ( x )}{ m ( x )}\right]\text{d}x .\label{eqn-sixty-three}
 \end{equation}
 The expression (\ref{eqn-sixty-three}) is invariant under parameter changes; i.e., instead of $x$ another quantity $y(x)$ could be used as the independent variable. The probability density and measure function $m ( x )$ transform as
 \begin{align*}
-w_{1}(y) d y & =w(x) d x \\
-m_{1}(y) d y & =m(x) d x
+w_{1}(y)\text{d}y & =w(x)\text{d}x \\
+m_{1}(y)\text{d}y & =m(x)\text{d}x
 \end{align*}
 so that (\ref{eqn-sixty-three}) goes into
 \begin{equation}
-S_{I}^{(c)}=-\int w_{1}(y) d y \log \left[\frac{w_{1}(y)}{m_{1}(y)}\right]
+S_{I}^{(c)}=-\int w_{1}(y)\text{d}y \log \left[\frac{w_{1}(y)}{m_{1}(y)}\right].
 \end{equation}
-To achieve this invariance it is necessary that the "measure" $m ( x )$ be introduced. I stress this point because one still finds, in the literature, statements to the effect that the entropy of a continuous probability distribution is \emph{not} an invariant. This is due to the historical accident that in his original papers, Shannon\citep{Shannon-mathematical48} assumed, without calculating, that the analog of $\sum p _{1} \log p _{ i }$ was $\int w \log w dx ,$ and got into trouble for lack of invariance. Only recently have we realized that mathematical deduction from the uniqueness theorem, instead of guesswork, yields the invariant information measure (\ref{eqn-sixty-three}).
+
+To achieve this invariance it is necessary that the ``measure'' $m ( x )$ be introduced. I stress this point because one still finds, in the literature, statements to the effect that the entropy of a continuous probability distribution is \emph{not} an invariant. This is due to the historical accident that in his original papers, Shannon\citep{Shannon-mathematical48} assumed, without calculating, that the analog of $\sum p _{1} \log p _{ i }$ was $\int w \log w dx ,$ and got into trouble for lack of invariance. Only recently have we realized that mathematical deduction from the uniqueness theorem, instead of guesswork, yields the invariant information measure (\ref{eqn-sixty-three}).
 
 In many cases it is more natural to pass from the discrete distribution to a continuous distribution of several variables, $x_{1} \ldots x_{r} ;$ in this case the results readily generalize to
 \begin{equation}
-S _{ I }^{( c )}=-\int \ldots \int w \left( x _{1} \ldots x _{ r }\right) \log \left[\frac{ w \left( x _{1} \ldots x _{ r }\right)}{ m \left( x _{1} \ldots x _{ r }\right)}\right] dx _{1} \ldots dx _{ r } \label{eqn-sixty-five}
+S _{ I }^{( c )}=-\int \ldots \int w \left( x _{1} \ldots x _{ r }\right) \log \left[\frac{ w \left( x _{1} \ldots x _{ r }\right)}{ m \left( x _{1} \ldots x _{ r }\right)}\right] dx _{1} \ldots dx_{r}. \label{eqn-sixty-five}
 \end{equation}
-We apply this to the Liouville function of classical mechanics. For a system of $N$ particles, $W _{ N }\left( x _{1} p _{1} \ldots x _{2} p _{ x } ; t \right) d ^{3} x _{1} \ldots d ^{3} p _{ N }$ is the
-probability that at time $t$ the system is in the element $d^{3} x_{1} \ldots d^{3} p_{N}$ of $6 N$ -dimensional phase space. Before we can set up the information measure for this case, we must decide on a basic measure $m\left(x_{1} \ldots p_{N}\right)$ for phase space. In classical statistical mechanics, one has always taken uniform measure: $m=\text{const}.$, largely because one couldn't think of anything else to do. However, the more careful writers have all stressed the fact that \emph{within the context of classical theory}, no real justification of this has ever been produced. For the present, I propose to dodge this issue by regarding classical statistical mechanics merely as a limiting form of the (presumably more fundamental) discrete quantum statistical mechanics. In other words, the well-known proposition that each discrete quantum state corresponds to a volume $h ^{3} N$ of classical phase space, will determine our uniform measure as resulting from equal weighting of all orthogonal quantum states, and passing to the limit $h \rightarrow 0$. Thus, apart from an irrelevant additive constant which we drop, our information measure will be just the negative of the Gibbs $H$ -function, $H _{ G }$
+
+We apply this to the Liouville function of classical mechanics. For a system of $N$ particles, $W _{ N }\left( x _{1} p _{1} \ldots x _{2} p _{ x } ; t \right)\text{d}^{3} x _{1} \ldots\text{d}^{3} p _{ N }$ is the
+probability that at time $t$ the system is in the element $d^{3} x_{1} \ldots\text{d}^{3} p_{N}$ of $6 N$ -dimensional phase space. Before we can set up the information measure for this case, we must decide on a basic measure $m\left(x_{1} \ldots p_{N}\right)$ for phase space. In classical statistical mechanics, one has always taken uniform measure: $m=\text{const}.$, largely because one couldn't think of anything else to do. However, the more careful writers have all stressed the fact that \emph{within the context of classical theory}, no real justification of this has ever been produced. For the present, I propose to dodge this issue by regarding classical statistical mechanics merely as a limiting form of the (presumably more fundamental) discrete quantum statistical mechanics. In other words, the well-known proposition that each discrete quantum state corresponds to a volume $h ^{3N}$ of classical phase space, will determine our uniform measure as resulting from equal weighting of all orthogonal quantum states, and passing to the limit $h \rightarrow 0$. Thus, apart from an irrelevant additive constant which we drop, our information measure will be just the negative of the Gibbs $H$-function, $H_{G}$:
 \begin{equation}
-- S _{ I }= H _{ G }=\int W _{ N } \log W _{ N } d \tau
+- S _{ I }= H _{ G }=\int W _{ N } \log W _{ N }\text{d}\tau
 \end{equation}
-where $d \tau= d ^{3} x _{1} \ldots d ^{3} p _{ N }$
+where $d \tau=\text{d}^{3} x _{1} \ldots\text{d}^{3} p _{ N }$.
+
 With this continuous probability distribution, we are able to incorporate into the theory a more detailed kind of macroscopic information than we have considered up till now. Suppose we are given the macroscopic density $\rho(x)$ as a function of position. We interpret this as specifying at each point of space, the expectation value of a certain quantity:
 \begin{equation}
-\left\langle f_{1}\left(x_{1} p_{1} \ldots x_{N} p_{N} ; x\right)\right\rangle=\int W_{N} f_{2} d \tau=\rho(x)
+\left\langle f_{1}\left(x_{1} p_{1} \ldots x_{N} p_{N} ; x\right)\right\rangle=\int W_{N} f_{2}\text{d}\tau=\rho(x)
 \end{equation}
 where the phase function $f _{1}$ is given by
 \begin{equation}
-f _{1}\left( x _{1} p _{1} \ldots x _{ N } p _{ N } ; x \right)=\sum_{ i =1}^{ N } m _{0}\left( x _{ i }- x \right) \label{eqn-sixty-eight}
+f _{1}\left( x _{1} p _{1} \ldots x _{ N } p _{ N } ; x \right)=\sum_{ i =1}^{ N } m \delta\left( x _{ i }- x \right) \label{eqn-sixty-eight}
 \end{equation}
-The position $x$ now plays the same role as the index $k$ in the elementary version of the formalism, Eqs. (10) to (\ref{eqn-twenty-nine}) and so in place of the sum $\sum_{k} \lambda_{k}, f_{k}\left(x_{i}\right)$ in the exponent of the probability distribution
+The position $x$ now plays the same role as the index $k$ in the elementary version of the formalism, Eqs. (\ref{eqn-ten}) to (\ref{eqn-twenty-nine}) and so in place of the sum $\sum_{k} \lambda_{k}, f_{k}\left(x_{i}\right)$ in the exponent of the probability distribution
 \begin{equation}
-\int \lambda(x) f_{1} d^{3} x \nonumber
+\int \lambda(x) f_{1}\text{d}^{3} x \nonumber
 \end{equation}
-into the exponent of $W _{ N }$. The partition function then becomes a partition functional of the function $\lambda( x )$ In general, we might have several phase functions of this kind, whose expectation values are given at each point of space:
+into the exponent of $W _{ N }$. The partition function then becomes a partition functional of the function $\lambda( x )$. 
+
+In general, we might have several phase functions of this kind, whose expectation values are given at each point of space:
 \begin{align}
-\left\langle f_{1}\left(x_{1} \ldots p_{N} ; x\right)\right\rangle &=\int W_{N} f_{1} d \tau \nonumber \\
+\left\langle f_{1}\left(x_{1} \ldots p_{N} ; x\right)\right\rangle &=\int W_{N} f_{1}\text{d}\tau \nonumber \\
 \cdot \cdot \cdot \cdot \cdot & \cdot \cdot \cdot \label{eqn-sixty-nine}\\
-\left\langle f_{m}\left(x_{1} \ldots p_{N} ; x\right)\right\rangle &=\int W_{N} f_{m} d \tau \nonumber
+\left\langle f_{m}\left(x_{1} \ldots p_{N} ; x\right)\right\rangle &=\int W_{N} f_{m}\text{d}\tau \nonumber
 \end{align}
 Maximization of $S_{I}$ subject to these constraints gives the partition functional
+\begin{align}
+Z \left[\lambda_{1}(x), \ldots, \lambda_{m}(x)\right] &=\int\text{d}\tau \exp \left\{-\sum_{ k =1}^{m} \int \lambda_{ k }( x )\right. \nonumber \\
+\label{eqn-seventy} \\
+&\left.\times f _{ k }\left(x_{1} \ldots p _{ N } ; x \right)\text{d}^{3} x \right\} \nonumber
+\end{align}
+The Lagrange multiplier functions $\lambda_{k}(x)$ are determined by relations analogous to (\ref{eqn-fourteen}), but now involving the functional derivatives:
 \begin{equation}
-\begin{aligned}
-Z \left[\lambda_{1}(x), \ldots, \lambda_{m}(x)\right] &=\int d \tau \exp \left\{-\sum_{ k =1}^{m} \int \lambda_{ k }( x )\right.\\
-&\left.\times f _{ k }\left(x_{1} \ldots p _{ N } ; x \right) d ^{3} x \right\}
-\end{aligned}
+\left\langle f _{ k }\left( x _{1} \ldots p _{ N } ; x \right)\right\rangle=-\frac{\delta}{\delta \lambda_{ k }( x )} \log Z \left[\lambda_{1}( x ), \ldots, \lambda_{ m }( x )\right] \label{eqn-seventy-one}
 \end{equation}
-The Lagrange multiplier functions $\lambda_{k}(x)$ are determined by relations analogous to (14), but now involving the functional derivatives:
-\begin{equation}
-\left\langle f _{ k }\left( x _{1} \ldots p _{ N } ; x \right)\right\rangle=-\frac{\delta}{\delta \lambda_{ k }( x )} \log Z \left[\lambda_{1}( x ), \ldots, \lambda_{ m }( x )\right]
-\end{equation}
-and the other properties, Eqs. (16) to (\ref{eqn-twenty-nine}), are likewise easily generalized. 
+and the other properties, Eqs. (\ref{eqn-sixteen}) to (\ref{eqn-twenty-nine}), are likewise easily generalized. 
 
 \paragraph{Example:} Suppose the macroscopic density of mass, momentum, and kinetic energy are given at the initial time. This corresponds to expectation values of (\ref{eqn-sixty-eight}) and
 \begin{align}
-\left\langle f_{2}\left(x_{1} \ldots p_{N} ; x\right)\right\rangle & =\left\langle\sum_{i=1}^{N} p_{i} \delta\left(x_{1}-x\right)\right\rangle=p(x) \\
+\left\langle f_{2}\left(x_{1} \ldots p_{N} ; x\right)\right\rangle & =\left\langle\sum_{i=1}^{N} p_{i} \delta\left(x_{i}-x\right)\right\rangle=p(x) \\
 \left\langle f_{3}\left(x_{1} \ldots p_{N} ; x\right)\right\rangle & =\left\langle\sum_{i=1}^{N} \frac{p_{i}^{2}}{2 m} \delta\left(x_{i}-x\right)\right\rangle=K(x)
 \end{align}
 Since all the given data are formed additively from contributions of each particle, the maximum-entropy Liouville function factors:
 \begin{equation}
-W_{N}=w_{1}\left(x_{i}, p_{i}\right)
+W_{N}=w_{1}\left(x_{i}, p_{i}\right) \label{eqn-seventy-four}
 \end{equation}
-(this would not be the case if the given information concerned mutual properties of different particles, such as the potential energy), and the exponential in the partition functional (70) reduces to
+(this would not be the case if the given information concerned mutual properties of different particles, such as the potential energy), and the exponential in the partition functional (\ref{eqn-seventy}) reduces to
 \begin{align*}
--\int d ^{3} x \left[\lambda_{1}( x ) \sum_{ i } m \delta\left( x _{ i }- x \right)+\lambda_{2}( x ) \cdot \sum_{ i } p _{ i } \delta\left( x _{ i }- x \right)\right. \\
-\left.+\lambda_{3}( x ) \sum_{ i } \frac{ p _{ i }^{2}}{2 m } \delta\left( x _{ i }- x \right)\right] \\
-=-\sum_{ i =1}^{ N }\left[ m \lambda_{1}\left( x _{ i }\right)+ p _{ i } \cdot \lambda_{2}\left( x _{ i }\right)+\frac{ p _{ i }^{2}}{2 m } \lambda_{3}\left( x _{ i }\right)\right]
+ -& \int\text{d}^{3} x \left[\lambda_{1}( x ) \sum_{ i } m \delta\left( x _{ i }- x \right)+\lambda_{2}( x ) \cdot \sum_{ i } p _{ i } \delta\left( x _{ i }- x \right)\right. \\
+  +& \left. \lambda_{3}( x ) \sum_{ i } \frac{ p _{ i }^{2}}{2 m } \delta\left( x _{ i }- x \right)\right] \\
+ =& -\sum_{ i =1}^{ N }\left[ m \lambda_{1}\left( x _{ i }\right)+ p _{ i } \cdot \lambda_{2}\left( x _{ i }\right)+\frac{ p _{ i }^{2}}{2 m } \lambda_{3}\left( x _{ i }\right)\right]
 \end{align*}
 so that
-\begin{equation}
-\begin{aligned}
-\log Z=& N \log \int\left(\exp \left[-m \lambda_{1}(x)-p \cdot \lambda_{2}(x)\right.\right.\\
-&\left.\left.-\frac{p^{2}}{2 m} \lambda_{3}(x)\right]\right) d^{3} x d^{3} p
-\end{aligned}
-\end{equation}
-Application of (71) now yields the physical meaning of the Lagrange multipliers: defining the ``mass velocity'' $u ( x )$ by $P ( x )=\rho( x ) u ( x )$
-and the ``local temperature'' $T ( x )$ by the mean-square velocity as seen by an observer moving at velocity $u ( x ),$ we find
+\begin{align}
+\log Z=& N \log \int\left(\exp \left[-m \lambda_{1}(x)-p \cdot \lambda_{2}(x)\right.\right. \nonumber \\
+\\
+&\left.\left.-\frac{p^{2}}{2 m} \lambda_{3}(x)\right]\right)\text{d}^{3} x\text{d}^{3} p \nonumber
+\end{align}
+Application of (\ref{eqn-seventy-one}) now yields the physical meaning of the Lagrange multipliers: defining the ``mass velocity'' $u ( x )$ by $P ( x )=\rho( x ) u ( x )$
+and the ``local temperature'' $T ( x )$ by the mean-square velocity as seen by an observer moving at velocity $u(x)$,  we find
 \begin{equation}
 \begin{aligned}
 \lambda_{3}(x) &=\frac{1}{k T(x)}=\beta(x) \\
 \lambda_{2}(x) &=\beta(x) u(x) \\
-m \lambda_{1}(x) &=1 / 2 m u^{2}(x) \beta(x)-3 / 2 \log \beta(x)-\log \rho(x)+(\text { const. })
+m \lambda_{1}(x) &=1 / 2 m u^{2}(x) \beta(x)-3 / 2 \log \beta(x)-\log \rho(x)+(\text {const.})
 \end{aligned}
 \end{equation}
-and the single-particle distribution function $w_{1}$ of (74) reduces to
+and the single-particle distribution function $w_{1}$ of (\ref{eqn-seventy-four}) reduces to
 \begin{equation}
-w_{1}(x, p)=\frac{\rho(x)}{m N\left[2 \pi m k^{\prime} T(x)\right]^{3 / 2}} \exp \left\{-\frac{[p-\operatorname{mu}(x)]^{2}}{2 m k^{\prime} \Gamma(x)}\right\}
+w_{1}(x, p)=\frac{\rho(x)}{m N\left[2 \pi m k T(x)\right]^{3 / 2}} \exp \left\{-\frac{[p-mu(x)]^{2}}{2 m kT(x)}\right\} \label{eqn-seventy-seven}
 \end{equation}
-In this rather trivial example we merely recover a well-known result; but from a different viewpoint than the usual one, which leads us to interpret (77) differently, and regard it as a very special case. The method used enables us to translate other kinds of macroscopic information into definite probability distributions. In other words, we suggest that the maximum-entropy formalism provides the general solution to the problem of ``setting up an ensemble'' to describe an arbitrary macroscopic situation, equilibrium or nonequilibrium.
+
+In this rather trivial example we merely recover a well-known result; but from a different viewpoint than the usual one, which leads us to interpret (\ref{eqn-seventy-seven}) differently, and regard it as a very special case. The method used enables us to translate other kinds of macroscopic information into definite probability distributions. In other words, we suggest that the maximum-entropy formalism provides the general solution to the problem of ``setting up an ensemble'' to describe an arbitrary macroscopic situation, equilibrium or nonequilibrium.
 
 The distributions found in the above way, of course, describe he situation only at the initial time for which the macroscopic information is given. For predictions referring to other times, one should, in principle, solve the equations of motion, or Liouville equation,
 \begin{equation}
-W _{ N }+\left[ W _{ N }, H \right]=0
+\dot{W} _{ N }+\left[ W _{ N }, H \right]=0 \label{eqn-seventy-eight}
 \end{equation}
-where $H$ is the Hamiltonian and $\left[ W _{ N }, H \right],$ the Poisson bracket. In practice, the history of irreversible statistical mechanics has been one of unceasing efforts to replace this impossibly difficult calculation by a simpler one, in which we try to reduce (78) to an `irreversible' equation variously termed Boltzmann equation, rate equation, or master equation. Although considerable progress has been made in this direction in recent years, we are still far from really bridging the gap between these two methods of description. As a preliminary step in this direction, it is necessary that we understand clearly the physical meaning of the Liouville function $W_{N}$ and the various reduced distribution functions derived from it. The following section surveys these questions.
+where $H$ is the Hamiltonian and $\left[ W _{ N }, H \right],$ the Poisson bracket. In practice, the history of irreversible statistical mechanics has been one of unceasing efforts to replace this impossibly difficult calculation by a simpler one, in which we try to reduce \ref{eqn-seventy-eight} to an `irreversible' equation variously termed Boltzmann equation, rate equation, or master equation. Although considerable progress has been made in this direction in recent years, we are still far from really bridging the gap between these two methods of description. 
 
+As a preliminary step in this direction, it is necessary that we understand clearly the physical meaning of the Liouville function $W_{N}$ and the various reduced distribution functions derived from it. The following section surveys these questions.
 
+\section{Distribution Functions}
+
+A recent review of transport theory by Dresden\citep{Dresden-transport61} (hereafter referred to as MD) illustrates that attempts to bridge the gap between phenomenological rate equations and fundamentals (equations of Liouville and Gibbs) have been largely frustrated because basic conceptual difficulties, dating from the time of Boltzmann, are still unresolved. This section is intended as a supplement to the discussion of these problems given to, MD, Sec. I. B.
+
+Early attempts to base transport theory on the BBGKY hierarchy of distribution functions made no distinction between the Boltzmann distribution function $f ( x , p , t )$ and the single-particle function $w_{1}(xpt)$ of the hierarchy. In MD this distinction is pointed out without, however, stating any precise relation between them. To do this requires, first of all, precise definitions of $f$ and the Liouville function $W_{N}$. Boltzmann originally defined $f$ as giving the \emph{actual number} of particles in various cells of six-dimensional phase space; thus if $R$ is the set of phase points comprising a cell, the number of particles in $R$ is 
+\begin{equation}
+n_{R}=\int_{R} f(x, p, t)\text{d}^{3} x\text{d}^{3} p \label{eqn-seventy-nine}
+\end{equation}
+The well-known paradoxes involving the $H$-theorem led to a feeling that this definition should be modified; but the exact way seems never to have been stated. Here we retain the definition (\ref{eqn-seventy-nine}), which has at least the merit of being a precise statement, and accept the consequence that the Boltzmann collision equation cannot be strictly correct, for reasons given by Zermelo and Loschmidt. 
+
+From (\ref{eqn-seventy-nine}) it is immediately clear that-Boltzmann's $f$ is not a probability distribution at all, but a ``random variable.'' In other words, instead of saying that $f$ gives the probability of various conditions, we should ask, ``What is the probability that $f$ takes on various values?''
+
+Establishment of a precise connection between Boltzmann's $f$ and the single-particle function of the hierarchy,
+\begin{equation}
+w_{2}\left(x_{1}, p_{1}, t\right)=\int w_{N}\text{d}^{3} x_{2} \ldots\text{d}^{3} p_{N} \label{eqn-eighty}
+\end{equation}
+requires no coarse-graining, time-smoothing, or any other mutilation of the hierarchy. If we agree that a particle will be considered ``in $R$'' if its center of gravity is in $R,$ and that the Liouville function $W_{N}$ is symmetric under permutations of particle labels, then from (\ref{eqn-seventy-nine}) and (\ref{eqn-eighty}) the exact connection between them is simply
+\begin{equation}
+\langle f\rangle= Nw _{1} \label{eqn-eighty-one}
+\end{equation}
+where the angular brackets denote an average over the Liouville function $W_{N}$. The only ``statistical notion'' which needs to be adjoined to it is the usual one that $W_{N}\text{d}\tau$ shall be interpreted as the probability that the \emph{individual system} is in the phase region $dt$. To say that $W _{ N }$ refers to number density in a fictitious ensemble is only to say the same thing in different words; this cannot be emphasized too strongly. Indeed, the notlon of an ensemble 1s merely a device that enables us to speak of probabilities on the Gibbs, or global level, as if they were frequencies in some larger system which is defined for just that purpose. 
+
+The reason why it was felt necessary to introduce the notion of an ensemble is that the development of equilibrium statistical mechanics took place entirely in a period when the frequency theory of probability was the only one considered respectable. It has been taken for granted that any probability distributions used must be, in principle, empirically measurable frequencies, \emph{and that the fundamental problem of statistical mechanics is to justify these distributions in the frequency sense}.
+
+The statistical practice of physicists has tended to lag about 20 years behind current developments in the field of basic probability and statistics. I hope to shorten that gap to about 10 years by pointing out that a revolution in statistical thought has recently taken place, brought about largely by the development of statistical decision theory. Two brief summaries of these developments have been published\cite{Jaynes-engineering63,Jaynes-cox-review63} and a detailed analysis of the present situation\citep{Jaynes-probability62} will soon be available. The net result is a vindication of the viewpoint of Laplace, and of Jeffreys,\citep{Jeffreys-theory39}  that probability theory is properly regarded as an extension of logic to the case of inductive, or plausible, reasoning, the probabilities denoting basically a ``degree of reasonable belief,'' rather than limiting frequencies. This does not mean that there are no longer any connections between probability and frequency; the situation is rather that every connection between probability and frequency which is actually used in applications is deducible as a mathematical consequence of the ``inductive logic'' theory of probability.\citep{Jaynes-probability62} Equation (\ref{eqn-eighty-one}), and others given below, provide examples of the kind of connections that exist. 
+
+Use of probability in this ``modern'' (actually the original) sense is, of course, essential to the maximum-entropy formalism; for the \emph{frequencies} with which different microscopic states are occupied are manifestly not given, in general, by a distribution canonical in the observed quantities; indeed, for a time-dependent problem the notion of occupation frequency is meaningless. Nevertheless, in a problem where frequencies are meaningful, if our job is to estimate those frequencies, our best estimate on the basis of the information available will be numerically equal to the probabilities. One example of this was given in the ``objective'' interpretation of the maximum-entropy formalism in Sec. 2, and we now give another example which clarifies the meaning of the distribution functions. 
+
+From Eqs. (\ref{eqn-seventy-nine}) and (\ref{eqn-eighty-one}) one sees that the single-particle function $w_{1}$ does \emph{not} contain full information about the distribution of particles in six-dimensional phase space. Integrating (\ref{eqn-eighty-one}) over the cell $R$, we see that it determines only the expectation value of particle occupation numbers:
+\begin{equation}
+\left\langle n _{R}\right\rangle=N \int_{R} w_{1}(x, p, t)\text{d}^{3} x\text{d}^{3} p \label{eqn-eighty-two}
+\end{equation}
+In words: the integral in (\ref{eqn-eighty-two}) represents the probability that any \emph{specified} particle is in the phase cell $R .$ This is not the same as the fraction of particles in that cell but represents only the expectation value of that fraction, over the Liouville distribution $W_N$ Before we are justified in the usual interpretation which identifies
+(\ref{eqn-eighty-two}) with the actual number of particles in $R$, it must be shown that the variance of the $n _{ R }$ distribution is small:
+\begin{equation}
+\frac{\left\langle n_{R}^{2}\right\rangle-\left\langle n_{R}\right\rangle^{2}}{\left\langle n_{R}\right\rangle^{2}} \ll 1 \label{eqn-eighty-three}
+\end{equation}
+Unless (\ref{eqn-eighty-three}) is satisfied, the Liouville function is making no definite prediction about the number of particles in $R$. But \emph{we are not allowed to postulate (\ref{eqn-eighty-three}) on the grounds of any ``law of large numbers'' even for a cell $R$ of macroscopic size}, because the two-particle distribution function of the hierarchy,
+\begin{equation}
+w_{2}\left(x_{1} p_{1}, x_{2} p_{2}, t\right)=\int w_{N}\text{d}^{3} x_{3} \ldots\text{d}^{3} p_{N}
+\end{equation}
+completely determines whether (\ref{eqn-eighty-three}) is or is not satisfied. To see this, introduce the characteristic function of the set $R$:
+\begin{equation}
+M(x, p) \equiv\left\{\begin{array}{l}
+1, x, p \text { in } R \\
+0, \text { otherwise }
+\end{array}\right\}
+\end{equation}
+Then
+\begin{equation}
+\left\langle{n}_{ R }^{2}\right\rangle=\sum_{ i , j=1}^{ N }\left\langle M \left( x _{ i }, p _{ i }\right) M \left( x _{ j }, p _{ j }\right)\right\rangle= NI _{1}+ N ( N -1) I _{2}
+\end{equation}
+where
+\begin{align}
+I_{1} & \equiv \int_{R} w_{1}(x, p)\text{d}^{3} x\text{d}^{3} p \label{eqn-eighty-seven}\\
+I_{2} & \equiv \int_{R}\text{d}^{3} x_{1}\text{d}^{3} p_{1} \int_{R}\text{d}^{3} x_{2}\text{d}^{3} p_{2} w_{2}\left(x_{1} p_{1}, x_{2} p_{2}\right) \label{eqn-eighty-eight}
+\end{align}
+
+The measure of dispersion (\ref{eqn-eighty-three}) then reduces to
+\begin{equation}
+\frac{I_{2}-I_{1}^{2}}{I_{1}^{2}}+\frac{I_{1}-I_{2}}{N I_{1}^{2}}
+\end{equation}
+Thus, when $N \gg 1$ and $\left\langle n_{R}\right\rangle \gg 1,$ the necessary and sufficient condition for validity of $(\hat{8} 3)$ becomes
+\begin{equation}
+\left|\frac{I_{2}}{I_{1}^{2}}-1\right| \ll 1 \label{eqn-ninety}
+\end{equation}
+
+Usually one omits gravitational forces from the Hamiltonian and chooses a Liouville function which makes $w _{1}$ independent of position. If we then describe thermal equilibrium by $W _{ N } \sim$ $\exp (-\beta H )$ and choose a cell $R$ consisting of all of momentum space, and a region $V_{R}$ of ordinary space of macroscopic size, Eq. (\ref{eqn-ninety}) becomes the necessary and sufficient condition that the Liouville function makes a sharp prediction of the density of the fluid; i.e., it predicts that only one phase is present in $V _{ R }$. Thus the condition for condensation, or more precisely for the coexistence of more than one phase, is that (\ref{eqn-ninety}) fails to hold. Equation (\ref{eqn-eighty-two}) then gives only a weighted average of the density of the various possible phases.
+
+Similarly, in the problem of deriving the laws of hydrodynamics from the Liouville equation, one needs to find the predicted momentum density. In terms of the Boltzmann. distribution function, the total momentum in any phase cell $R$ is
+\begin{equation}
+P =\int_{R} pf (x, p , t )\text{d}^{3} x\text{d}^{3} p
+\end{equation}
+and we choose $R$ to consist of all momentum space plus a cell $S ^{\prime}$ of ordinary space that is ``microscopically large but macroscopically small.'' Again, the single-particle function gives only the expectation value,
+\begin{equation}
+\langle P\rangle=N \int_{R} p w_{2}(x, p, t)\text{d}^{3} x\text{d}^{3} p
+\end{equation}
+but $w_{1}$ gives no information at all as to whether this is a \emph{reliable} prediction, To answer this, we must appeal to the two-particle function:
+\begin{align}
+\left\langle P ^{2}\right\rangle=& N \int_{ R } p ^{2} w_{1}\text{d}x\text{d}p+N(N-1) \int_{R}\text{d}x\text{d}p \int_{R}\text{d}x^{\prime}\text{d}p^{\prime} \nonumber \\
+\label{eqn-ninety-three} \\
+& \times p \cdot p^{\prime} w_{2}\left(x, p, x^{\prime}, p^{\prime}\right) \nonumber
+\end{align}
+If the variance of $P$ is everywhere small, then the Liouville function is making a definite prediction of a flow pattern; i.e., it predicts laminar flow. But if the last term of (\ref{eqn-ninety-three}) is large, the single-particle function gives only a weighted average of several possible flows. In this case, the information put into the Liouville function was not sufficient to determine any definite mass motion of the fluid. But if we incorporated into $W _{ N }$ all the information about the experimentally imposed conditions, the theory is now telling us that under these conditions the flow will not be experimentally reproducible. In other words, the theory is predicting turbulent flow.
+
+These examples show that the proper physical interpretation of the distributions (i.e., their exact relation to physical quantities) is not an obscure philosophical point. Failure to distinguish between $w_{1}$ and $f$ as given in (\ref{eqn-seventy-nine}) means failure to distinguish between expectation values and actual values, and amounts to the same thing as simply \emph{postulating} that ensemble averages are equal to observed values of physical quantities. This is not only unjustified because of the probability nature of $W _{ N }$; it would mean loss of the correct criterion for phase changes and of the criterion which distinguishes between laminar and turbulent flow.
+
+On the other land, we can see no basis for any distinction between equilibrium and nonequilibrium situations here. One of the most elementary theorems of probability theory assures us that, for any phase function $Q$ and any probability assignment $W _{ N }$ whatsoever, the expectation value $\langle Q\rangle$, denoted by $Q_{\text {Obs }}$ in $M D$, is the best estimate of $Q$ in the sense that it minimizes the expected square of the error. Whether the information put into $W_{N}$ permits an \emph{accurate} estimate (i.e., whether the expected square of the error is small), can be neither postulated nor denied arbitrarily; it is determined by $W _{ N }$. In all cases, equilibrium or otherwise, the test is to calculate $\left\langle Q^{2}\right\rangle=\int Q^{2} W_{N}\text{d}v,$ and see whether it is sufficiently close to $\langle Q\rangle^{2}$ in the sense of (\ref{eqn-eighty-three}). If calculation of
+$\langle Q \rangle$ requires knowledge of the function $w _{ s }$ of the hierarchy, but not $w _{ S +1},$ and $2 s < N ,$ then information about the reliability of the ensemble average (Q) as an estimate of $Q$ appears for the first time in the function $w _{2 S }$, and is, of course, retained in all higher order functions.
+
+Any system of "kinetic equations," such as the Boltzmann or Bogoliubov scheme, which attempts to write the higher-order functions in terms of $w_{1}$, throws away information about the reliability of the predictions. This, however, may represent a net advantage if it simplifies the mathematics without greatly affecting the actual predictions; consequently the search for such kinetic equations is a major objective of current theoretical effort. If the particles move under the influence of a potential energy function $V\left( x _{1} \ldots x _{ N }\right)$, the exact differential equation satisfied by $w_{2}\left(x_{1}, p_{1}, t\right)$ may be written compactly
+\begin{equation}
+\frac{\partial w_{1}}{\partial t}+\frac{p_{1\alpha}}{m} \frac{\partial w_{1}}{\partial x_{\alpha}}+\frac{\partial}{\partial p_{1 \alpha}}\left[\left\langle F_{\alpha}\right\rangle, w_{1}\right]=0 \label{eqn-ninety-four}
+\end{equation}
+where
+\begin{equation}
+\left\langle F_{\alpha}\right\rangle=-\int \frac{\partial V}{\partial x_{1\alpha}}\left(x_{2} \ldots p_{N} \mid x_{1} p_{1}\right)\text{d}^{3} x_{2} \ldots\text{d}^{3} p_{N} \label{eqn-ninety-five}
+\end{equation}
+is the conditional expectation value of the force seen by particle 1 , given that it has position and momentum $\left(x_{1}, p_{1}\right)$. Here $\left(x_{2} \ldots p_{N} \mid\right.$ $x _{1} p _{2}$ ) is the conditional probability density for the other particles, defined by $W_{N}\left(x_{1} \ldots p_{N}\right)=\left(x_{2} \ldots p_{N} \mid x_{1} p_{1}\right) w_{1}\left(x_{1} p_{2}\right)$.
+
+Although direct calculation of $\left\langle F_{\alpha}\right\rangle$ would be very difficult, the form of (\ref{eqn-ninety-four}) should prove useful in two respects. In the first place, it shows that, although the basic ideas may be stated in entirely different terms, any proposed equation for $w_{1}$, such as the Boltzmann, the Fokker-Planck, or the Bogoliubov equation, is equivalent to some assumption about the expected force $\left\langle F _{\alpha}\right\rangle$. The physical reasonableness of any proposed equation may, therefore, be judged by comparing it to (\ref{eqn-ninety-four}), and seeing what explicit assumption it makes about $\left\langle F _{\alpha}\right\rangle$. Second, (\ref{eqn-ninety-four}) shows that all the complications of this subject reduce ultimately to the determination of one quantity, $\left\langle F _{\alpha}\right\rangle$. Therefore, a phenomenological theory should be feasible in which $\left\langle F_{\alpha}\right\rangle$ is determined from appropriate experiments. In situations close to equilibrium, one finds in this way that in first approximation $\left\langle F _{\alpha}\right\rangle$ is proportional to the density gradient, and independent of $p _{1}$. The condition for condensation, which is a particular kind of hydrodynamic instability, is then that this proportionality coefficient exceeds a certain critical value.
+
+\section{Entropy and Probability}
+
+Now we turn to what is perhaps the most serious confusion of all in current irreversible statistical mechanics-the interpretation of entropy in terms of probability distributions. As recent literature gives ample testimony, even the issue of Boltzmann's versus Gibbs' $H$ functions to represent entropy has not been resolved in any commonly agreed way. For example, in MD it is stated that the Boltzmann $H$,
+\begin{equation}
+H_{B}=\int f \log f\text{d}^{3} x\text{d}^{3} p \label{eqn-ninety-six}
+\end{equation}
+is ``directly related'' to the entropy, whereas the Gibbs expression
+\begin{equation}
+H _{ G }=\frac{1}{ N } \int W _{ N } \log W _{ N } dv
+\end{equation}
+is rejected with the statement: ``There is, however, no possibility of identifying or relating $H _{ G }$ to the macroscopic entropy, for one proves directly from (\ref{eqn-twenty-three}) and (\ref{eqn-eighteen}) that $H _{G}$ is constant in time, whereas the macroscopic entropy always increases in a nonequilibrium situation.'' Similar statements appeared in the Ehrenfest\citep{Ehrenfest-begriffliche11} review article of 1912, when the work of Gibbs had not yet been understood. From the frequency with which this objection to Gibbs' $H$ has been repeated in the literature since then, it is clear that the nature of Gibbs' contribution has not been fully appreciated to this day.
+
+We wish to point out that the mathematical relations proved by Gibbs, plus one physical assumption which is universally accepted today (although it had hardly been formulated at the time of the Ehrenfest article) are sufficient to prove, on the contrary, the following four statements:
+
+\begin{enumerate}
+\renewcommand{\theenumi}{\Roman{enumi}}%
+
+\item The Gibbs $H$ has a simple and universally valid connection with the entropy; for all probability assignments that agree with the measured thermodynamic parameters we have $S \geq- kH_{ G }$, with equality if and only if $H _{ G }$ is computed from the appropriate canonical or grand canonical probability assignment.
+
+\item The Boltzmann $H$ is related to the entropy in only one case, the nonexistent ideal Boltzmann (i.e., not Bose or Fermi) gas. In general, $H _{ B } \leq H _{ G }$, and the entropy can be either greater or less than $- kH _{ B }$. 
+
+\item The constancy of Gibbs' $H$, far from \emph{conflicting} with the increase of entropy, is the sole dynamical property needed to \emph{demonstrate} that increase. 
+
+\item The Gibbs $H$ provides a generalized definition of entropy for nonequilibrium cases, in such a way that the usual statement of the second law remains valid. It gives, therefore, a new rule telling which \emph{nonequilibrium} states are accessible from others in adiabatic processes.
+\end{enumerate}
+
+The fourth statement is a nontrivial extension of the second law which is capable of being tested experimentally, and whose finding required only a careful reading of Gibbs. Since the second law is a statement of experimental fact, it cannot be ``proved'' mathematically without some assumption about what the result of an experiment would be. The assumption we need is just the statement (\ref{eqn-forty-four}) which we appealed to before. 
+
+Before turning to the proofs, some preliminary remarks are needed. We are still faced with the ambiguity in the definition of $f$. The function defined by (\ref{eqn-seventy-nine}) is singular in such a way that the integral (\ref{eqn-ninety-six}) diverges; thus before we can introduce a Boltzmann $H$ at all, we have to abandon Boltzmann's definition of $f$ in favor of some other, unspecified one. In MD it is stated that $f$ gives an ``average'' occupation number, and that this can be made more precise by reference to an equation which is indeed an average over an undefined probability distribution $P$. If we suppose that, in going to fundamentals, this would eventually become an average over the Liouville function $W _{ N }$, we have a definition of $H _{ B }$ for which exact relations can be proved. In other words, we mean to use the single-particle function $w_{1}$ of the hierarchy to define a Boltzmann $H$:
+\begin{equation}
+H_{B}=\int w_{1} \log w_{1}\text{d}^{3} x\text{d}^{3} p \label{eqn-ninety-eight}
+\end{equation}
+There is really no other way of doing it if we are ever to prove precise statements about Boltzmann's $H$, because eventually this will have to depend on precise properties of the dynamics, and the Liouville hierarchy is just the precise expression of the dynamics. 
+
+Another point is that, strictly speaking, all this should be restated in terms of quantum theory using the density matrix formalism. This will introduce the $N!$ permutation factor, a natural zero for entropy, alteration of numerical values if discreteness of energy levels becomes comparable to $kT$, etc. But there seems to be complete agreement as to how this transcription is to be made, and it will affect the Boltzmann and Gibbs expressions in the same way. We shall first attempt to define the Boltzmann $H$ as $H^{\prime}=\operatorname{Tr}(\sigma \log \sigma)$, where $\sigma$ is the ``molecular'' density matrix operating in the Hilbert space of a single molecule and gives occupation numbers. The Gibbs $H$ will become $H _{ G }^{\prime}= N ^{-1} \operatorname{Tr} (\rho \log \rho),$ where $\rho$
+is the ``global'' density matrix with an enormously greater number of rows and columns, operating in the entire Hilbert space of the system. On closer examination, we shall wonder whether the diagonal elements of $\sigma$ are to represent the actual values, probable values, average values, etc. of the occupation numbers, and $H$ will peter out in ambiguities until we note that, if it is to have any precisely provable properties, it must be precisely related to the dynamics; i. e., out of all possible definitions of $\sigma$, we decide to use $\rho_{1}$, the projection of $\rho$ onto the subspace of a single molecule, as defined in reference,\citep{Jaynes-information-II-57} Sec. 11. Its diagonal elements are expectation values, over the global density matrix $\rho,$ of occupation fractions. Then with $H _{ G }^\prime$ and $H _{ B }^\prime=\operatorname{Tr}\left(\rho_{1} \log \rho_{1}\right)$ we can prove exactly the same inequalities as for the classical case. Thus, the issue of Boltzmann versus Gibbs entropy expressions does not involve quantum theory, and we continue to use classical terminology for brevity.
+
+Statement (I) is now just the theorem (\ref{eqn-forty-five}) already proved, if one grants the physical assumption (\ref{eqn-forty-four}), for the quantum theory case.
+
+Statement (II) quotes a well-known mathematical theorem,
+\begin{equation}
+H_{ G } \geq H _{ B }
+\end{equation}
+with equality if and only if the Liouville function factors ``almost everywhere''
+\begin{equation}
+W _{ N }\left( x _{1} \ldots p _{ N }\right)=\prod_{ i =1}^{ N } w _{ A }\left( x _{ i }, p _{ i }\right) \label{eqn-hundred}
+\end{equation}
+which corresponds, in quantum theory, to the condition that the global density matrix is a direct product\citep{Jaynes-information-II-57}
+\begin{equation}
+\rho=\rho_{1} \times \rho_{2} \times \ldots \times \rho_{ N }
+\end{equation}
+where $\rho_{1}$ is the projection of $\rho$ onto the Hilbert space of the $i$-th molecule. The final part of statement II then follows from the fact that the canonical distribution $W_{N} \sim \exp (-\beta H)$ has the factorized form (\ref{eqn-hundred}) only in the case of an ideal Boltzmann gas. In this case the ``Boltzmann entropy,'' $S _{ B }=- kH _{ B },$ is equal to the experimental entropy; in all other cases, if $w_{1}$ is constructed from the appropriate canonical distribution $W _{ N }$, we shall have $S _{ B }> S _{ e }$
+
+Statement III is likewise an immediate consequence of statement I and the well-known fact that $H _{ G }$ is, in consequence of the equations of motion, constant in time in either classical or quantum theory. To make this clearer, consider the following experiment. At time $t=0,$ we measure the values of various parameters $X_{1} \ldots X_{n}$ adequate to determine the state of a thermodynamic system of $n$ degrees of freedom. The experimental entropy is, of course, some function $S_{e}\left(X_{1} \ldots X_{n}\right)$ of the measured quantities; and not primarily related to any probability distribution. But we have shown that the maximum attainable information theory entropy $S _{ I }$ corresponding to the appropriate canonical distribution based on the values of $X_{1} \ldots X_{n}$, is equal to $S_{e}$. At some later time $t$, a new measurement of the thermodynamic state yields different values, $X_{1}^{\prime}, \ldots, X_{n}^{\prime},$ and a different experimental entropy $S_{e}\left(X_{1}^{\prime} \ldots X_{n}^{\prime}\right)$. But
+the inequality $S _{ I } \leq S _{ e }$ still holds; and so the statement that $S _{I}$ (or what is the same thing, $H _{ G }$ ) is constant, then gives us $S^\prime_{ e } \geq S _{ e }$.
+
+There is still an apparent paradox hiding here; for suppose we choose $t$ negative. It looks as if this argument then says that the experimental entropy in the past was greater than at the time of the measurements $X_{1} \ldots X_{n}$. Actually, the explanation of this paradox has been given before.\citep{Jaynes-information-II-57} We have, of course, assumed in the above that forward integration of the equations of motion does, in fact, yield the correct predictions at time $t$; i.e., the measured $X _{ i }$ are equal to ensemble averages calculated from the time-developed Liouville function obeying (\ref{eqn-seventy-eight}), or the time-developed global density matrix obeying  $\dot{rho}=[ H , \rho]$. In reference,\citep{Jaynes-information-II-57} it is shown that this is the case \emph{if the observed change $X_{i}-X_{i}^\prime$ is an experimentally reproducible one}. But we know that many past macroscopic states $X _{ i }^{\prime\prime}$ would all relax into the same state $X _{ i }$ at time $t=0$ Thus, we suggest that the correct statement of the second law is that spontaneous decreases in the experimental entropy, although not absolutely prohibited by the laws of physics, \emph{cannot occur in an experimentally reproducible process}. 
+
+Statement IV now follows from the fact that nothing in the above reasoning restricts us to equilibrium states. In conventional thermodynamics, the experimental entropy is defined only for equilibrium states; however, our definition $S _{ e } \equiv\left[\max S _{ I }\right.$ over all probability distributions that agree with the data in the sense of
+(\ref{eqn-fifty-two})] defines a function $S_{e}\left(X_{1} \ldots X_{n}\right)$ of the experimentally measured parameters for the equilibrium or nonequilibrium case, which by the above arguments cannot spontaneously decrease in an experimentally reproducible process. It can no longer be found by numerical integration of $dQ/T$ over a reversible path; but the content of statement IV is that a function $S _{ e }$ still \emph{exists}, such that the usual statement of the second law remains valid. it requires a great deal more analysis, to be given elsewhere, before we can reduce this to a suggestion of a definite experiment that could test statement IV; I am trying here only to point out in the briefest terms why it is that an extension of the second law is predicted by theory as soon as we have understood everything revealed by Gibbs about the connection between entropy and probability.
+
+Finally, we note that the Boltzmann $H$-theorem, whether correct or not, cannot have any real relevance to the second law. For, summarizing the above inequalities,
+\begin{equation}
+- kH _{ B } \geq- kH _{ G } \leq S _{ e }
+\end{equation}
+where the first inequality becomes an equality if and only if there are no interparticle correlations (i.e., ideal Boltzmann gas), the second if and only if $H _{ G }$ is computed from the appropriate canonical distribution. Obviously, whether $H _{ B }$ increases or decreases allows us to infer nothing about $S _{ e }$. The situation is even worse than that; for the Boltzmann $H$-theorem was based on incorrect equations of motion, and whether $H _{ B }$ increases or decreases depends on the form of the distribution and the force law, To see this, note that from (\ref{eqn-ninety-eight}) and the exact equation of motion (\ref{eqn-ninety-four}), the exact rate of change of $H _{ B }$ is just the negative of the expected divergence in momentum space of the molecular force $\left\langle F_{\alpha}\right\rangle:$
+\begin{equation}
+\dot{ H }_{ B }=-\left\langle\frac{\partial\left\langle F _{\alpha}\right\rangle}{\partial p _{\alpha}}\right\rangle
+\end{equation}
+and this can have either sign. For example, if $\left\langle F _{\alpha}\right\rangle$ is dominated by a ``dragging'' term as in the Langevin equation: $\left\langle F _{\alpha}\right\rangle=- Kp _{\alpha}+ \dots$ then we find that the exact equations give us an ``anti-$H$-theorem,'' $\dot{ H }_{ B }>0$
+
+\section{Conclusion}
+
+We have seen that the principle of maximum entropy leads immediately to the same final rules of calculation that conventional statistical mechanics had provided only after long and inconclusive discussion of phase space, ergodicity, metric transitivity, etc.; and then only for the equilibrium case. The viewpoint advocated here thus represents, from the pedagogical standpoint, a considerable simplification of the subject. But this agreement also means that, from a pragmatic standpoint, if there is any new content in this principle, we must look for it in the extension to the statistical mechanics of irreversible processes, where there does not exist at present any general formal theory, and ask whether the principle of maximum entropy provides such a basis. Over the past several years, my students and I have verified that all the commonly accepted principles of irreversible statistical mechanics can be derived from this formalism; that is, of course, a minimum requirement that any proposed new theory must pass. The real test of these ideas can come only through their application to problems that have resisted solution by older methods. Although a few results along this line are now in,\citep{Heims-theory62} and a few others have been hinted at in these talks, a final settlement of the questions raised still lies rather far in the future.
 \bibliography{gibbs-vs-boltzmann}
 
 \end{document}
