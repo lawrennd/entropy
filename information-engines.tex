@@ -7,7 +7,7 @@
 \usepackage[super]{natbib}
 \bibliographystyle{unsrtnat}
 
-\title{Information Engines: Intelligence and Thermodynamics}
+\title{Szilard Intelligence}
 \author{Neil D. Lawrence}
 \date{9th January 2021}
 
@@ -19,14 +19,17 @@
 
 \newcommand{\phaseVariables}{\Gamma}
 \newcommand{\stateVariables}{X}
-\newcommand{\nullVariables}{X_0}
-\newcommand{\domainVariables}{X_1}
+\newcommand{\nullVariables}{{X_0}}
+\newcommand{\domainVariables}{{X_1}}
 \newcommand{\dataVariables}{Y}
 \newcommand{\measuredVariables}{S}
+\newcommand{\measuredValue}{s}
 \newcommand{\parameterVector}{W}
+\newcommand{\separability}{{F_S}}
 \newcommand{\expDist}[2]{\left\langle #1 \right\rangle_{#2}}
-\newcommand{\trueProb}{\mathbb{P}}
+\newcommand{\trueProb}{\mathfrak{P}}
 \newcommand{\simProb}{s}
+\newcommand{\domainProb}{\mathbb{P}}
 \newcommand{\physicsProb}{p}
 \newcommand{\approxProb}{q}
 \newcommand{\statsProb}{\pi}
@@ -39,68 +42,33 @@
 
 \section{Introduction}
 
-This paper attempts to understand the limitations on predictive
-modelling by taking a thermodynamic perspective. In particular, is
-there a particular definition of intelligence that we can characterise
-mathematically and then explore the limits of what might be possible
-inspired by physical limitations imposed by the underlying statistical
-physics.
+The objective of this paper is to provide a mathematical definition of intelligence that grounds our intelligence in the physical sciences. Previous efforts at mathematically defining universal intelligence \citep{Legg-universal07} have reviewed the literature to distil the facets of intelligence, a descriptive approach to a model of intelligence. Our definition is inspired by statistical mechanics descriptions of the universe.  and the simple idea that an intelligent decision is one that achieves a desired state change within the universe with the minimal use of resource. From a physical perspective there are two principal resources we can consider: time and energy. 
+\subsection{Energy}
 
-Because the paper bridges some different fields, and tries to equate
-thermodynamic and information theoretic terms with words that are
-widely used in modelling, it may be seen as abusing terminology in
-parts. So to clarify at the outset, we are using some general terms in
-very specific ways.
-
-In particular, we use the word \emph{simulation} to imply a physical
-model over the microstates of the universe that represents our 'best
-practical' understanding of the underlying physics. In what follows
-this simulation is denoted by
-$\physicsProb(\stateVariables|\dataVariables)$. Alongside this we have
-the \emph{data model}, which represents the marginal distribution for
-the data we observe, $\physicsProb(\dataVariables)$. Quite often in
-the below we will refer to this simply as `the model' as it will turn
-out to be one of the main objects of focus.
-
-Our investigation is centred around the concept of \emph{free
-  energy}. The free energy is the energy in a system that is available
-to us for use. In particular we focus on the Helmholtz free energy
-which was introduced by Hermann von Helmholtz in the study of
-electrochemistry. In a thermodynamic system, the state space is
-referred to as the phase space.\footnote{Here we are referring to the
-  microstates, the macrostates would be the sufficient statistics of
-  the microstates.} The distribution of the phase space is given by
-\emph{Boltzmann's distribution} which is derived by considering the
-energy levels of different configurations of microstates.  In a
-continuous system, we write down the\emph{Hamiltonian} as follows,
+In practice energy is conserved, so the resource of interest is \emph{free energy} the energy available to us to do work.  In statistical physics, we write down the probability of the microstates in a Boltzmann distribution as follows,
 \[
-\mathbb{P}(\phaseVariables) = \frac{1}{Z_\phaseVariables} \exp(-\beta
+\trueProb(\phaseVariables) = \frac{1}{Z_\phaseVariables} \exp(-\beta
 E(\phaseVariables)),
 \] 
-where \(E(\phaseVariables)\) is the energy of the system in microstate
-\(\phaseVariables\).
-
-The partition function is then given by 
+where \(E(\phaseVariables)\) is the \emph{Hamiltonian} which encodes the energy of the system associated with the microstates \(\phaseVariables\) and the partition function is then given by 
 \[
 Z_\phaseVariables = \sum_\phaseVariables \exp(-\beta E(\phaseVariables)),
 \] 
 where the \(Z\) comes from the German for ``sum over states'' or
-\emph{Zustandssumme}, reflecting Boltzmann's Austrian heritage. In the
+\emph{Zustandssumme}, reflecting Ludwig Boltzmann's Austrian heritage. Boltzmann was the first to make the connection between probability and entropy\citep{Boltzmann-warmetheorie77,}In the
 case of continuous systems we have,
 \[
 Z_{\phaseVariables} = \frac{1}{h^3}\int \exp(-\beta E(\phaseVariables)) \text{d} \phaseVariables
 \] 
 and \(E(\phaseVariables)\) is the Hamiltonian of the system.
 
-\subsection{Total Energy}
+\subsubsection{Total Energy}
 
-The total energy, \(U_\phaseVariables\) is defined as the expected
-energy,
+Thermodynamics proceeds by considering the total energy of the system, which is defined as the expected energy under the Boltzmann distribution,
 \[
-U_\phaseVariables = \expDist{E(\phaseVariables)}{\trueProb(\phaseVariables)},
+U_\phaseVariables = \expDist{E(\phaseVariables)}{\trueProb(\phaseVariables)}.
 \] 
-which can be decomposed using the definition of
-\(\trueProb(\phaseVariables)\) as 
+The total energy can be decomposed into
 \[
 U_\phaseVariables = A_\phaseVariables + TS_\phaseVariables,
 \] 
@@ -108,26 +76,29 @@ where
 \[
 A_\phaseVariables = - \frac{1}{\beta}\log Z_\phaseVariables
 \] 
-is the \emph{Helmholtz free energy} and \[ S_\phaseVariables = -k_B
+is the \emph{Helmholtz free energy} and 
+\[ S_\phaseVariables = -k_B
 \expDist{\log \trueProb(\phaseVariables)}{\trueProb(\phaseVariables)}
-\] is the entropy of the system and \(T\) is the temperature.
+\] 
+is the entropy of the system and \(T\) is the temperature. This decomposition is fundamental to thermodynamics, but it is also easily derived mathematically using the definition of the Boltzmann distribution (see \ref{sec-decomposition-of-total-energy}).
 
-This equation expresses a fundamental decomposition of the total
+This equation expresses a decomposition of the total
 energy into the available energy, \(A_\phaseVariables\) and energy
-that is not available, \(TS_\phaseVariables\).
+that is not available, \(TS_\phaseVariables\). In terms of the resource we are interested in it is the \emph{free energy}, $A_\phaseVariables$, that we would like to maximise as this is the energy that remains available to us for work.
+
+\subsection{Time}
+
+Beyond available energy, the other other fundamental resource of interest is time. Given two actions that modify the state of the universe with the same resulting change in free energy, we might argue that the action that achieved that state quicker was the more intelligent action. For the moment, however, we will ignore the influence of time, focusing only on the available energy change. 
 
 \subsection{Intelligence and Energy} \label{sec-intelligence-and-energy}
 
 We define an intelligent decision to be one that achieves a desired
-change of state in our system with the minimum use of resource. In
-general, resource would be \emph{time} or \emph{free energy}. For the
+change of state in our system with the minimum use of resource. For the
 moment, time will not enter our calculations because we will focus on
-\emph{thermodynamic equilibriums} Which in probability can be thought
-of as the \emph{steady state} condition.
+\emph{thermodynamic equilibria}\footnote{This is equivalent to considering the system in \emph{steady state}}.
 
-Our first step will be to split our phase space into variables we can
-observe and the other variables, \(\phaseVariables =
-\{\stateVariables, \dataVariables\}\), this allows us to write
+Our first step will be to split our phase space into macroscopic variables that we can observe and/or modify and all the other variables, 
+$\phaseVariables = \{\stateVariables, \dataVariables\}$, this allows us to write the decomposition of the total energy as
 \[
 U_{\stateVariables,\dataVariables} =
 A_{\stateVariables,\dataVariables} +
@@ -136,51 +107,43 @@ TS_{\stateVariables,\dataVariables},
 where 
 \[
 A_{\stateVariables,\dataVariables} = - \frac{1}{\beta}\log
-Z_{\stateVariables,\dataVariables}
+Z_{\stateVariables,\dataVariables},
 \] 
-and 
 \[
 S_{\stateVariables,\dataVariables} = -k_B \expDist{\log
-  \trueProb({\stateVariables,\dataVariables})}{\trueProb({\stateVariables,\dataVariables})}.
+  \trueProb({\stateVariables,\dataVariables})}{\trueProb({\stateVariables,\dataVariables})}
 \]
+and we have introduced the thermodynamic temperature, $\beta^{-1}=k_B T$.
 In thermodynamics we might think of the observable values as
-'measurable state variables', where as the microstates,
+`measurable state variables', whereas the microstates,
 $\stateVariables$, are normally considered to be not directly
-measurable. In machine learning though, we might simply think of
+measurable. In machine learning though, we also might think of
 $\stateVariables$ as latent variables and $\dataVariables$ as data, or
-potential data.
+potential data. 
 
-To interact with our system we will introduce a new set of variables,
-$\measuredVariables$ which is a $(0,1)$-matrix that contains a one if
-a corresponding variable is observed. We place the corresponding
-variable in the subscript, so $\measuredVariables_\dataVariables$ is
-the matrix that indicates whether or not $\dataVariables$ is
-observed. So if we have $\measuredVariables_\dataVariables =
-\mathbf{1}$ then all elements of $\dataVariables$ are observed.
+In general, we assume that we can interact with our system of interest, so we also assume that some (or all) of these, $\dataVariables$, might be modifyiable. In other words we could fix intervene in our system and set them to particular values (as in e.g. the do-calculus \citep{Pearl-causal95}). Such interventions, or even the act of observation, will have an energy cost. To represent the active interactions with the system we introduce a set of variables,
+$\measuredVariables$ is a matrix that indicates if 
+a corresponding variable is modified or actively observed. 
 
 We can now denote interactions with the system through changing the
-values of $\measuredVariables_\dataVariables$. These interactions will
-have their own energy cost that we denote $E(\measuredVariables)$.
+values of $\measuredVariables$. Any such interaction will have an energy cost that we denote $E(\measuredVariables)$.
 
-If we instantiate the observable states. We change our system. From a
+If we modify or observe our observable states we \emph{instantiate} them observable states. From a
 probabilistic perspective, this change is equivalent to
 \emph{conditioning} on \(\dataVariables\).
 
-Making an observation in this system is equivalent to conditioning on
-\(\dataVariables\) for the total energy which we write as 
+Making an observation or modifying a measurable state in this system is equivalent to conditioning on
+\(\dataVariables\). The updated total energy can be written as,
 \[
 U_{\stateVariables|\dataVariables} =
-E(\measuredVariables_\dataVariables=\mathbf{1}) +
+E(\measuredVariables=\measuredValue) +
 \expDist{E({\stateVariables|\dataVariables})}{\trueProb({\stateVariables|\dataVariables})},
 \]
-where we have used $E(\measuredVariables_\dataVariables=\mathbf{1})$
+where we have used $E(\measuredVariables=\measuredValue)$
 to denote the energy associated with making the observation.
 
-Inspired by probability notation, we decompose that updated energy
-state \(E(\stateVariables| \dataVariables)\) into two parts, one which
-represents the interaction between our measurements and the state,
-\(E(\dataVariables|\stateVariables)\) and \(E(\stateVariables)\)
-represents energy terms where there is no interaction and write
+We decompose the Hamiltonian into two parts, the first part represents the physics of our measurement, it gives the relationship between the microstates and our observable variables,
+\(E(\dataVariables|\stateVariables)\) and the second is the Hamiltonian of the microstates, \(E(\stateVariables)\), this allows us to write
 \[
 \mathbb{P}({\stateVariables|\dataVariables}) =
 \frac{1}{Z_{\stateVariables|\dataVariables}} \exp\left(-\beta
@@ -190,12 +153,13 @@ where the partition function is given by
 \[
 Z_{\stateVariables|\dataVariables} = \int \exp\left(-\beta
 E(\dataVariables|\stateVariables) -\beta E(\stateVariables)\right)
-\text{d}\stateVariables
+\text{d}\stateVariables.
 \] 
-The new total energy, conditioning on the measurements is
+
+So after intervening in our system, and taking a set of measurements or modifying the observable variables, the new total energy of the system is,
 \[
 U_{\stateVariables|\dataVariables} =
-E(\measuredVariables_\dataVariables=\mathbf{1})
+E(\measuredVariables=\measuredValue) +
 A_{\stateVariables|\dataVariables} +
 TS_{\stateVariables|\dataVariables}
 \] 
@@ -210,17 +174,20 @@ S_{\stateVariables|\dataVariables} = -k_B \expDist{\log
   \trueProb({\stateVariables|\dataVariables})}{\trueProb({\stateVariables|\dataVariables})}.
 \]
 
-We can examine how this changes the free energy, the energy gain
-through observation is,
+This is the representation of our universe in its updated state. We can now compute how the available energy has changed by subtracting the available energy in our original universe from the available energy in our updated universe, subtracting, $\Delta A_{Y} = A_{\stateVariables|\dataVariables} -
+  A_{\stateVariables,\dataVariables}$, using standard rules of probability this gives
 \begin{align*}
-  A_{\stateVariables|\dataVariables} -
-  A_{\stateVariables,\dataVariables} = & -\frac{1}{\beta} \log
+ \Delta A_{Y}  = & -\frac{1}{\beta} \log
   \frac{Z_{\stateVariables|\dataVariables}}{Z_{\stateVariables,\dataVariables}}\\ &
   -\frac{1}{\beta} \log \trueProb(\dataVariables)
 \end{align*}
-which is the information gained through the observation,
-\(\dataVariables\). This needs to be traded off against the cost of
-observing given by $E(\measuredVariables_\dataVariables=\mathbf{1}) $.
+which is also recognised as the Shannon information we gain through the observation \citep{Shannon-info48} under Boltzmann's distribution. The thermodynamic temperature, $\beta$, relates the dimensionless information to the available energy gain in Joules. Note that this connection between thermodynamics and information predates Shannon. It goes back to the work of Szilard\citep{Szilard-intelligenter29} who was considering a thought experiment known as \emph{Maxwell's demon}\citep{Maxwell-theory71,Leff-maxwell90}. In the thought experiment a demon transgresses the second law of thermodynamics by partitioning an isolated box of gas into two parts. The demon allows high energy particles to pass from the left hand side to the right hand side through opening a slot when they approach the partition. Similarly low energy particles are allowed to pass from right to left. In this way the entropy of the gas in the box appears to be reduced. 
+
+Maxwell included the demon in his book which gave his theory of heat\citep{Maxwell-theory71}. He was illustrating that the second law holds only in expectation, but the thought experiment intrigued the community and was developed further by Szilard\citep{Szilard-intelligenter29}. Szilard reduced the system to one containing a single particle (now known as a Szilard engine). He showed that the demon introduces information to the system which counteracts the reduction in entropy. In this way Szilard introduced an equivalence between thermodynamic entropy and information (through the thermodynamic temperature, $\beta$).
+
+The second law of thermodynamics states that entropy cannot decrease as time proceeds in a forward direction. It is through the second law that we understand the impossibility of perpetual motion machines and the irreversibility of certain physical processes. So it is from Maxwell's demon and Szilard's engine that we draw our inspiration for our  definition of intelligence. For this reason we call it Szilard intelligence.
+
+In physics, much of the discussion of Szilard's paper dwells on where energy is required for the demon to store or acquire the information. We might think of this as an attempt to lower bound $E(\measuredVariables=\measuredValue)$. In this paper, our focus is different. We assume that any interaction with the system will \emph{may} require energy (whether through measurements or interventions). So the available energy gain needs to be traded off against the cost of intervention given by $E(\measuredVariables=\measuredValue)$. 
 
 This is the fundamental relation between information and energy that
 we need to pursue our definition of intelligence. By measuring our
@@ -230,54 +197,215 @@ action worth taking.
 
 \subsection{Intelligence Quotient}
 
-We can define a dimensionless quotient the intelligence of an action
-(where action is taken to mean a change of $\measuredVariables$) to
-be,
+We define a dimensionless quotient to represent the Szilard intelligence of an action
+(where action is taken to mean a change of $\measuredVariables$) to be,
 \[
-I = \frac{\exp(-\beta E(\measuredVariables_\dataVariables=\mathbf{1}))}{\trueProb(\dataVariables)},\]
-where $\beta$ is the thermodynamic temperature \(\beta = \frac{1}{Tk_B}\).
-
-This allows us to express the available energy change as a result of
-an action in terms of the intelligence quotient as follows,
-\[
-\Delta E = T k_B\log I,
+I = \frac{\exp(-\beta E(\measuredVariables=\measuredValue))}{\trueProb(\dataVariables)},
 \]
-so we see that the log intelligence quotient is a critical quantity. 
-
-Since we need to make our decisions about which variables to observe
-before we know their values, we can only consider this quotient in
-expectation.  and we can also consider the expected available energy
-change,
+where $\beta$ is again the thermodynamic temperature \(\beta = \frac{1}{Tk_B}\). A demon that was infringing the second law of thermodynamics would have a Szilard coefficient greater than one. What Szilard's work suggested is that for the second law to be preserved, the Szilard coefficient must be upper bounded by 1. We can express the available energy gain in terms of the logarithm of the quotient as follows,
 \[
-\expDist{\Delta E}{\trueProb(\dataVariables)} = T k_B\expDist{\log I}{\trueProb(\dataVariables)}.
+\Delta A_\dataVariables = T k_B\log I,
 \]
-Now we are faced with the problem of approximating the available
-energy because we don't have direct access to
-$\trueProb(\dataVariables)$.
+which since $I\leq 1$ is always zero or negative in sign. 
 
-Our first approach will be to lower bound the expected intelligence
-quotient. Introducing a variational distribution
-$\simProb(\dataVariables)$, and considering the expected log
-intelligence quotient under this distribution we have,
+The upper bound on the Szilard coefficient provides a thermodynamic upper limit on the intelligence of a decision given by the second law. 
+
+Note that our definition of the Szilard coefficient for scoring intelligence doesn't require us to define a mechanism by which the intelligent action is occurring, it merely relates the measurable and manipulable states $\dataVariables$, to the energy of the system.
+
+The most intelligent action is the one that achieves the desired state $\dataVariable = \dataValue$ with the largest Szilard coefficient which corresponds to the smallest loss in available energy. The optimal action under the Szilard coefficient involves trading of the information associated with a particular state, $-\log \trueProb(\dataVariables)$, with the energy cost of achieving that state.
+
+In practice, we typically won't have access to the distribution, $\trueProb(\cdot)$, so we cannot optimise our actions directly with respect to the Szilard coefficient. In the next section, we introduce a lower bound on the Szilard coefficient, one that is derived through introducing a physical simulation, $\simProb(\stateVariables)$.
+
+\subsection{Lower Bound}
+
+The upper bound on the Szilard coefficient is given by the second law. To obtain a lower bound on the coefficient, we must first \emph{upper} bound $\log \trueProb(\dataVariables)$. In Appendix \ref{sec-}
 \[
-\expDist{\log I}{\simProb(\dataVariables)}   = - \beta E(\measuredVariables_\dataVariables=\textbf{1}) - \expDist{\log \trueProb(\dataVariables)}{\simProb(\dataVariables)}
+\log \trueProb(\dataVariables) \leq \log \physicsProb(\dataVariables)
++
+\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables)).
 \]
-which is lower bounded by,
-\begin{equation}
-  \expDist{\log I}{\simProb(\dataVariables)} \geq - \beta
-  E(\measuredVariables_\dataVariables=\textbf{1}) - \expDist{\log
-    \simProb(\dataVariables)}{\simProb(\dataVariables)}, \label{eqn-lir-lower}
-\end{equation}
-giving us a lower bound on the expected log intelligence quotient,
-where the expectation is taken under the variational
-distribution. Maximising this lower bound implies maximising the
-entropy of $\simProb(\dataVariables)$. Unfortunately, the entropy is
-unbounded. Which implies that the expected intelligence quotient under
-a general distribution $\simProb(\dataVariables)$ is also
-unbounded. We need more constraints on $\simProb(\cdot)$ to make
-progress.
+where we have introduced a the distribution $\simProb(\stateVariables)$ to represent our \emph{simulation} of  $\stateVariables$. For our purposes, a simulation is our best approximation of the physical world according to our understanding. The model, $\physicsProb(\dataVariables)$ is defined as,
+$$
+\physicsProb(\dataVariables) = \frac{\exp(-\beta \expDist{E(\dataVariables|\stateVariables)}{\simProb(\stateVariables)}}{Z^\prime_\dataVariables}
+$$
+where $Z^\prime_\dataVariables = \sum_\dataVariables \exp(-\beta \expDist{E(\dataVariables|\stateVariables)}{\simProb(\stateVariables)}$. 
 
-We can rewrite $\log \physicsProb(\dataVariables)$ as
+The notation $\text{KL}(\simProb(\cdot)||\trueProb(\cdot))$ represents the Kullback Leibler (KL) divergence\citep{Kullback-info51} between the two distributions, $\simProb(\cdot)$ and $\trueProb(\cdot)$ and is defined by,
+$$
+\text{KL}(\simProb(\stateVariables) || \trueProb(\stateVariables)) = \sum_\stateVariables \simProb(\stateVariables) \log\frac{\simProb(\stateVariables)}{\trueProb(\stateVariables)} \geq 0.
+$$
+The KL divergence is a standard information theoretic measure of divergence between two distributions. In our derivations we will commonly make use of \emph{fidelity}. We define the $\exp\left(-
+\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables))\right)$
+to be the \emph{contextual} simulation fidelity, $F_C$,
+\[
+\log F_C =
+-\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables)).
+\]
+and we can now lower bound the Szilard coefficient,
+\[
+I \geq F_C \frac{\exp\left(-E(\measuredVariables=\measuredValue)\right)}{\physicsProb(\dataVariables)}.
+\]
+
+
+\subsection{Maximizing the Bound on the Szilard Coefficient}
+
+The bound can be tightened by maximising with respect to $\simProb(\stateVariables)$, which in turn gives us the optimal form of $\physicsProb(\dataVariables)$. The lower bound on the log intelligence quotient is given by,
+\[
+\log I \geq - \log \physicsProb(\dataVariables) -\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables)) - \beta E(\measuredVariables_\dataVariables = \textbf{1})
+\]
+recalling that $\log \physicsProb = \frac{\expDist{E(\dataVariables|\stateVariables)}{\simProb(\stateVariables)}}{Z^\prime_\dataVariables}$ and focusing on the terms that are dependent on $\simProb(\stateVariables)$ we have,
+\[
+\log I \geq \beta \expDist{E(\stateVariables)}{\simProb(\stateVariables)} - \expDist{\log \simProb(\stateVariables)}{\simProb(\stateVariables)} + \text{const.},
+\]
+where $\text{const.} = \log Z^\prime_Y - \log Z_{\stateVariables|\measuredVariables}$. This can be maximized by setting,
+\[
+\simProb(\stateVariables) = \trueProb(\stateVariables)
+\]
+giving us the unsurprising conclusion that the lower bound on the Szilard coefficient quotient is maximised by setting our simulation to be equal to the true distribution of the microstates, $\trueProb(\stateVariables)$, at which point we recover the true Szilard coefficient.
+
+However, since our system is unbounded in scope, and $\stateVariables$ involves all microstates of the Universe, this is quite impractical. So our first step will be to constrain our simulation such that it focuses on variables of interest.
+
+\subsection{Null Space and Domain Space}
+
+So far we have considered a model that contains all the microstates of the Universe, $\stateVariables$. But in practice, when modelling we normally focus on a particular domain. For example, in climate modelling we develop detailed models of the oceans independently from models of the chemistry of the upper atmosphere. Where these two models interact, they do so at defined interfaces. To reflect this we divide the state space into two parts, we call one the null space, and denote it by $\nullVariables$. These are the microstates in the Universe that we'd prefer to ignore in the simulation we're focused on. The second part we call the domain space, which we denote by $\domainVariables$. These are the microstates that we consider directly relevant for the problem at hand. 
+
+As in the case of the climate model separation, we expect to have have different simulations for different contexts. So that we can factorise our universe into different simulations for use in different contexts, we then make the assumption that
+\[
+\simProb(\stateVariables) = \simProb(\nullVariables) \simProb(\domainVariables)
+\]
+and we impose this as a constraint when maximising the lower bound on the intelligence quotient.
+
+Under this constraint, we obtain the following form for $\simProb(\domainVariables)$ (see Appendix \ref{sec-optimal-form-of-independent-simulation}),
+\[
+\simProb(\domainVariables) = \frac{\exp \left(-\beta E^\prime(\domainVariables)\right)}{Z^\prime_\domainVariables},
+\]
+where we have introduced $E^\prime(\domainVariables) = \expDist{E(\stateVariables)}{\simProb(\nullVariables)}$ as well as the domain simulation's partition function, $Z^\prime_\domainVariables$.
+
+Note that despite our independence assumption between the null space and the domain simulation there is an interdependence between the optimal form for $\simProb(\domainVariables)$ and $\simProb(\nullVariables)$. 
+
+Using our factorised form we can write the lower bound on the Szilard coefficient as (see Appendix \ref{sec-optimal-form-of-independent-simulation}),
+$$
+\log I \geq -\log \physicsProb(\dataVariables) + \log F_\domainVariables  + \log \separability  -\beta E(\measuredVariables_\dataVariables=\textbf{1})
+$$
+where we have introduced the \emph{separability}, $\separability$,
+$$
+\log \separability = - \text{KL}\left(\simProb(\domainVariables)\simProb(\nullVariables)||\trueProb(\domainVariables,\nullVariables)\right)
+$$
+which represents how separable our choice of domain space and null space are in reality. If $\separability=1$ then the null space and domain space are fully separable. This would occur, for example, if the domain variables were isolated from the null space. We have also defined the \emph{domain fidelity},
+$$
+\log F_\domainVariables = - \expDist{\text{KL}\left(\simProb(\domainVariables) || \frac{\trueProb(\dataVariables | \domainVariables,\nullVariables)\simProb(\domainVariables)}{\trueProb(\dataVariables)}\right)}{\simProb(\nullVariables)},
+$$
+which represents the fidelity of our domain simulation to the as the domain fidelity. If the domain variables are selected such that,
+$$
+\trueProb(\dataVariables | \domainVariables, \nullVariables) = \trueProb(\dataVariables |\domainVariables)
+$$
+then we can write
+$$
+\log F_\domainVariables = - \text{KL}\left(\simProb(\domainVariables) || \domainProb(\domainVariables | \dataVariables) \right),
+$$
+where
+$$
+\domainProb(\domainVariables | \dataVariables) = \frac{\trueProb(\dataVariables | \domainVariables)\simProb(\domainVariables)}{\trueProb(\dataVariables)}
+$$
+
+\section{Parameters}
+
+We now introduce a set of auxiliary variables, $\parameterVector$. These auxiliary variables augment the domain distribution,
+\[
+\domainProb(\domainVariables | \dataVariables) = \int \domainProb(\domainVariables, \parameterVector | \dataVariables) \text{d} \parameterVector,
+\]
+allowing us to lower bound the logarithm of the domain probability,
+\[
+\log \domainProb(\domainVariables | \dataVariables) \geq \int \simProb(\parameterVector|\domainVariables) \log \frac{\domainProb(\domainVariables, \parameterVector | \dataVariables)}{\simProb(\parameterVector|\domainVariables)} \text{d}\parameterVector,
+\]
+which in turn allows us to lower bound the domain fidelity, 
+\[
+\log F_\domainVariables = \int \simProb(\domainVariables) \log \frac{\domainProb(\domainVariables | \dataVariables)}{\simProb(\domainVariables)} \geq \int \simProb(\parameterVector,\domainVariables) \log \frac{\domainProb(\domainVariables, \parameterVector | \dataVariables)}{\simProb(\parameterVector,\domainVariables)} \text{d}\parameterVector.
+\]
+If we assume that we have introduced $\parameterVector$ such that $\domainProb(\domainVariables, \parameterVector| \dataVariables)$ can be decomposed as follows,
+\[
+\domainProb(\domainVariables, \parameterVector| \dataVariables) = \domainProb(\domainVariables| \parameterVector, \dataVariables) \trueProb(\parameterVector)
+\]
+then we can rewrite as
+\[
+\log F_\domainVariables \geq \int \simProb(\parameterVector) \log \frac{\trueProb(\parameterVector)}{\simProb(\parameterVector)}\text{d} \parameterVector + \int \simProb(\parameterVector) \int \simProb(\domainVariables|\parameterVector) \log \frac{\domainProb(\domainVariables|\parameterVector, \dataVariables)}{\simProb(\domainVariables|\parameterVector)} \text{d} \domainVariables \text{d}\parameterVector,
+\]
+or in terms of KL divergences,
+\begin{align*}
+\log F_\domainVariables \geq & -\text{KL}\left(\simProb(\parameterVector)|| \trueProb(\parameterVector)\right) - \expDist{ \text{KL}\left(\simProb(\domainVariables|\parameterVector) || \domainProb(\domainVariables|\parameterVector, \dataVariables) \right)}{ \simProb(\parameterVector)} \\
+\log F_\domainVariables \geq & \log F_\parameterVector + \log R_{\domainVariables|\parameterVector}
+\end{align*}
+which in turn implies that
+$$
+F_\domainVariables \geq F_\parameterVector R_{\domainVariables|\parameterVector}
+$$
+where $F_\parameterVector$ is the parameter fidelity and $R_{\domainVariables|\parameterVector}$ is the representability. 
+
+Parameterizing the model has allowed us to decompose the domain fidelity into a parameter fidelity and a representability. To see why we call $F_{\domainVariables |\parameterVector}$ the representability, we first minimizing the lower bound on the intelligence quotient with respect to $\simProb(\domainVariables | \parameterVector)$ and we recover,
+$$
+\simProb(\domainVariables | \parameterVector) = \domainProb(\domainVariables | \parameterVector).
+$$
+In which case the representability is given by, 
+$$
+\log R_{\domainVariables | \parameterVector} = \expDist{ \text{KL}\left(\domainProb(\domainVariables|\parameterVector) || \domainProb(\domainVariables|\parameterVector, \dataVariables) \right)}{ \simProb(\parameterVector)}.
+$$
+This KL divergence will be zero (and the representability 1) only if conditioning on $\dataVector$ does not change the domainprobability. In other words if $\parameterVector$ renders the domain variables conditionally independent of the data. In other words, storing the parameters is sufficient for us to have all the information about the domain variables, we don't need to store the data itself. For this to happen $\parameterVector$ would have to be sufficiently large to represent all the information in $\dataVector$.
+\todo{I think this is all true. Firstly, the minima of the bound (but it relies on $E(Y|X)$ in $p(Y)$ matching that in $\domainProb()$. And secondly that this implies conditional independence if W is large enough ... might need some conditions on a DAG between W, X1 and Y.} 
+
+Minimizing the lower bound on the intelligence quotient with respect to $\simProb(\parameterVector)$ recovers ...
+\todo{Need to check what happens here ...} 
+
+\section{Model Selection}
+
+In practice, we want to find the tightest bound on the intelligence ratio. Above we've shown what the form 
+
+
+Some thoughts:
+
+\begin{enumerate}
+    \item Choose parameters such that $\physicsProb(\dataVariables|\parameterVector) = \prod_{i=1}^n \physicsProb(\dataPoint_i |\parameterVector)$
+    \item Choosing robust models ... what about heavy tailed vs light tailed $\physicsProb(\dataPoint_i |\parameterVector)$. 
+\end{enumerate}
+
+Also for a fixed data set $\dataVariables$, the actual intelligence quotient is fixed. And we are supposed to be computing a lower bound. 
+
+Imagine we have two models, and one model has a higher negative log probability than the other. It doesn't mean it's got a higher intelligence quotient, because that's fixed. Instead, it means our estimate of the intelligence coefficient is likely to be over optimistic. 
+
+It feels likely there's some minimax stuff going on here. We want the model $\physicsProb(\dataVariables)$ which minimise the maximum ... because this will be the one with the highest fidelity and representability. Need to formalise that argument.
+
+\section{Likelihood Ratio Tests}
+
+\todo{Check what happens for likelihood ratio test.}
+
+\subsection{Speculative on Naming}
+
+Spilt the statistical model mismatch into two terms that represent how
+'correct' and how 'consistent' the statistical model is.
+
+Correctness represents the ability of the model to reconstruct the
+information about domain variables, \(\domainVariables\), that is
+provided by the data, \(\dataVariables\), through the parameters,
+\(\parameterVector\), alone. The value of
+\(B^\prime_{\domainVariables|\dataVariables}\) increases with
+incorrectness.
+
+Consistency reflects how likely different data sets are to give us
+different parameters. is the relative entropy (KL divergence) between
+the parameters of the statistical model,
+\(\statsProb(\parameterVector|\dataVariables)\), and the physical model,
+\(\physicsProb(\parameterVector|\dataVariables)\).
+
+\bibliography{information-engine.bib}
+
+\appendix
+
+\section{Decomposition of Total Energy} \label{sec-decomposition-of-total-energy}
+
+The total energy of a system ...
+
+\section{Lower Bound on $-\log \trueProb(\dataVariable)$} \label{sec-upper-bound-log-prob}
+
+Rewrite $\log \trueProb(\dataVariables)$ as
 \begin{align}
     \log \trueProb(\dataVariables) & =
     \expDist{\trueProb(\dataVariables,
@@ -291,69 +419,7 @@ We can rewrite $\log \physicsProb(\dataVariables)$ as
       \simProb(\stateVariables)}{\simProb(\stateVariables)} +
     \text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables)) \label{eqn-true-log-likelihood-1}
 \end{align}
-and now note that
-\[
-- \log Z_{\stateVariables,\dataVariables} =
-\beta\expDist{E(\dataVariables |
-  \stateVariables)}{\simProb(\stateVariables)\trueProb(\dataVariables)}
-+ \beta\expDist{E(\stateVariables)}{\simProb(\stateVariables )} -
-k_B^{-1}S_\dataVariables -\expDist{\log
-  \simProb(\stateVariables)}{\simProb(\stateVariables)} -
-\expDist{\text{KL}(\simProb(\stateVariables) ||
-  \trueProb(\stateVariables |
-  \dataVariables))}{\trueProb(\dataVariables)}
-\]
-if we now define
-\[
-\physicsProb(\dataVariables) = \frac{\exp\left(-\beta
-  \expDist{E(\dataVariables |
-    \stateVariables)}{\simProb(\stateVariables)}\right)}{Z^\prime_\dataVariables}
-\]
-then we can write
-\[
-\log \trueProb(\dataVariables) = \log \physicsProb(\dataVariables) +
-\text{KL}(\trueProb(\dataVariables)||\physicsProb(\dataVariables)) +
-\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables))
--
-\expDist{\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables))}{\trueProb(\dataVariables)}.
-\]
-so we can show that
-\[
-\log \trueProb(\dataVariables) \geq \log \physicsProb(\dataVariables)
--
-\expDist{\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables))}{\trueProb(\dataVariables)}.
-\]
-Maximizing this lower bound is achieved through minimizing
-$\expDist{\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables))}{\trueProb(\dataVariables)}$,
-in other words, finding a variational distribution which represents
-how the microstates behave correctly. Maximising this bound improves
-the physical plausibility of the model. We call
-$\simProb(\stateVariables)$ the \emph{simulation} and we call
-$\exp\left(-
-\expDist{\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables))}{\trueProb(\dataVariables)}\right)$
-the global simulation fidelity, $F_G$,
-\[
-\log F_G =
--\expDist{\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables))}{\trueProb(\dataVariables)}.
-\]
-Note that the fidelities we define vary between 0 and 1, with 1 being
-equivalent to 100\% faithful, meaning that the match between the two
-distributions is perfect.
-
-This in turn gives us an upper bound on our log intelligence quotient,
-\[
-\log I \leq -\beta E(\measuredVariables_\dataVariables = \textbf{1})
--\log \physicsProb(\dataVariables) - \log F_G.
-\]
-So we can write the intelligence quotient as,
-\[
-I \leq
-\frac{1}{F_G}\frac{\exp\left(-E(\measuredVariables_\dataVariables=\textbf{1})\right)}{\physicsProb(\dataVariables)}.
-\]
-
-\subsection{Lower Bound}
-
-We can also write
+and then rewrite the log partition function of the system as follows,
 \[
 - \log Z_{\stateVariables,\dataVariables} =
 \beta\expDist{E(\dataVariables |
@@ -373,36 +439,6 @@ which substituting into (\ref{eqn-true-log-likelihood-1}) gives
 - \expDist{\text{KL}(\simProb(\stateVariables) ||
   \trueProb(\stateVariables |
   \dataVariables))}{\physicsProb(\dataVariables)}
-\]
-and a corresponding \emph{upper} bound on $\log \trueProb(\dataVariables)$, 
-\[
-\log \trueProb(\dataVariables) \leq \log \physicsProb(\dataVariables)
-+
-\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables)).
-\]
-We define the $\exp\left(-
-\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables))\right)$
-to be the \emph{contextual} simulation fidelity, $F_C$,
-\[
-\log F_C =
--\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables)).
-\]
-and note the relationship between the contextual and global simulation
-fidelities,
-\[
-\log F_G = \expDist{\log F_C}{\trueProb(\dataVariables)}.
-\]
-and we can now lower bound the intelligence quotient,
-\[
-I \geq F_C \frac{\exp\left(-E(\measuredVariables_\dataVariables=
-  \textbf{1})\right)}{\physicsProb(\dataVariables)}.
-\]
-giving us a range for the intelligence quotient,
-\[
-F_C \frac{\exp\left(-E(\measuredVariables_\dataVariables=
-  \textbf{1})\right)}{\physicsProb(\dataVariables)} \leq I \leq
-\frac{1}{F_G}\frac{\exp\left(-E(\measuredVariables_\dataVariables=
-  \textbf{1})\right)}{\physicsProb(\dataVariables)}.
 \]
 
 \subsection{Global and Local Simulations}
@@ -444,4 +480,12 @@ The global simulation fidelity considers
       combining with the fidelities, $\log F_C$ and $\log F_G$.}
     \label{fig-log-py-bounds}
 \end{figure}
+=======
+\section{Optimal form of Independent Simulation} \label{sec-optimal-form-of-independent-simulation}
+
+
+$$
+\log I \geq -\log \physicsProb(\dataVariables) - \expDist{\text{KL}\left(\simProb(\domainVariables) || \frac{\trueProb(\dataVariables | \domainVariables,\nullVariables)\simProb(\domainVariables)}{\trueProb(\dataVariables)}\right)}{\simProb(\nullVariables)}  - \expDist{\log \frac{\simProb(\domainVariables)\simProb(\nullVariables)}{\trueProb(\domainVariables,\nullVariables)}}{\simProb(\domainVariables)\simProb(\nullVariables)}  -\beta E(\measuredVariables_\dataVariables=\textbf{1})
+$$
+
 \end{document}
