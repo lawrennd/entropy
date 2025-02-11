@@ -253,7 +253,7 @@ The bound can be tightened by maximising with respect to $\simProb(\stateVariabl
 \[
 \log I \geq - \log \physicsProb(\dataVariables) -\text{KL}(\simProb(\stateVariables)||\trueProb(\stateVariables|\dataVariables)) - \beta E(\measuredVariables_\dataVariables = \textbf{1})
 \]
-recalling that $\log \physicsProb = \frac{\expDist{E(\dataVariables|\stateVariables)}{\simProb(\stateVariables)}}{Z^\prime_\dataVariables}$ and focusing on the terms that are dependent on $\simProb(\stateVariables)$ we have,
+recalling that $\log \physicsProb(\dataVariables) = \frac{\exp\left(-\beta\expDist{E(\dataVariables|\stateVariables)}{\simProb(\stateVariables)}\right)}{Z^\prime_\dataVariables}$ and focusing on the terms that are dependent on $\simProb(\stateVariables)$ we have,
 \[
 \log I \geq \beta \expDist{E(\stateVariables)}{\simProb(\stateVariables)} - \expDist{\log \simProb(\stateVariables)}{\simProb(\stateVariables)} + \text{const.},
 \]
@@ -295,17 +295,25 @@ which represents how separable our choice of domain space and null space are in 
 $$
 \log F_\domainVariables = - \expDist{\text{KL}\left(\simProb(\domainVariables) || \frac{\trueProb(\dataVariables | \domainVariables,\nullVariables)\simProb(\domainVariables)}{\trueProb(\dataVariables)}\right)}{\simProb(\nullVariables)},
 $$
-which represents the fidelity of our domain simulation to the as the domain fidelity. If the domain variables are selected such that,
+which represents the fidelity of our domain simulation to the as the domain fidelity. We now define,
+$$
+\domainProb(\dataVariables | \domainVariables) = \frac{\exp\expDist{\log \trueProb(\dataVariables | \domainVariables,\nullVariables)}{\simProb(\nullVariables)}}{Z^\prime_{\dataVariables|\domainVariables}}
+$$
+and 
+$$
+\domainProb(\domainVariables | \dataVariables) = \frac{\trueProb(\dataVariables | \domainVariables)\simProb(\domainVariables)}{\trueProb(\dataVariables)}
+$$
+giving
+$$
+\log F_\domainVariables = - \text{KL}\left(\simProb(\domainVariables) || \domainProb(\domainVariables | \dataVariables)\right)}  - \log \frac{Z^\prime_{\dataVariables|\domainVariables}}{ Z_{\dataVariables|\stateVariables}}  ,
+$$
+If the domain variables are selected such that,
 $$
 \trueProb(\dataVariables | \domainVariables, \nullVariables) = \trueProb(\dataVariables |\domainVariables)
 $$
 then we can write
 $$
-\log F_\domainVariables = - \text{KL}\left(\simProb(\domainVariables) || \domainProb(\domainVariables | \dataVariables) \right),
-$$
-where
-$$
-\domainProb(\domainVariables | \dataVariables) = \frac{\trueProb(\dataVariables | \domainVariables)\simProb(\domainVariables)}{\trueProb(\dataVariables)}
+\log F_\domainVariables = - \text{KL}\left(\simProb(\domainVariables) || \domainProb(\domainVariables | \dataVariables) \right).
 $$
 
 \section{Parameters}
