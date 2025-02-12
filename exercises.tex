@@ -119,10 +119,16 @@ Consider a particle that can move on a 1D discrete lattice with sites labeled by
 \begin{enumerate}
     \item[(a)] Consider the limit where the time step $\Delta t \to 0$ and lattice spacing $\Delta x \to 0$ such that $(\Delta x)^2/\Delta t$ remains constant. Show that the discrete random walk approaches a continuous diffusion process.
     \begin{answer}
-        In this limit we have a bionomial distribution where at time $t_j$ the location $x_j$ is given by $\sum_{i=1}^j \Delta x s_i - \sum_{i=1}^j \Delta x (1-s_i)$. Because it's a sum over scaled bionomial variables, then we can apply the central limit theorem to find the mean and covariance of $x$.
+        In this limit we have a bionomial distribution where at time $t_j$ the location $x_j$ is given by
+        \begin{eqnarray}
+        x_j & = \sum_{i=1}^j \Delta x s_i - \sum_{i=1}^j \Delta x (1-s_i) \nonumber \\
+        & = \Delta x\left(2 \sum_{i=1}^j s_i - j\right).
+        \end{eqnarray}
+        Because it's a sum over scaled bionomial variables, then we can apply the central limit theorem to find the mean and covariance of $x$.
+        
         Expectation of $x_j$ is given by 
         $$
-        \Delta x p j - \Delta x (1-p) j.
+        \langle x_j\rangle = \Delta x j (2 p - 1).
         $$ 
         Taking $j=\frac{t}{\Delta t}$ we have 
         $$
@@ -130,13 +136,22 @@ Consider a particle that can move on a 1D discrete lattice with sites labeled by
         $$ 
         which will be infinite unless $p=1/2$ so we have $\langle x(t)\rangle = 0$.
         
-        Expectation of $x_j x_{j^\prime}$ is given by $\Delta x^2 p \min(j, j^\prime)  \Delta x^2 (1-p) min(j, j^\prime)$. Taking $j^\prime = j+\Delta j$ we have $\langle x_j x_{j^\prime}\rangle = \Delta x^2 p j (j+\Delta j) - \Delta x^2 (1-p) j (j+\Delta j)$.
+        Product of $x_j x_{j^\prime}$ is given by 
+        $$
+        x_j x_{j^\prime} = \Delta x^2 \left(4\sum_{i=1}^j s_i \sum_{{i^\prime}=1}^{j^\prime} s_{i^\prime} -j^\prime\sum_{i=1}^j s_i -j\sum_{{i^\prime}=1}^{j^\prime} s_{i^\prime} +jj^\prime\right).
+        $$. Taking $j^\prime = j+\Delta j$ we have $\langle x_j x_{j^\prime}\rangle = \Delta x^2 p j (j+\Delta j) - \Delta x^2 (1-p) j (j+\Delta j)$.
     \end{answer}
     \item[(b)] For a continuous trajectory $x(t)$ over time interval $[0,T]$, explain why we write the probability functional as:
-    \[ P[x(t)] = \mathcal{N} \exp\left(-\frac{1}{4D}\int_0^T \left(\frac{dx}{dt}\right)^2 dt\right) \]
-    where D is the diffusion coefficient and $\mathcal{N}$ is a normalization factor.
-    
+    \[ 
+    P[x(t)] = \mathcal{N} \exp\left(-\frac{1}{4D}\int_0^T \left(\frac{\text{d}x}{\text{d}t}\right)^2 \text{d}t\right) 
+    \]
+    where $D$ is the diffusion coefficient and $\mathcal{N}$ is a normalization factor.
+    \begin{answer}
+    \end{answer}
     \item[(c)] How does this continuous probability functional relate to the discrete probability from Exercise 1(d)?
+    \begin{answer}
+        The discrete probability is given by $p(\Gamma) = \prod_{i=1}^n p^{s_i}(1-p)^{1-s_i}$.
+    \end{answer}
 \end{enumerate}
 
 \section*{Exercise 3: Physical Observables and Path Ensembles}
@@ -147,12 +162,23 @@ Consider a general observable $A[x(t)]$ that depends on the entire trajectory.
     \item[(a)] Write an expression for the ensemble average $\langle A \rangle$ in terms of the path probability $P[x(t)]$.
     
     \item[(b)] For the specific case where $A[x(t)]$ is the average velocity over the trajectory:
-    \[ A[x(t)] = \frac{1}{T}\int_0^T \frac{dx}{dt} dt \]
+    \[ 
+    A[x(t)] = \frac{1}{T}\int_0^T \frac{dx}{dt} dt 
+    \]
     show that $\langle A \rangle = 0$ for the probability functional given in Exercise 2(b).
     
-    \item[(c)] If we now add a constant force F, the probability functional becomes:
-    \[ P[x(t)] = \mathcal{N} \exp\left(-\frac{1}{4D}\int_0^T \left[\left(\frac{dx}{dt}\right)^2 - \frac{2F}{m}\frac{dx}{dt}\right] dt\right) \]
+    \item[(c)] If we now add a constant force $F$, the probability functional becomes:
+    \[ 
+    P[x(t)] = \mathcal{N} \exp\left(-\frac{1}{4D}\int_0^T \left[\left(\frac{\text{d}x}{\text{d}t}\right)^2 - \frac{2F}{m}\frac{\text{d}x}{\text{d} t}\right] \text{d}t\right) 
+    \]
     Calculate $\langle A \rangle$ in this case.
+
+    \item[(d)] Consider the integral in the exponent of the probability functional from part (c).
+    \begin{enumerate}
+        \item[(i)] Show that the most probable path maximizes this probability by minimizing this integral.
+        \item[(ii)] Multiply the integrand by $-4D$ and compare it with the classical Lagrangian $L = \frac{1}{2}m\dot{x}^2 + Fx$. What do you notice?
+        \item[(iii)] Using this comparison, show that the most probable path satisfies Newton's equation of motion $m\ddot{x} = F$. What does this tell us about the relationship between maximum probability and least action?
+    \end{enumerate}
 \end{enumerate}
 
 \section*{Exercise 4: Connection to Maximum Caliber}
@@ -169,6 +195,12 @@ Consider a general observable $A[x(t)]$ that depends on the entire trajectory.
 
 \section*{Exercise 5: Quantum-Classical Correspondence}
 
+The Feynman path integral in quantum mechanics gives the probability amplitude for a particle to go from position $x_a$ at time $t_a$ to position $x_b$ at time $t_b$:
+\[
+K(x_b,t_b;x_a,t_a) = \int \mathcal{D}x(t) \exp\left(\frac{i}{\hbar}\int_{t_a}^{t_b} \left[\frac{m}{2}\left(\frac{dx}{dt}\right)^2 - V(x)\right]dt\right)
+\]
+where $\mathcal{D}x(t)$ represents integration over all possible paths.
+
 \begin{enumerate}
     \item[(a)] Show that under a Wick rotation $t \to -i\tau$, the Feynman path integral for quantum mechanics transforms into the form given in Exercise 2(b) with $D = \frac{\hbar}{2m}$.
     
@@ -177,6 +209,31 @@ Consider a general observable $A[x(t)]$ that depends on the entire trajectory.
     \item[(c)] Using this correspondence, explain why the classical probability distribution $P[x(t)]$ can be interpreted as a Euclidean quantum amplitude. What are the limitations of this interpretation?
     
     \item[(d)] Show that in the limit $\hbar \to 0$, the most probable path from the quantum path integral reduces to the classical path that minimizes the action. How does this relate to the principle of least action?
+\end{enumerate}
+
+\section*{Exercise 6: MaxCal and Schrödinger's Bridge}
+
+\begin{enumerate}
+    \item[(a)] Consider the MaxCal principle with constraints on both initial $\rho_0(x)$ and final $\rho_1(x)$ distributions:
+    \[ 
+    p[\Gamma] = \frac{1}{Z}\exp\left(-\int_0^1 L(x,\dot{x})dt + \lambda_0(x(0)) + \lambda_1(x(1))\right) 
+    \]
+    Show that this leads to a modified ``action'':
+    \[ 
+    S_{eff}[\Gamma] = \int_0^1 L(x,\dot{x})dt - \ln\rho_0(x(0)) - \ln\rho_1(x(1)) 
+    \]
+
+    \item[(b)] Demonstrate that minimizing the relative entropy:
+    \[ 
+    D(P\|Q) = \int \mathcal{D}x P[x(t)]\ln\frac{P[x(t)]}{Q[x(t)]} 
+    \]
+    subject to the endpoint constraints gives the same form as Schrödinger's bridge problem.
+
+    \item[(c)] Show that the resulting optimal dynamics can be written as:
+    \[ 
+    \frac{\text{d}x}{\text{d}t} = b(x,t) + D\nabla\ln\psi(x,t) 
+    \]
+    where $\psi(x,t)$ satisfies a forward-backward system of equations.
 \end{enumerate}
 
 \end{document} 
