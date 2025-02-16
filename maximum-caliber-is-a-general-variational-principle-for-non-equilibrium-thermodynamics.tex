@@ -1,0 +1,221 @@
+\documentclass[aps,pra,twocolumn]{revtex4-1}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\title{Communication: Maximum caliber is a general variational principle for nonequilibrium statistical mechanics}
+
+\author{Michael J. Hazoglou}
+\affiliation{Department of Physics and Astronomy, Stony Brook University, Stony Brook, New York 11794, USA}
+\collaboration{These authors contributed equally}
+
+\author{Valentin Walther}
+\affiliation{Department of Physics and Astronomy, Stony Brook University, Stony Brook, New York 11794, USA}
+\collaboration{These authors contributed equally}
+
+\author{Purushottam D. Dixit}
+\affiliation{Department of Systems Biology, Columbia University, New York, New York 10032, USA}
+
+\author{Ken A. Dill}
+\affiliation{Department of Physics and Astronomy, Stony Brook University, Stony Brook, New York 11794, USA}
+\affiliation{Laufer Center for Physical and Quantitative Biology, Stony Brook, New York 11794, USA}
+\affiliation{Department of Chemistry, Stony Brook University, Stony Brook, New York 11794, USA}
+
+\date{(Received 20 May 2015; accepted 27 July 2015; published online 6 August 2015)}
+
+\begin{document}
+
+\begin{abstract}
+There has been interest in finding a general variational principle for non-equilibrium statistical mechanics. We give evidence that Maximum Caliber (Max Cal) is such a principle. Max Cal, a variant of maximum entropy, predicts dynamical distribution functions by maximizing a path entropy subject to dynamical constraints, such as average fluxes. We first show that Max Cal leads to standard near-equilibrium results-including the Green-Kubo relations, Onsager's reciprocal relations of coupled flows, and Prigogine's principle of minimum entropy production-in a way that is particularly simple. We develop some generalizations of the Onsager and Prigogine results that apply arbitrarily far from equilibrium. Because Max Cal does not require any notion of ``local equilibrium,'' or any notion of entropy dissipation, or temperature, or even any restriction to material physics, it is more general than many traditional approaches. It also applicable to flows and traffic on networks, for example. © 2015 AIP Publishing LLC. [http://dx.doi.org/10.1063/1.4928193]
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+There has been interest in identifying a variational principle basis for non-equilibrium statistical mechanics (NESM). On the one hand, phenomenological dynamics is well established. It consists of (a) phenomenological relationships, such as Ohm's Law of electrical current flow, Fick's Law of diffusion, Fourier's Law of conduction, the Newtonian Law of viscosity, combined with (b) conservation laws, such Kirchoff's current relationship, or similar relationships for flows of mass or heat. The combinations of relationships of types (a) and (b) lead to well-known dynamical equations such as the NavierStokes and Burgers' equations of hydrodynamics or the diffusion and Smoluchowski equations, as elucidated in standard textbooks. ${ }^1$
+
+However, the search for a microscopic statistical basis for these relationships has been more challenging; see for example. ${ }^2$ While there have been many powerful and important methods for particular calculations, including the Langevin equation, Master equation, Fokker-Planck, Smoluchowski equations, and others, nevertheless so far, there has been no foundational basis for NESM that provides the same power that the Second Law of thermodynamics provides for equilibria. ${ }^{3,4}$ Indeed, multiple context dependent variational principles have been proposed for NESM, such as minimum entropy production, ${ }^4$ maximum entropy production, ${ }^{5,6}$ and minimum energy dissipation. ${ }^7$ Nevertheless, a general variational quantity remains illusive.
+
+A common starting point for deriving NESM variational principles is the ``state entropy,'' $S=-\sum_i p_i \log p_i$ where the $p_i$ 's are the populations of equilibrium states $i=1,2,3, \ldots$. Then, a ``local equilibrium'' assumption is made that $S$, which is fundamentally only defined in the context of an extremum principle for predicting equilibrium, can also be a useful predictor near equilibrium. Then, the entropy production is defined as $\sigma=d S / d t$ to determine the rates of approach to equilibrium or of dissipation in steady states. One major drawback of these approaches is that they usually do not provide a natural quantifier for closeness to equilibrium; there is no systematic way to improve the near-equilibrium predictions in terms of an expansion parameter further away from equilibrium. Here, we describe an approach based on path entropies, not state entropies, which does not have these problems, is applicable even far from equilibrium, has expansion parameters, and happens to give very simple procedures for deriving some results of NESM.
+
+A goal of NESM has been to find a variational quantity that can be maximized subject to suitable dynamical constraints. Such an approach goes beyond phenomenological descriptions of only average forces and flows and explains fluctuating quantities and higher moments of dynamical properties as well. Jaynes proposed a candidate NESM variational principle called ``Maximum Caliber'' (Max Cal). ${ }^8$ We and others have explored its applicability as a general foundation for NESM. ${ }^{9-15}$ While the power of Max Cal is its generality (for example, its applicability far from equilibrium), what is new in the present work is simply demonstrating that key wellknown results of NESM are readily recovered in a simple way when maximum caliber is applied in a near-equilibrium approximation.
+
+\section{Theory: The Maximum Caliber Approach}
+
+For concreteness, we consider a discrete-time discretestate system with two types of fluxes: of ``stuff'' $a$ and ``stuff'' 
+$b$. Examples of $a$ and $b$ include heat, mass, electrical charge, and momentum. We allow for the coupling between the two fluxes; the flux of $a$ may depend in any way on the flux of $b$. We assume that the system reaches a macroscopic nonequilibrium stationary state after a long time after it has been coupled to gradients across its boundaries that set up the fluxes. Figure 1 illustrates with an example of coupled heat and particle flows in one dimension.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figure1.png}
+    \caption{An illustration of coupled heat and particle flows.}
+    \label{fig:figure1}
+\end{figure}
+
+Suppose the system has $N$ discrete states $\{1,2, \ldots, N\}$. Let us define an ensemble $\{\Gamma\}$ of stationary-state microtrajectories $\Gamma \equiv \cdots \rightarrow i \rightarrow j \rightarrow \ldots$ of fixed duration. The duration of the trajectories is not important, so we keep it unspecified. Based on how the system is coupled to the gradients and the internal structure of the system, each microtrajectory $\Gamma$ will correspond to a specific value of flux $j_{a \Gamma}(t)$ of type $a$ (and $b$ ) at any time $t$. The ensemble average of the flux $J_a(t)$ of quantity $a$ at time $t$ is then given by
+\begin{equation}
+J_a(t)=\left\langle j_{a \Gamma}(t)\right\rangle=\sum_{\Gamma} p_{\Gamma} j_{a \Gamma}(t),
+\end{equation}
+where $p_{\Gamma}$ is the probability of trajectory $\Gamma$. It is clear that different probability distributions $p_{\Gamma}$ could lead to macroscopic fluxes $J_a(t)$ and $J_b(t)$. The strategy of Max Cal is to seek the particular probability distribution $p_{\Gamma}$ that maximizes the path entropy and is otherwise consistent with the ensemble averaged fluxes $J_a(t)$ and $J_b(t)$ for all times $t$. We maximize the path entropy or the caliber,
+\begin{equation}
+C=-\sum_{\Gamma} p_{\Gamma} \log \frac{p_{\Gamma}}{q_{\Gamma}}
+\end{equation}
+subject to normalization and flux constraints. Here, $q_{\Gamma}$ is the reference probability distribution of trajectories when there are no gradients, i.e., at thermodynamic equilibrium. From Fig. 1, it is clear that there are multiple choices of $q_{\Gamma}$, for example, it may correspond to the equilibrium distribution at $T_1$ and $\mu_1$ or to the distribution at $T_2$ and $\mu_2$. As an aside, the conditions for equilibrium (see below) are that (a) there are no net fluxes at equilibrium, i.e.,
+\begin{equation}
+\left\langle j_{a \Gamma}(t)\right\rangle=\sum j_{a \Gamma}(t) q_{\Gamma}=0
+\end{equation}
+and similarly for $\left\langle j_{b \Gamma}(t)\right\rangle$, and (b) the equilibrium state satisfies microscopic reversibility: the trajectory ensemble averages at equilibrium are unchanged under path reversal. Under the situation where the flux is odd under time-reversal condition (b) yields (a).
+
+The caliber ${ }^{8,9}$ is maximized with the constraints on the macroscopic fluxes of $a$ and $b$ at time $t$ for all $t$, which are enforced by the set of Lagrange multipliers $\left\{\lambda_a(t)\right\}$ and $\left\{\lambda_b(t)\right\}$,
+\begin{eqnarray}
+\begin{aligned}
+& -\sum_{\Gamma} p_{\Gamma} \log \frac{p_{\Gamma}}{q_{\Gamma}}+\sum_t \lambda_a(t)\left(\sum_{\Gamma} p_{\Gamma} j_{a \Gamma}(t)-J_a(t)\right) \nonumber\\
+& \quad+\sum_t \lambda_b(t)\left(\sum_{\Gamma} p_{\Gamma} j_{b \Gamma}(t)-J_b(t)\right)+\alpha\left(\sum_{\Gamma} p_{\Gamma}-1\right)
+\end{aligned}
+\end{eqnarray}
+
+Maximizing the Caliber with respect to the trajectory probability $p_{\text {Г }}$ gives
+\begin{equation}
+p_{\Gamma}=\frac{q_{\Gamma}}{Z} \exp \left(\sum_t\left[\lambda_a(t) j_{a \Gamma}(t)+\lambda_b(t) j_{b \Gamma}(t)\right]\right) \label{eq:trajectory_probability}
+\end{equation}
+with the dynamical partition function $Z$,
+\begin{equation}
+Z=\sum_{\Gamma} q_{\Gamma} \exp \left(\sum_t\left[\lambda_a(t) j_{a \Gamma}(t)+\lambda_b(t) j_{b \Gamma}(t)\right]\right). \label{eq:dynamical_partition_function}
+\end{equation}
+
+Equations (\ref{eq:trajectory_probability}) and (\ref{eq:dynamical_partition_function}) are the expressions of the principle of maximum caliber for two types of flows. Like maximum entropy for equilibrium statistical mechanics, maximum caliber for nonequilibrium computes macroscopic quantities as derivatives of a partition-function-like quantity (in this case, a sum of weights over the different pathways). For example, average flux quantities are first derivatives of the logarithm of the dynamical partition function,
+\begin{equation}
+J_a(t)=\left\langle j_{a \Gamma}(t)\right\rangle=\sum_{\Gamma} p_{\Gamma} j_{a \Gamma}(t)=\frac{\partial \log Z}{\partial \lambda_a(t)} \label{eq:average_flux}
+\end{equation}
+Identical equations follow for $J_b(t)$. Equations (\ref{eq:average_flux}) allow the calculation of $\lambda_a(t)$ and $\lambda_b(t)$ from the knowledge of the functional form of $J_a\left[\lambda_a(t), \lambda_b(t)\right]$ and $J_b\left[\lambda_a(t), \lambda_b(t)\right]$ as well as the constrained values. Higher moments of the dynamical distribution function can be calculated by taking higher derivatives of $\log Z$. For example, the second order cumulants are
+\begin{eqnarray}
+\begin{aligned}
+\left\langle j_{a \Gamma}(t) j_{a \Gamma}(\tau)\right\rangle-\left\langle j_{a \Gamma}(t)\right\rangle\left\langle j_{a \Gamma}(\tau)\right\rangle & =\frac{\partial\left\langle j_{a \Gamma}(t)\right\rangle}{\partial \lambda_a(\tau)} \nonumber \\
+& =\frac{\partial^2 \log Z}{\partial \lambda_a(t) \partial \lambda_a(\tau)}, \nonumber \\
+\left\langle j_{a \Gamma}(t) j_{b \Gamma}(\tau)\right\rangle-\left\langle j_{a \Gamma}(t)\right\rangle\left\langle j_{b \Gamma}(\tau)\right\rangle & =\frac{\partial\left\langle j_{a \Gamma}(t)\right\rangle}{\partial \lambda_b(\tau)}=\frac{\partial\left\langle j_{b \Gamma}(\tau)\right\rangle}{\partial \lambda_a(t)} \nonumber \\
+& =\frac{\partial^2 \log Z}{\partial \lambda_a(t) \partial \lambda_b(\tau)} . \nonumber
+\end{aligned}
+\end{eqnarray}
+Identical expressions follow for $b$.
+
+So far, this development is general, allowing for timedependent fluxes. However, for our purpose below of touching base with three well-known results of NESM, we now restrict consideration to stationary flows, $\left\langle j_{a \Gamma}(t)\right\rangle=J_a$ and $\left\langle j_{b \Gamma}(t)\right\rangle$ $=J_b$,for all times $t$. See section S1 of the supplementary material for a proof that Lagrange multipliers $\lambda_a, \lambda_b$ corresponding to fluxes $J_a$ and $J_b$ are also independent of time. ${ }^{27}$ Now, we show how the Green-Kubo relations, Onsager's reciprocal relations, and Prigogine's minimum entropy production theorem are derived quite simply from Equations (\ref{eq:trajectory_probability}) and (\ref{eq:dynamical_partition_function}).
+
+\subsection{Deriving the Green-Kubo relations from Max Cal}
+
+The Green-Kubo relations are well-known relationships between various transport coefficients, on the one hand, and time correlation functions at equilibrium, on the other. Here, we show that they can be derived quite directly from Max Cal. Consider a coupled flow system in a stationary state (time invariant). Consider the fluxes at some particular time, call it $t=0$. Now, expand around $\lambda \approx 0$ (small driving forces, see below). That is, expand $\left\langle j_{a \Gamma}(t)\right\rangle=J_a(0)$ at $t=0$ to first order around $\lambda_a(\tau), \lambda_b(\tau)=0$ for all $\tau$,
+\begin{eqnarray}
+\begin{aligned}
+J_a(0) \approx & \sum_\tau\left[\frac{\partial\left\langle j_{a \Gamma}(0)\right\rangle}{\partial \lambda_a(\tau)} \lambda_{\lambda=0}(\tau)+\frac{\partial\left\langle j_{a \Gamma}(0)\right\rangle}{\partial \lambda_b(\tau)} \lambda_{\lambda=0} \lambda_b(\tau)\right] \nonumber \\
+= & \lambda_a \sum_\tau\left\langle j_{a \Gamma}(0) j_{a \Gamma}(\tau)\right\rangle_{\lambda=0} \nonumber \\
+& +\lambda_b \sum_\tau\left\langle j_{a \Gamma}(0) j_{b \Gamma}(\tau)\right\rangle_{\lambda=0}. \label{eq:green_kubo_relations}
+\end{aligned}
+\end{eqnarray}
+
+In Eq. (\ref{eq:green_kubo_relations}), when $\lambda=0$, note that $p_{\Gamma}$ is equal to the equilibrium distribution $q_{\Gamma}$ and note that $\left\langle j_{a \Gamma(t)}\right\rangle=\left\langle j_{b \Gamma(t)}\right\rangle=0$. When the system is in steady state, any time dependence of the Lagrange multipliers $\lambda_a$ and $\lambda_b$ will vanish (see section S1 proof of the supplementary material ${ }^{27}$ ). Eq. (\ref{eq:green_kubo_relations}) is simply the Green-Kubo relations ${ }^{16-18}$ between the linear transport coefficient and the flux autocorrelations. And, up to a constant factor, the Lagrange multipliers can be seen as the driving forces.
+
+\subsection{Deriving the Onsager reciprocal relationships from Max Cal}
+
+Onsager considered the near-equilibrium situation in which multiple flows are linearly proportional to their corresponding forces, ${ }^7$
+\begin{eqnarray}
+\begin{aligned}
+J_a & =L_{a a} \lambda_a+L_{a b} \lambda_b, \\
+J_b & =L_{b a} \lambda_a+L_{b b} \lambda_b.
+\end{aligned}
+\end{eqnarray}
+For this situation, Onsager derived the reciprocal relationship that $L_{a b}=L_{b a} \cdot{ }^{19,20}$ This result can be derived straightforwardly from maximum caliber. From Eqs. (\ref{eq:trajectory_probability}) and (\ref{eq:dynamical_partition_function}) above, we have
+\begin{eqnarray}
+\begin{aligned}
+L_{a b}=\sum_\tau \frac{\partial^2 \log Z}{\partial \lambda_a(0) \partial \lambda_b(\tau)} & =\sum_{\lambda=0}\left\langle j_a(0) j_b(\tau)\right\rangle_{\lambda=0} \nonumber\\
+& =\sum_\tau\left\langle j_a(\tau) j_b(0)\right\rangle_{\lambda=0} \nonumber\\
+& =L_{b a}. \label{eq:onsager_reciprocal_relations}
+\end{aligned}
+\end{eqnarray}
+The last equality follows from microscopic reversibility of the equilibrium state. We have assumed that both fluxes have the same parity under time reversal. Summing (or integrating) over $\tau$ will not affect the symmetry of the matrix $L$.
+
+Eq. (\ref{eq:onsager_reciprocal_relations}) shows that Max Cal gives a quantitative measure of how far away a system is from equilibrium, in terms of the expansion quantity $\lambda$. Operationally, since the $\lambda$'s represent the forces, ``near equilibrium'' refers to any situation in which $\lambda$ is small enough that fluxes are linearly proportional to forces.
+
+It is clear that the symmetries in transport coefficients arise from microscopic reversibility of fluxes at equilibrium. Are there other such symmetries amongst the higher-order transport coefficients for systems not near equilibrium? While there has been a considerable effort to discover such symmetries, no clear general results have been obtained. ${ }^{21-24}$ Our development shows that $n^{\text {th }}$ order expansion of the flux in terms of the thermodynamic gradients will involve $(n+1)^{\text {st }}$ order cumulants functions among fluxes at equilibrium. These cumulants do have some symmetry properties owing to microscopic reversibility and translational invariance with respect to time. See section S2 of the supplementary material where we show that there are no simple relationships between higher-order transport coefficients. ${ }^{27}$
+
+\subsection{Deriving Prigogine's principle of minimum entropy production from Max Cal}
+
+Prigogine developed a variational principle for two coupled flows near equilibrium. If one of those flows $a$ is driven by a given force, and if the other $b$ is unconstrained, then the flux of $b$ is predicted to be that which has the minimum rate of entropy production. ${ }^{25,26}$ First, here is the standard development in terms of entropy production. If the state entropy is $S$, then the rate of entropy production in a system carrying two fluxes $J_a$ and $J_b$ is given by
+\begin{equation}
+\sigma=\frac{d S}{d t}=J_a \lambda_a+J_b \lambda_b
+\end{equation}
+where $\lambda_a$ and $\lambda_b$ are driving gradients. Using the Onsager relationships near equilibrium, we have
+\begin{equation}    
+\sigma=L_{a a} \lambda_a^2+2 L_{a b} \lambda_a \lambda_b+L_{b b} \lambda_b^2
+\end{equation}
+
+Prigogine's principle then seeks the entropy production rate that is minimal with respect to variations in $\lambda_b$,
+\begin{equation}
+\frac{\partial \sigma}{\partial \lambda_b}=2\left(L_{a b} \lambda_a+L_{b b} \lambda_b\right)=2 J_b=0
+\end{equation}
+which correspondingly also predicts that $J_b=0$.${ }^4$
+
+Now, here instead is the same principle derived from Max Cal. First, express the caliber as
+\begin{eqnarray}
+\begin{aligned}
+C & =-\sum_{\Gamma} p_{\Gamma} \ln \left(\frac{p_{\Gamma}}{q_{\Gamma}}\right) \nonumber\\
+& =\ln Z-\sum_t\left[\lambda_a(t) J_a(t)+\lambda_b(t) J_b(t)\right] \label{eq:caliber_expression}
+\end{aligned}
+\end{eqnarray}
+
+Now, maximizing the caliber gives
+\begin{eqnarray}
+\begin{aligned}
+\frac{\partial C}{\partial \lambda_b(\tau)} & =-\sum_t\left[\lambda_a(t) \frac{\partial J_a(t)}{\partial \lambda_b(\tau)}+\lambda_b(t) \frac{\partial J_b(t)}{\partial \lambda_b(\tau)}\right] \nonumber\\
+& \approx-\lambda_a L_{a b}-\lambda_b L_{b b}+O\left(\lambda^2\right)=-J_b=0
+\end{aligned}
+\end{eqnarray}
+
+which gives the a force-flux relationship near equilibrium that is identical to the one Prigogine derives using the entropyproduction argument. However, in addition, Max Cal makes a useful prediction beyond the linear regime. The caliber is maximized when
+\begin{equation}
+\sum_t\left[\lambda_a(t) \frac{\partial J_a(t)}{\partial \lambda_b(\tau)}+\lambda_b(t) \frac{\partial J_b(t)}{\partial \lambda_b(\tau)}\right]=0 \label{eq:caliber_maximized}
+\end{equation}
+So, if we are given how $J_a$ and $J_b$ depend on the imposed thermodynamic gradients $\lambda_a$ and $\lambda_b$, then solving Eq. (\ref{eq:caliber_maximized}) gives the gradient $\lambda_b$ to which the system adjusts itself when it is not constrained.
+
+\section{Conclusions}
+
+The principle of maximum caliber is a putative variational principle for nonequilibrium statistical mechanics. We show here that Max Cal provides a natural and simple route to deriving several key results of NESM, including the Green-Kubo relations, the Onsager reciprocal relations, and Prigogine's minimum entropy production principle. It gives a way to explore higher-order generalizations of Onsager relationships and Prigogine's principle for situations not near equilibrium. The advantages of Max Cal over other variational schemes are that it is not limited to near equilibrium, or to ``local equilibrium assumptions,'' has a natural ``order parameter'' for defining a distance from equilibrium, and has a sounder basis in principle than quantities like entropy production rates. The power of the Max Cal method derives from its focus on path entropies, not state entropies.
+
+\section*{Acknowledgments}
+
+We thank Kinghuk Ghosh and Steve Presse for many deeply engaging initial discussions that led to this work. And, we thank Amos Maritan and Jayanth Banavar for the insightful derivation of the results in Appendix I (supplementary material). ${ }^{27}$ We appreciate the support of NSF Grant No. PHY1205881 and of the Laufer Center.
+
+\section*{References}
+
+
+\begin{thebibliography}{99}
+    \bibitem{1} R. Bird, W. Stewart, and E. Lightfoot, Transport Phenomena (Wiley, 2007).
+    \bibitem{2} F. Bonetto, J. L. Lebowitz, and L. Rey-Bellet, ``Fourier's law: A challenge to theorists,'' preprint arXiv:math-ph/0002052 (2000).
+    \bibitem{3} W. Grandy, Jr., Entropy and the Time Evolution of Macroscopic Systems, International Series of Monographs on Physics (OUP, Oxford, 2008).
+    \bibitem{4} D. Kondepudi and I. Prigogine, From Heat Engines to Dissipative Structures (John Wiley \& Son, 1998).
+    \bibitem{5} R. Dewar, J. Phys. A: Math. Gen. 36, 631 (2003).
+    \bibitem{6} R. C. Dewar, J. Phys. A: Math. Gen. 38, L371 (2005).
+    \bibitem{7} L. Onsager and S. Machlup, Phys. Rev. 91, 1505 (1953).
+    \bibitem{8} E. T. Jaynes, in Complex Systems-Operational Approaches, edited by H. Haken (Springer-Verlag, Berlin, 1985), p. 254.
+    \bibitem{9} S. Pressé, K. Ghosh, J. Lee, and K. A. Dill, Rev. Mod. Phys. 85, 1115 (2013).
+    \bibitem{10} P. D. Dixit and K. A. Dill, J. Chem. Theory Comput. 10, 3002 (2014).
+    \bibitem{11} G. Stock, K. Ghosh, and K. A. Dill, J. Chem. Phys. 128, 194102 (2008).
+    \bibitem{12} Q. A. Wang, Chaos, Solitons Fractals 23, 1253 (2005).
+    \bibitem{13} H. Ge, S. Pressé, K. Ghosh, and K. A. Dill, J. Chem. Phys. 136, 064108 (2012).
+    \bibitem{14} J. Lee and S. Pressé, J. Chem. Phys. 137, 074103 (2012).
+    \bibitem{15} P. D. Dixit, J. Abhinav, S. Gerhard, and A. Dill Ken (unpublished).
+    \bibitem{16} M. S. Green, J. Chem. Phys. 20, 1281 (1952).
+    \bibitem{17} M. S. Green, J. Chem. Phys. 22, 398 (1954).
+    \bibitem{18} R. Kubo, J. Phys. Soc. Jpn. 12, 570 (1957).
+    \bibitem{19} L. Onsager, Phys. Rev. 37, 405 (1931).
+    \bibitem{20} L. Onsager, Phys. Rev. 38, 2265 (1931).
+    \bibitem{21} G. Bochkov and Y. E. Kuzovlev, Zh. Eksp. Teor. Fiz. 72, 238 (1977).
+    \bibitem{22} G. Bochkov and Y. E. Kuzovlev, Zh. Eksp. Teor. Fiz. 76, 1071 (1979).
+    \bibitem{23} R. D. Astumian, Phys. Rev. Lett. 101, 046802 (2008).
+    \bibitem{24} M. N. Artyomov, Phys. Rev. Lett. 102, 149701 (2009).
+    \bibitem{25} U. Seifert, Eur. Phys. J. B 64, 423 (2008).
+    \bibitem{26} T. Tomé and M. J. de Oliveira, Phys. Rev. Lett. 108, 020601 (2012).
+    \bibitem{27} See supplementary material at http://dx.doi.org/10.1063/1.4928193 for the time independence of Lagrange multipliers when fluxes are time independent, lack of higher order reciprocal relationships, and modified reciprocal relationships when fluxes have different parities.
+\end{thebibliography}
+
+\end{document}
