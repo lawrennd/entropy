@@ -105,9 +105,37 @@ Consider a particle that can move on a 1D discrete lattice with sites labeled by
     \end{answer}
     \item[(d)] For a trajectory $\Gamma$ of $n$ steps, write a general expression for its probability $p_\Gamma$ in terms of the number of left steps $n_L$ and right steps $n_R$.
     \begin{answer}
+        The number of left steps at time step $i$ is $n_L(i)$ and number of right steps is $n_R(i)$. Position is given by
+        $$
+        x(i) = n_L(i) -  n_R(i).
+        $$
+        At $i=0$ we have $n_R(0)=n_L(0)=0$. Then we have 
+        $$
+        n_L(i+1) = n_R(i) + s_i
+        $$ 
+        and 
+        $$
+        n_R(i+1) = n_R(i) + (1 - s_i),
+        $$ 
+        where $p(s_i) = p^{s_i}(1-p)^{(1-s_i)}$.
         $$
         p(\Gamma) = \prod_{i=1}^n p^{s_i}(1-p)^{1-s_i}
         $$
+        The joint probability is of the form
+        $$
+        p(n_L, n_R) = C(n_L + n_R, n_L) p^n_L(1-p)^n_R
+        $$
+        where
+        $$
+        C(n_L + n_R, n_L) = \frac{(n_L + n_R)!}{n_L! n_R!}
+        $$
+        using Stirling's approximation we can write $\log p(n_L, n_R)$ as
+        \begin{eqnarray}
+            
+        \log p(n_L, n_R) = (n_L + n_R) \log(n_L+n_R) - n_L \log \frac{n_L}{p} - n_R \log \frac{n_R}{(1-p)} \nonumber \\
+        = - n_L \log \frac{n_L}{p(n_L + n_R)} - n_R \log \frac{n_R}{(1-p)(n_L + n_R)}
+        
+
         where $s_i$ is 1 if the $i$th move is left and 0 if it is right.
     \end{answer}
 \end{enumerate}
@@ -138,8 +166,16 @@ Consider a particle that can move on a 1D discrete lattice with sites labeled by
         
         Product of $x_j x_{j^\prime}$ is given by 
         $$
-        x_j x_{j^\prime} = \Delta x^2 \left(4\sum_{i=1}^j s_i \sum_{{i^\prime}=1}^{j^\prime} s_{i^\prime} -j^\prime\sum_{i=1}^j s_i -j\sum_{{i^\prime}=1}^{j^\prime} s_{i^\prime} +jj^\prime\right).
-        $$. Taking $j^\prime = j+\Delta j$ we have $\langle x_j x_{j^\prime}\rangle = \Delta x^2 p j (j+\Delta j) - \Delta x^2 (1-p) j (j+\Delta j)$.
+        x_j x_{j^\prime} = \Delta x^2 \sum_{i=1}^j (2 s_i -1)\sum_{{i^\prime}=1}^{j^\prime} (2s_{i^\prime} -1).
+        $$
+        Take $\mathbf{1}_j$ to be a vector of length $n$ with the first $j$ elements set to 1 and all other set to zero. Then define $\hat{\mathbf{s}}$ to be a vector whose $i$th element is $2s_i -1$. We can rewrite the above as
+        $$
+        x_j x_{j^\prime} = \Delta x^2 \mathbf{1}_j ^\top \hat{\mathbf{s}}\hat{\mathbf{s}}^\top \mathbf{1}_{j^\prime}
+        $$
+        Now we take expectation under $p(s_i)$. First we note 
+
+
+         Taking $j^\prime = j+\Delta j$ we have $\langle x_j x_{j^\prime}\rangle = \Delta x^2 p j (j+\Delta j) - \Delta x^2 (1-p) j (j+\Delta j)$.
     \end{answer}
     \item[(b)] For a continuous trajectory $x(t)$ over time interval $[0,T]$, explain why we write the probability functional as:
     \[ 
